@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\pre-dexed\debug\classes-3cd80d52237f59546a93811b36b9d08db344130c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\pre-dexed\debug\classes-e6230f4a8453a8fbe9a1ae02b96f4c3155f19d01.jar" />
+    </item>
+    <item
+        jar="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\pre-dexed\debug\classes-39432cc497af37d6e9e4d153ed66c841cd81a7d4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Voke\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\pre-dexed\debug\gson-2.2.4-05b7f1cc4c34e5e6146625a4f0eb882eba3e6dfe.jar" />
+    </item>
+    <item
+        jar="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-bc0700dd0bd202df5cc4ef922dfffdec4ce746a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Voke\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-b63d7a94acb69f9322cdd86ad56ac42c7921781d.jar" />
+    </item>
+
+</items>
