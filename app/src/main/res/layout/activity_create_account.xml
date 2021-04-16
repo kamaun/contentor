@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:id="@+id/scrollView"
+    tools:context=".CreateAccountActivity">
+        <RelativeLayout
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:background="#fefefe">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/createAccountTextLabel"
+                android:id="@+id/createWorkOuttextLabel"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/firstNameTextLabel"
+                android:id="@+id/firstNameTextLabel"
+                android:layout_marginTop="19dp"
+                android:enabled="true"
+                android:editable="false"
+                android:layout_below="@+id/createWorkOuttextLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/firstNameTextBox"
+                android:width="200dp"
+                android:layout_alignTop="@+id/firstNameTextLabel"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/lastNameTextLabel"
+                android:id="@+id/lastNameTextLabel"
+                android:layout_below="@+id/firstNameTextBox"
+                android:layout_alignRight="@+id/firstNameTextLabel"
+                android:layout_alignEnd="@+id/firstNameTextLabel" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastNameTextBox"
+                android:inputType="text"
+                android:width="250dp"
+                android:layout_below="@+id/firstNameTextBox"
+                android:layout_alignLeft="@+id/firstNameTextBox"
+                android:layout_alignStart="@+id/firstNameTextBox" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/ageTextLabel"
+                android:layout_below="@+id/lastNameTextBox"
+                android:layout_alignLeft="@+id/lastNameTextLabel"
+                android:layout_alignStart="@+id/lastNameTextLabel"
+                android:text="@string/ageTextLabel" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ageTextBox"
+                android:layout_alignTop="@+id/ageTextLabel"
+                android:layout_alignLeft="@+id/lastNameTextBox"
+                android:layout_alignStart="@+id/lastNameTextBox"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/userNameTextLabel"
+                android:id="@+id/userNameTextLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ageTextBox" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/usernameTextBox"
+                android:layout_alignTop="@+id/userNameTextLabel"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="text"
+                android:hint="@string/lengthOfUserNameHint"
+                android:textSize="10sp"
+                android:fontFamily="veradana"
+                android:layout_alignLeft="@+id/ageTextBox"
+                android:layout_alignStart="@+id/ageTextBox" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/passwordTextLabel"
+                android:id="@+id/passwordTextLabel"
+                android:layout_below="@+id/usernameTextBox"
+                android:layout_alignLeft="@+id/ageTextLabel"
+                android:layout_alignStart="@+id/ageTextLabel" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/passwordTextBox"
+                android:layout_below="@+id/usernameTextBox"
+                android:layout_alignLeft="@+id/usernameTextBox"
+                android:layout_alignStart="@+id/usernameTextBox"
+                android:hint="@string/passwordLengthHint"
+                android:textSize="10sp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="veradana" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/reasonForUseSpinner"
+                android:layout_below="@+id/passwordTextBox"
+                android:layout_alignLeft="@+id/passwordTextBox"
+                android:layout_alignStart="@+id/passwordTextBox"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/reasonForUseTextLabel"
+                android:id="@+id/reasonForUseTextLabel"
+                android:layout_below="@+id/passwordTextBox"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/certificationNumberTextLabel"
+                android:id="@+id/certificationNumberTextLabel"
+                android:layout_below="@+id/reasonForUseSpinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:visibility="invisible" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/certificationNumberTextBox"
+                android:layout_below="@+id/reasonForUseSpinner"
+                android:layout_alignLeft="@+id/reasonForUseSpinner"
+                android:layout_alignStart="@+id/reasonForUseSpinner"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="number"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/insuranceNumberTextLabel"
+                android:id="@+id/insuranceNumberTextLabel"
+                android:layout_below="@+id/certificationNumberTextBox"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:visibility="invisible" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/insuranceNumberTextBox"
+                android:layout_alignTop="@+id/insuranceNumberTextLabel"
+                android:layout_alignLeft="@+id/certificationNumberTextBox"
+                android:layout_alignStart="@+id/certificationNumberTextBox"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:inputType="text"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/trainerTextLabel"
+                android:id="@+id/trainerTextLabel"
+                android:layout_below="@+id/insuranceNumberTextBox"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:visibility="invisible" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/trainerSpinner"
+                android:layout_below="@+id/insuranceNumberTextBox"
+                android:layout_alignLeft="@+id/insuranceNumberTextBox"
+                android:layout_alignStart="@+id/insuranceNumberTextBox"
+                android:visibility="invisible" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submitButtonText"
+                android:id="@+id/submitButton"
+                android:layout_below="@+id/trainerSpinner"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/backToLoginButtonText"
+                android:id="@+id/backToLoginButton"
+                android:layout_below="@+id/trainerSpinner"
+                android:layout_alignRight="@+id/userNameTextLabel"
+                android:layout_alignEnd="@+id/userNameTextLabel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/errorMessageTextLabel"
+                android:layout_below="@+id/backToLoginButton"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textAlignment="center"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </ScrollView>

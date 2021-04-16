@@ -1,93 +1,193 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+MERGED from [com.android.support:design:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/2dda0425242f1a4704e29fb985a458b2/design-28.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/eab914ae2b0ae69bba8b5cdf1163eae3/appcompat-v7-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/7093625e245be2f9da059fb69635e386/support-fragment-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/d8652eecaec1541e3b83ea201124b443/animated-vector-drawable-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/38946188cfcbdf41308ff1e2b9b977bc/recyclerview-v7-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/ebdaba724d630547519146b185ca3ca2/support-core-ui-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/b4c6af1ae4345cab0a622f08a7523356/support-core-utils-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/57ac94badb477ef97ca9b2d2685353fd/support-vector-drawable-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/f88a7ef34ba2830589c01a6612467832/transition-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/76f967ba5224a2324c7b36a6b6beb8ef/loader-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/89face3daa86ec6e301af2545a00e819/viewpager-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/7cadb58b8c0c86a09731971f6307fd56/coordinatorlayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/efd769fb970c1894bc704f9b03375891/drawerlayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/99286e9264ccffbdcfeef6a898d405a9/slidingpanelayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/c645b14cbf7400c1620284ec778917ed/customview-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/69584d4b522a168305e2fe7e786b3c2d/swiperefreshlayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/f0aa855178a708528b0b89a033e11975/asynclayoutinflater-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/06f6df44c76c4a181cad1895980d5a87/support-compat-28.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5b0bdb1141ca8e0033dd5a0f32776df1/versionedparcelable-28.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5a32061153c0ccb63d4c91e7462c854e/cursoradapter-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/928527401c49b22e558969753c624e91/cardview-v7-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/b3178544db81ff2083269db8058eb1dd/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/fd28601af1e62f6b2008bfcf849ab48b/documentfile-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/a76aa01d89e969980164b1fd1e31c0c5/localbroadcastmanager-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/3c66927090c50d8cae8d532a1f537c39/print-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/6fc8c33e0b497e25ecd64651fccd3c8e/viewmodel-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/bd647f4fe7f1f1847c7c2a54d917be44/interpolator-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/24deb7c88481bc7fd9652b157e2158d8/livedata-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/998135bdb7686494daa9579c72a212a4/livedata-core-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/158fb668b4a0516eb81e0ac79af18a91/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
 	package
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:3:5-39
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
-	xmlns:android
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:2:11-69
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:1-36:12
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:5:5-7:23
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:5:5-7:23
 	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:6:9-51
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:6:9-51
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:8:5-10:23
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:8:5-10:23
 	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:9:9-63
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:9:9-63
 application
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:11:5-34:19
-MERGED from [com.android.support:appcompat-v7:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:23.0.1] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:22:5-20
-	android:label
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:14:9-41
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:11:5-34:19
+MERGED from [com.android.support:design:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/2dda0425242f1a4704e29fb985a458b2/design-28.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/2dda0425242f1a4704e29fb985a458b2/design-28.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/06f6df44c76c4a181cad1895980d5a87/support-compat-28.0.0/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/06f6df44c76c4a181cad1895980d5a87/support-compat-28.0.0/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5b0bdb1141ca8e0033dd5a0f32776df1/versionedparcelable-28.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5b0bdb1141ca8e0033dd5a0f32776df1/versionedparcelable-28.0.0/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/06f6df44c76c4a181cad1895980d5a87/support-compat-28.0.0/AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:15:9-35
-	android:allowBackup
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:12:9-35
-	android:icon
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:13:9-43
-	android:theme
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:16:9-40
-activity#projectomicron.mrfitness.LoginActivity
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:17:9-23:20
-	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:17:19-48
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:18:13-22:29
-action#android.intent.action.MAIN
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:19:17-69
-	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:19:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:21:17-77
-	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:21:27-74
-activity#projectomicron.mrfitness.CreateAccountActivity
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:24:9-25:20
-	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:24:19-56
-activity#projectomicron.mrfitness.TabMenuManagerActivity
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:26:9-30:20
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:28:13-56
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:14:9-41
+	android:icon
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:13:9-43
+	android:allowBackup
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:29:13-56
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:16:9-40
+activity#projectomicron.mrfitness.LoginActivity
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:17:9-23:20
 	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:27:13-51
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:17:19-48
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:21:27-74
+activity#projectomicron.mrfitness.CreateAccountActivity
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:24:9-25:20
+	android:name
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:24:19-56
+activity#projectomicron.mrfitness.TabMenuManagerActivity
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:26:9-30:20
+	android:label
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:28:13-56
+	android:theme
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:29:13-56
+	android:name
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:27:13-51
 activity#projectomicron.mrfitness.ViewFitnessStatsActivity
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:31:9-71
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:31:9-71
 	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:31:19-59
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:31:19-59
 activity#projectomicron.mrfitness.ViewWorkOutActivity
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:32:9-66
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:32:9-66
 	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:32:19-54
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:32:19-54
 activity#projectomicron.mrfitness.CreateWorkOutActivity
-ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:33:9-68
+ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:33:9-68
 	android:name
-		ADDED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml:33:19-56
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml:33:19-56
 uses-sdk
-INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:appcompat-v7:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:design:23.0.1] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\design\23.0.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:23.1.0] C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\AndroidManifest.xml:20:5-43
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/2dda0425242f1a4704e29fb985a458b2/design-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/2dda0425242f1a4704e29fb985a458b2/design-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/eab914ae2b0ae69bba8b5cdf1163eae3/appcompat-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/eab914ae2b0ae69bba8b5cdf1163eae3/appcompat-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/7093625e245be2f9da059fb69635e386/support-fragment-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/7093625e245be2f9da059fb69635e386/support-fragment-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/d8652eecaec1541e3b83ea201124b443/animated-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/d8652eecaec1541e3b83ea201124b443/animated-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/38946188cfcbdf41308ff1e2b9b977bc/recyclerview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/38946188cfcbdf41308ff1e2b9b977bc/recyclerview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/ebdaba724d630547519146b185ca3ca2/support-core-ui-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/ebdaba724d630547519146b185ca3ca2/support-core-ui-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/b4c6af1ae4345cab0a622f08a7523356/support-core-utils-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/b4c6af1ae4345cab0a622f08a7523356/support-core-utils-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/57ac94badb477ef97ca9b2d2685353fd/support-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/57ac94badb477ef97ca9b2d2685353fd/support-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/f88a7ef34ba2830589c01a6612467832/transition-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/f88a7ef34ba2830589c01a6612467832/transition-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/76f967ba5224a2324c7b36a6b6beb8ef/loader-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/76f967ba5224a2324c7b36a6b6beb8ef/loader-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/89face3daa86ec6e301af2545a00e819/viewpager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/89face3daa86ec6e301af2545a00e819/viewpager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/7cadb58b8c0c86a09731971f6307fd56/coordinatorlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/7cadb58b8c0c86a09731971f6307fd56/coordinatorlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/efd769fb970c1894bc704f9b03375891/drawerlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/efd769fb970c1894bc704f9b03375891/drawerlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/99286e9264ccffbdcfeef6a898d405a9/slidingpanelayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/99286e9264ccffbdcfeef6a898d405a9/slidingpanelayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/c645b14cbf7400c1620284ec778917ed/customview-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/c645b14cbf7400c1620284ec778917ed/customview-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/69584d4b522a168305e2fe7e786b3c2d/swiperefreshlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/69584d4b522a168305e2fe7e786b3c2d/swiperefreshlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/f0aa855178a708528b0b89a033e11975/asynclayoutinflater-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/f0aa855178a708528b0b89a033e11975/asynclayoutinflater-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/06f6df44c76c4a181cad1895980d5a87/support-compat-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/06f6df44c76c4a181cad1895980d5a87/support-compat-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5b0bdb1141ca8e0033dd5a0f32776df1/versionedparcelable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5b0bdb1141ca8e0033dd5a0f32776df1/versionedparcelable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5a32061153c0ccb63d4c91e7462c854e/cursoradapter-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/5a32061153c0ccb63d4c91e7462c854e/cursoradapter-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/928527401c49b22e558969753c624e91/cardview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/928527401c49b22e558969753c624e91/cardview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/b3178544db81ff2083269db8058eb1dd/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/b3178544db81ff2083269db8058eb1dd/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/fd28601af1e62f6b2008bfcf849ab48b/documentfile-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/fd28601af1e62f6b2008bfcf849ab48b/documentfile-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/a76aa01d89e969980164b1fd1e31c0c5/localbroadcastmanager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/a76aa01d89e969980164b1fd1e31c0c5/localbroadcastmanager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/3c66927090c50d8cae8d532a1f537c39/print-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/3c66927090c50d8cae8d532a1f537c39/print-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/6fc8c33e0b497e25ecd64651fccd3c8e/viewmodel-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/6fc8c33e0b497e25ecd64651fccd3c8e/viewmodel-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/bd647f4fe7f1f1847c7c2a54d917be44/interpolator-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/bd647f4fe7f1f1847c7c2a54d917be44/interpolator-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/24deb7c88481bc7fd9652b157e2158d8/livedata-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/24deb7c88481bc7fd9652b157e2158d8/livedata-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/998135bdb7686494daa9579c72a212a4/livedata-core-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/998135bdb7686494daa9579c72a212a4/livedata-core-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/158fb668b4a0516eb81e0ac79af18a91/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/sageshinobi/.gradle/caches/transforms-2/files-2.1/158fb668b4a0516eb81e0ac79af18a91/runtime-1.1.1/AndroidManifest.xml:20:5-44
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Voke\Documents\School\FAU\Object Oriented Programming\Project\Mr. Fitness Final Project\app\src\main\AndroidManifest.xml
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		ADDED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/sageshinobi/ROOT/SCHOOLRoot/OOP/Mr. Fitness Final Project/app/src/main/AndroidManifest.xml

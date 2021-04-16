@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/toTextLabel"
+        android:id="@+id/toDialogTextLabel"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clientDialogSpiner"
+        android:layout_alignTop="@+id/toDialogTextLabel"
+        android:layout_toRightOf="@+id/toDialogTextLabel"
+        android:layout_toEndOf="@+id/toDialogTextLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/trainerDialogTextLabel"
+        android:layout_alignTop="@+id/clientDialogSpiner"
+        android:layout_alignLeft="@+id/clientDialogSpiner"
+        android:layout_alignStart="@+id/clientDialogSpiner"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/messageDialogTextLabel"
+        android:id="@+id/messageDialogTextLabel"
+        android:layout_below="@+id/clientDialogSpiner"
+        android:layout_alignLeft="@+id/toDialogTextLabel"
+        android:layout_alignStart="@+id/toDialogTextLabel" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageContentsDialogTextBox"
+        android:layout_below="@+id/messageDialogTextLabel"
+        android:layout_alignLeft="@+id/messageDialogTextLabel"
+        android:layout_alignStart="@+id/messageDialogTextLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/errorMessageTextLabel"
+        android:layout_below="@+id/messageContentsDialogTextBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/messageContentsDialogTextBox"
+        android:layout_alignEnd="@+id/messageContentsDialogTextBox"
+        android:textAlignment="center"
+        android:visibility="invisible" />
+
+</RelativeLayout>

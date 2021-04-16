@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".TabMenuManagerActivity$PlaceholderFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/createAWorkOutButtonTextLabel"
+        android:layout_marginTop="21dp"
+        android:id="@+id/editButton"
+        android:layout_below="@+id/fitnessManagerTextLabel"
+        android:layout_alignRight="@+id/clientSpinner"
+        android:layout_alignEnd="@+id/clientSpinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/fitnessManagerTextLabel"
+        android:id="@+id/fitnessManagerTextLabel"
+        android:layout_marginTop="22dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/clientSpinner"
+        android:layout_alignEnd="@+id/clientSpinner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/clientsTextLabel"
+        android:id="@+id/clientTextLabel"
+        android:layout_below="@+id/editButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clientSpinner"
+        android:layout_alignTop="@+id/clientTextLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/clientTextLabel"
+        android:layout_toEndOf="@+id/clientTextLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/workOutNumberTextLabel"
+        android:id="@+id/workOutNumbertextLabel"
+        android:layout_below="@+id/clientSpinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workOutNumnerTextBox"
+        android:layout_below="@+id/clientSpinner"
+        android:layout_toEndOf="@+id/workOutNumbertextLabel"
+        android:layout_toRightOf="@+id/workOutNumbertextLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/viewWorkOutButtontextLabel"
+        android:id="@+id/viewWorkOutButton"
+        android:layout_below="@+id/workOutNumnerTextBox"
+        android:layout_marginTop="29dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/clientSpinner"
+        android:layout_alignEnd="@+id/clientSpinner" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/viewFitnessStatsButtonLabel"
+        android:id="@+id/viewFitnessStatusButton"
+        android:layout_below="@+id/viewWorkOutButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/clientSpinner"
+        android:layout_alignEnd="@+id/clientSpinner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/errorMessageLabel"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:layout_below="@+id/viewFitnessStatusButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

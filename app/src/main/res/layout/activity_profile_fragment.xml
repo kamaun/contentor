@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView2"
+    tools:context=".TabMenuManagerActivity$PlaceholderFragment"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fadeScrollbars="false"
+    android:scrollbars="vertical"
+    android:fillViewport="true">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:scrollbarStyle="outsideOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userProfileRelativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/firstNameTextLabelProfileFragment"
+            android:id="@+id/firstNameTextLabel"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/lastNameTextLabelProfileFragment"
+            android:id="@+id/lastNameTextLabel"
+            android:layout_marginTop="19dp"
+            android:layout_below="@+id/firstNameTextLabel"
+            android:layout_alignLeft="@+id/firstNameTextLabel"
+            android:layout_alignStart="@+id/firstNameTextLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/ageTextLabelProfileFragment"
+            android:id="@+id/ageTextLabel"
+            android:layout_below="@+id/lastNameTextLabel"
+            android:layout_alignLeft="@+id/lastNameTextLabel"
+            android:layout_alignStart="@+id/lastNameTextLabel"
+            android:layout_marginTop="21dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/userNameTextLabelProfileFragment"
+            android:id="@+id/userNameTextLabel"
+            android:layout_below="@+id/ageTextLabel"
+            android:layout_alignLeft="@+id/ageTextLabel"
+            android:layout_alignStart="@+id/ageTextLabel"
+            android:layout_marginTop="23dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/passWordTextLabelProfileFragment"
+            android:id="@+id/passWordTextLabel"
+            android:layout_below="@+id/userNameTextLabel"
+            android:layout_alignLeft="@+id/userNameTextLabel"
+            android:layout_alignStart="@+id/userNameTextLabel"
+            android:layout_marginTop="22dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstNameTextBox"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/ageTextBox"
+            android:layout_alignStart="@+id/ageTextBox" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastNameTextBox"
+            android:enabled="false"
+            android:textAlignment="center"
+            android:layout_below="@+id/firstNameTextBox"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/firstNameTextBox"
+            android:layout_alignStart="@+id/firstNameTextBox" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/ageTextBox"
+            android:enabled="false"
+            android:numeric="integer"
+            android:textAlignment="center"
+            android:layout_below="@+id/lastNameTextBox"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userNameTextBox"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_alignTop="@+id/userNameTextLabel"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/passWordTextBox"
+            android:layout_alignStart="@+id/passWordTextBox" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passWordTextBox"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_below="@+id/userNameTextBox"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/certificationNumberTextLabelProfileFragment"
+            android:id="@+id/certificationNumberTextLabel"
+            android:layout_below="@+id/passWordTextLabel"
+            android:layout_alignLeft="@+id/passWordTextLabel"
+            android:layout_alignStart="@+id/passWordTextLabel"
+            android:layout_marginTop="26dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/certificationNumberTextBox"
+            android:enabled="false"
+            android:numeric="integer"
+            android:layout_below="@+id/passWordTextBox"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/insuranceNumberTextLabelProfileFragment"
+            android:id="@+id/insuranceNumberTextLabel"
+            android:layout_above="@+id/cancelButton"
+            android:layout_alignLeft="@+id/certificationNumberTextLabel"
+            android:layout_alignStart="@+id/certificationNumberTextLabel" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/insuranceNumberTextBox"
+            android:layout_below="@+id/certificationNumberTextBox"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/certificationNumberTextBox"
+            android:layout_alignStart="@+id/certificationNumberTextBox"
+            android:enabled="false"
+            android:numeric="integer" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/yourTrainerTextLabelProfileFragment"
+            android:id="@+id/yourTrainerTextLabel"
+            android:layout_below="@+id/errorMessageTextLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/trainerNameTextLabelProfileFragment"
+            android:id="@+id/trainerNameTextLabel"
+            android:layout_below="@+id/yourTrainerTextLabel"
+            android:layout_toLeftOf="@+id/trainerCertificationTextBox"
+            android:layout_toStartOf="@+id/trainerCertificationTextBox" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/trainerFirstNameTextBox"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_alignBottom="@+id/trainerNameTextLabel"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/editButton"
+            android:layout_toRightOf="@+id/editButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/trainerCertificationNumberTextLabelProfileFragment"
+            android:id="@+id/trainerCertificationTextLabel"
+            android:layout_below="@+id/trainerNameTextLabel"
+            android:layout_alignLeft="@+id/insuranceNumberTextLabel"
+            android:layout_alignStart="@+id/insuranceNumberTextLabel" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/trainerCertificationTextBox"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_alignTop="@+id/trainerNameTextLabel"
+            android:layout_toRightOf="@+id/trainerCertificationTextLabel"
+            android:layout_alignRight="@+id/yourTrainerTextLabel"
+            android:layout_alignEnd="@+id/yourTrainerTextLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/trainerInsuranceNumberTextLabelProfileFragment"
+            android:id="@+id/trainerInsuranceNumberTextLabel"
+            android:layout_alignTop="@+id/trainerCertificationTextLabel"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/trainerInsuranceNumberTextBox"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_alignTop="@+id/trainerCertificationTextBox"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/deleteAccountButton"
+            android:layout_toEndOf="@+id/deleteAccountButton" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editButtonTextLabel"
+            android:id="@+id/editButton"
+            android:layout_below="@+id/insuranceNumberTextBox"
+            android:layout_toLeftOf="@+id/insuranceNumberTextBox"
+            android:layout_toStartOf="@+id/insuranceNumberTextBox" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelButtonTextLabel"
+            android:id="@+id/cancelButton"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/editButton"
+            android:layout_alignLeft="@+id/trainerNameTextLabel"
+            android:layout_alignStart="@+id/trainerNameTextLabel" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/updateButtonTextLabel"
+            android:id="@+id/updateButton"
+            android:visibility="invisible"
+            android:layout_marginRight="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_below="@+id/insuranceNumberTextBox"
+            android:layout_alignRight="@+id/insuranceNumberTextBox"
+            android:layout_alignEnd="@+id/insuranceNumberTextBox" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deleteAccountTextLabel"
+            android:id="@+id/deleteAccountButton"
+            android:layout_below="@+id/insuranceNumberTextBox"
+            android:layout_toRightOf="@+id/editButton"
+            android:layout_toEndOf="@+id/editButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/errorMessageTextLabel"
+            android:visibility="invisible"
+            android:textAlignment="center"
+            android:layout_below="@+id/editButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</ScrollView>

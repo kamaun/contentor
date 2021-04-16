@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/fitnessStatsTextLabel"
+        android:id="@+id/fitnessStatsTextLabel"
+        android:layout_marginTop="19dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/clientTextLabel"
+        android:id="@+id/clientTextLabel"
+        android:layout_below="@+id/fitnessStatsTextLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/clientTextBox"
+        android:layout_alignTop="@+id/clientTextLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/fitnessStatsTextLabel"
+        android:layout_alignStart="@+id/fitnessStatsTextLabel"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/weightTextLabel"
+        android:id="@+id/weightTextLabel"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/clientTextLabel"
+        android:layout_alignLeft="@+id/clientTextLabel"
+        android:layout_alignStart="@+id/clientTextLabel" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/weightTextBox"
+        android:layout_alignTop="@+id/weightTextLabel"
+        android:layout_toRightOf="@+id/weightTextLabel"
+        android:layout_alignRight="@+id/fitnessStatsTextLabel"
+        android:layout_alignEnd="@+id/fitnessStatsTextLabel"
+        android:enabled="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/poundsTextLabel"
+        android:id="@+id/poundsTextLabel"
+        android:layout_alignTop="@+id/weightTextBox"
+        android:layout_toRightOf="@+id/fitnessStatsTextLabel"
+        android:layout_toEndOf="@+id/fitnessStatsTextLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/heightTextLabel"
+        android:id="@+id/heightTextLabel"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/weightTextBox"
+        android:layout_alignLeft="@+id/weightTextLabel"
+        android:layout_alignStart="@+id/weightTextLabel" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/feetTextBox"
+        android:layout_alignBottom="@+id/heightTextLabel"
+        android:layout_alignLeft="@+id/weightTextBox"
+        android:layout_alignStart="@+id/weightTextBox"
+        android:layout_alignRight="@+id/fitnessStatsTextLabel"
+        android:layout_alignEnd="@+id/fitnessStatsTextLabel"
+        android:enabled="false" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/inchesTextBox"
+        android:layout_alignTop="@+id/feetTextBox"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/poundsTextLabel"
+        android:layout_toEndOf="@+id/poundsTextLabel"
+        android:enabled="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/feetTextLabel"
+        android:id="@+id/feetTextLabel"
+        android:layout_below="@+id/feetTextBox"
+        android:layout_alignLeft="@+id/clientTextBox"
+        android:layout_alignStart="@+id/clientTextBox" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/inchesTextLabel"
+        android:id="@+id/inchesTextLabel"
+        android:layout_alignTop="@+id/feetTextLabel"
+        android:layout_alignLeft="@+id/inchesTextBox"
+        android:layout_alignStart="@+id/inchesTextBox" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/BMITextLabel"
+        android:id="@+id/BMITextLabel"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/feetTextLabel"
+        android:layout_alignRight="@+id/clientTextLabel"
+        android:layout_alignEnd="@+id/clientTextLabel" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/BMITextBox"
+        android:layout_alignTop="@+id/BMITextLabel"
+        android:layout_alignLeft="@+id/feetTextBox"
+        android:layout_alignStart="@+id/feetTextBox"
+        android:layout_alignRight="@+id/fitnessStatsTextLabel"
+        android:layout_alignEnd="@+id/fitnessStatsTextLabel"
+        android:enabled="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editButtonTextLabel"
+        android:id="@+id/editButton"
+        android:visibility="invisible"
+        android:layout_below="@+id/BMITextBox"
+        android:layout_alignLeft="@+id/goBackButton"
+        android:layout_alignStart="@+id/goBackButton"
+        android:layout_marginTop="21dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backButton"
+        android:id="@+id/goBackButton"
+        android:layout_below="@+id/editButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancelButtonTextLabel"
+        android:id="@+id/cancelButton"
+        android:layout_alignTop="@+id/editButton"
+        android:layout_toLeftOf="@+id/feetTextLabel"
+        android:layout_toStartOf="@+id/feetTextLabel"
+        android:visibility="invisible" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/updateButtonTextLabel"
+        android:id="@+id/updateButton"
+        android:layout_alignTop="@+id/editButton"
+        android:layout_toRightOf="@+id/BMITextBox"
+        android:layout_toEndOf="@+id/BMITextBox"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/errorMessageLabel"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="19dp"
+        android:layout_alignRight="@+id/inchesTextBox"
+        android:layout_alignEnd="@+id/inchesTextBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:visibility="invisible" />
+</RelativeLayout>

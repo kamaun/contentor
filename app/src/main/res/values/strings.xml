@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name">Mr.Fitness</string>
+    <string name="applicationTitleLabel">Mr. Fitness</string>
+    <string name="userNameLabel">Username</string>
+    <string name="passWordLabel">Password</string>
+    <string name="loginButtonText">Login</string>
+    <string name="createAccountButtonText">Create Account!</string>
+    <string name="createAccountTextLabel">Create A Account!</string>
+    <string name="firstNameTextLabel">First Name</string>
+    <string name="lastNameTextLabel">Last Name</string>
+    <string name="ageTextLabel">Age</string>
+    <string name="phoneNumberTextLabel">Phone Number</string>
+    <string name="userNameTextLabel">User Name</string>
+    <string name="lengthOfUserNameHint">Must be 6 to 12 characters</string>
+    <string name="passwordTextLabel">Password</string>
+    <string name="passwordLengthHint">Must be 6 to 12 characters</string>
+    <string name="reasonForUseTextLabel">User Type</string>
+    <string name="certificationNumberTextLabel">Certs #</string>
+    <string name="insuranceNumberTextLabel">Insurance #</string>
+    <string name="trainerTextLabel">Trainer</string>
+    <string name="backToLoginButtonText">Back to Login</string>
+    <string name="submitButtonText">Submit</string>
+    <string name="errorMessageTextLabelMissingField">Not all of the fields were filled!</string>
+    <string name="errorMessageTextLabelInvalidLogin">Invalid Login!</string>
+    <string name="errorMessageTextLabelConnectionError">There was an unknown error with the connection</string>
+    <string name="errorMessageTextLabelNoUserRoleSelected">You must select if you are a trainer or a client</string>
+    <string name="errorMessageTextLabelNoTrainerSelected">You must select a trainer</string>
+    <string name="errorMessageTextLabelNoCertificationNumber">You must provide a certification number</string>
+    <string name="errorMessageTextLabelNoInsuranceNumber">You must provide an insurance number</string>
+    <string name="errorMessageTextLabelNoCertificationOrInsuranceNumber">Certification and Insurance Number must be provided</string>
+    <string name="errorMessageTextLabelUserNameAlreadyTaken">The username entered is already taken</string>
+    <string name="errorMessageTextLabelAccountCreatedSuccessfully">Account Created Successfully. Head back to the login</string>
+    <string name="errorMessageTextLabelAccountUpdatedSuccessfully">Account Updated Successfully</string>
+    <string name="errorMessageTextLabelNoClientSelected">No client selected</string>
+    <string name="errorMessageTextLabelNoMessages">You do not have messages</string>
+    <string name="errorMessageTextLabelNoWorkOutID">You must enter a work out id</string>
+    <string name="errorMessageTextLabelNegativeValues">These values need to be zero or greater</string>
+    <string name="errorMessageTextLabelWorkOutIDNotFound">The workout ID entered doesnt exist.Please go back and try again</string>
+    <string name="errorMessageTextLabelWorkOutUpdated">Workout updated successfully</string>
+    <string name="errorMessageTextLabelNoFitnessStats">This user does not have a Fitness Stats</string>
+    <string name="errorMessageTextLabelFitnessStatsUpdatedSuccessful">Fitness Stats updated successfully</string>
+    <string-array name="reasonsForUseArray">
+        <item>Please Select</item>
+        <item>Client</item>
+        <item>Trainer</item>
+    </string-array>
+    <string-array name="trainersArray">
+        <item>Please Select</item>
+        <item>Kevin Njeri</item>
+        <item>Bob Saget</item>
+        <item>Chuck Norris</item>
+        <item>Jet LI</item>
+    </string-array>
+    <string name="title_activity_menu">Menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="subjectTextLabel">Subject:</string>
+    <string name="dateTextLabel">Date:</string>
+    <string name="fromTextLabel">From:</string>
+    <string name="deleteButtonTextLabel">Delete</string>
+    <string name="composeNewMessageButtonText">Compose</string>
+    <string name="yourProfileTextLabel">Your Profile</string>
+    <string name="firstNameTextLabelProfileFragment">First Name</string>
+    <string name="lastNameTextLabelProfileFragment">Last Name</string>
+    <string name="ageTextLabelProfileFragment">Age</string>
+    <string name="userNameTextLabelProfileFragment">User Name</string>
+    <string name="passWordTextLabelProfileFragment">Password</string>
+    <string name="certificationNumberTextLabelProfileFragment">Cert #</string>
+    <string name="insuranceNumberTextLabelProfileFragment">Insurance #</string>
+    <string name="yourTrainerTextLabelProfileFragment">Your Trainer</string>
+    <string name="trainerNameTextLabelProfileFragment">Name</string>
+    <string name="trainerAgeTextLabelProfileFragment">Age</string>
+    <string name="trainerCertificationNumberTextLabelProfileFragment">Cert #</string>
+    <string name="trainerInsuranceNumberTextLabelProfileFragment">Insurance #</string>
+    <string name="editButtonTextLabel">Edit</string>
+    <string name="cancelButtonTextLabel">Cancel</string>
+    <string name="updateButtonTextLabel">Update</string>
+    <string name="deleteAccountTextLabel">Delete</string>
+    <string name="dialogDeleteAccountPrompt">Are you sure you want to delete your account?</string>
+    <string name="dialogDeleteAccountPositiveAnswer">Yes</string>
+    <string name="dialogDeleteAccountNegativeAnswer">No</string>
+    <string name="logoutTextLabel">Logout</string>
+    <string name="messageIDTextLabel">Message ID:</string>
+    <string name="messageTextLabel">Message:</string>
+    <string name="toTextLabel">To:</string>
+    <string name="messageDialogTextLabel">Message:</string>
+    <string name="errorMessageLabelNoClients">You do not have any clients</string>
+    <string name="fitnessManagerTextLabel">Fitness Manager</string>
+    <string name="createAWorkOutButtonTextLabel">Create A WorkOut!</string>
+    <string name="clientsTextLabel">Clients:</string>
+    <string name="workOutNumberTextLabel">WorkOut #:</string>
+    <string name="viewWorkOutButtontextLabel">View WorkOut!</string>
+    <string name="viewFitnessStatsButtonLabel">View Fitness Stats!</string>
+    <string name="createWorkOutTextLabel">Create WorkOut!</string>
+    <string name="clientTextLabel">Client:</string>
+    <string name="treadMillTextLabel">Tread Mill:</string>
+    <string name="treadMillMilesTextLabel">Miles</string>
+    <string name="treadMillMinutesTextLabel">Min.</string>
+    <string name="pushUpsTextLabel">PushUps:</string>
+    <string name="repsTextLabel">reps</string>
+    <string name="sitUpsTextLabel">SitUps:</string>
+    <string name="squatsTextLabel">Squats:</string>
+    <string name="createWorkOutButtonTextLabel">Create</string>
+    <string name="goBackButtonTextLabek">Cancel</string>
+    <string name="goBackButtonTextLabel">Go Back</string>
+    <string name="workOutIDTextLabel">WorkOutID:</string>
+    <string name="fitnessStatsTextLabel">Fitness Stats!</string>
+    <string name="weightTextLabel">Weight:</string>
+    <string name="poundsTextLabel">lbs</string>
+    <string name="heightTextLabel">Height:</string>
+    <string name="feetTextLabel">feet</string>
+    <string name="inchesTextLabel">inches</string>
+    <string name="BMITextLabel">BMI:</string>
+    <string name="backButton">Go Back</string>
+    <integer-array name="trainersIDArray">
+        <item>0</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </integer-array>
+</resources>
