@@ -10,8 +10,6 @@
     android:scrollbars="vertical"
     android:fillViewport="true">
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:scrollbarStyle="outsideOverlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -181,32 +179,32 @@
             android:numeric="integer" />
 
         <TextView
+            android:id="@+id/yourCreatorTextLabelProfileFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/yourTrainerTextLabelProfileFragment"
-            android:id="@+id/yourTrainerTextLabel"
             android:layout_below="@+id/errorMessageTextLabel"
+            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:text="@string/yourCreatorTextLabelProfileFragment"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/trainerNameTextLabelProfileFragment"
-            android:id="@+id/trainerNameTextLabel"
-            android:layout_below="@+id/yourTrainerTextLabel"
-            android:layout_toLeftOf="@+id/trainerCertificationTextBox"
-            android:layout_toStartOf="@+id/trainerCertificationTextBox" />
+            android:text="@string/creatorNameTextLabelProfileFragment"
+            android:id="@+id/creatorNameTextLabel"
+            android:layout_below="@+id/yourCreatorTextLabelProfileFragment"
+            android:layout_toLeftOf="@+id/creatorCertificationTextBox"
+            android:layout_toStartOf="@+id/creatorCertificationTextBox" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/trainerFirstNameTextBox"
+            android:id="@+id/creatorFirstNameTextBox"
             android:textAlignment="center"
             android:enabled="false"
-            android:layout_alignBottom="@+id/trainerNameTextLabel"
+            android:layout_alignBottom="@+id/creatorNameTextLabel"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/editButton"
@@ -216,9 +214,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/trainerCertificationNumberTextLabelProfileFragment"
-            android:id="@+id/trainerCertificationTextLabel"
-            android:layout_below="@+id/trainerNameTextLabel"
+            android:text="@string/creatorCertificationNumberTextLabelProfileFragment"
+            android:id="@+id/creatorCertificationTextLabel"
+            android:layout_below="@+id/creatorNameTextLabel"
             android:layout_alignLeft="@+id/insuranceNumberTextLabel"
             android:layout_alignStart="@+id/insuranceNumberTextLabel" />
 
@@ -227,21 +225,21 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/trainerCertificationTextBox"
+            android:id="@+id/creatorCertificationTextBox"
             android:textAlignment="center"
             android:enabled="false"
-            android:layout_alignTop="@+id/trainerNameTextLabel"
-            android:layout_toRightOf="@+id/trainerCertificationTextLabel"
-            android:layout_alignRight="@+id/yourTrainerTextLabel"
-            android:layout_alignEnd="@+id/yourTrainerTextLabel" />
+            android:layout_alignTop="@+id/creatorNameTextLabel"
+            android:layout_toRightOf="@+id/creatorCertificationTextLabel"
+            android:layout_alignRight="@+id/yourCreatorTextLabelProfileFragment"
+            android:layout_alignEnd="@+id/yourCreatorTextLabelProfileFragment" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/trainerInsuranceNumberTextLabelProfileFragment"
-            android:id="@+id/trainerInsuranceNumberTextLabel"
-            android:layout_alignTop="@+id/trainerCertificationTextLabel"
+            android:text="@string/creatorInsuranceNumberTextLabelProfileFragment"
+            android:id="@+id/creatorInsuranceNumberTextLabel"
+            android:layout_alignTop="@+id/creatorCertificationTextLabel"
             android:layout_centerHorizontal="true" />
 
         <EditText
@@ -249,10 +247,10 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/trainerInsuranceNumberTextBox"
+            android:id="@+id/creatorInsuranceNumberTextBox"
             android:textAlignment="center"
             android:enabled="false"
-            android:layout_alignTop="@+id/trainerCertificationTextBox"
+            android:layout_alignTop="@+id/creatorCertificationTextBox"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/deleteAccountButton"
@@ -276,8 +274,8 @@
             android:id="@+id/cancelButton"
             android:visibility="invisible"
             android:layout_alignTop="@+id/editButton"
-            android:layout_alignLeft="@+id/trainerNameTextLabel"
-            android:layout_alignStart="@+id/trainerNameTextLabel" />
+            android:layout_alignLeft="@+id/creatorNameTextLabel"
+            android:layout_alignStart="@+id/creatorNameTextLabel" />
 
         <Button
             style="?android:attr/buttonStyleSmall"

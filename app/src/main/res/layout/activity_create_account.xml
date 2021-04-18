@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/createAccountTextLabel"
-                android:id="@+id/createWorkOuttextLabel"
+                android:id="@+id/createContenttextLabel"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 
@@ -32,7 +32,7 @@
                 android:layout_marginTop="19dp"
                 android:enabled="true"
                 android:editable="false"
-                android:layout_below="@+id/createWorkOuttextLabel"
+                android:layout_below="@+id/createContenttextLabel"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
@@ -205,8 +205,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/trainerTextLabel"
-                android:id="@+id/trainerTextLabel"
+                android:text="@string/creatorTextLabel"
+                android:id="@+id/creatorTextLabel"
                 android:layout_below="@+id/insuranceNumberTextBox"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -215,7 +215,7 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/trainerSpinner"
+                android:id="@+id/creatorSpinner"
                 android:layout_below="@+id/insuranceNumberTextBox"
                 android:layout_alignLeft="@+id/insuranceNumberTextBox"
                 android:layout_alignStart="@+id/insuranceNumberTextBox"
@@ -227,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/submitButtonText"
                 android:id="@+id/submitButton"
-                android:layout_below="@+id/trainerSpinner"
+                android:layout_below="@+id/creatorSpinner"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
@@ -236,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/backToLoginButtonText"
                 android:id="@+id/backToLoginButton"
-                android:layout_below="@+id/trainerSpinner"
+                android:layout_below="@+id/creatorSpinner"
                 android:layout_alignRight="@+id/userNameTextLabel"
                 android:layout_alignEnd="@+id/userNameTextLabel" />
 

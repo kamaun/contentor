@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/trainerDialogTextLabel"
+        android:id="@+id/creatorDialogTextLabel"
         android:layout_alignTop="@+id/clientDialogSpiner"
         android:layout_alignLeft="@+id/clientDialogSpiner"
         android:layout_alignStart="@+id/clientDialogSpiner"

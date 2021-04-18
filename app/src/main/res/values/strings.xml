@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Mr.Fitness</string>
-    <string name="applicationTitleLabel">Mr. Fitness</string>
+    <string name="app_name">Study Buddy</string>
+    <string name="applicationTitleLabel">Study Buddy</string>
     <string name="userNameLabel">Username</string>
     <string name="passWordLabel">Password</string>
     <string name="loginButtonText">Login</string>
@@ -17,34 +17,34 @@
     <string name="reasonForUseTextLabel">User Type</string>
     <string name="certificationNumberTextLabel">Certs #</string>
     <string name="insuranceNumberTextLabel">Insurance #</string>
-    <string name="trainerTextLabel">Trainer</string>
+    <string name="creatorTextLabel">Creator</string>
     <string name="backToLoginButtonText">Back to Login</string>
     <string name="submitButtonText">Submit</string>
     <string name="errorMessageTextLabelMissingField">Not all of the fields were filled!</string>
     <string name="errorMessageTextLabelInvalidLogin">Invalid Login!</string>
     <string name="errorMessageTextLabelConnectionError">There was an unknown error with the connection</string>
-    <string name="errorMessageTextLabelNoUserRoleSelected">You must select if you are a trainer or a client</string>
-    <string name="errorMessageTextLabelNoTrainerSelected">You must select a trainer</string>
+    <string name="errorMessageTextLabelNoUserRoleSelected">You must select if you are a creator or a Viewer</string>
+    <string name="errorMessageTextLabelNoCreatorSelected">You must select a creator</string>
     <string name="errorMessageTextLabelNoCertificationNumber">You must provide a certification number</string>
     <string name="errorMessageTextLabelNoInsuranceNumber">You must provide an insurance number</string>
     <string name="errorMessageTextLabelNoCertificationOrInsuranceNumber">Certification and Insurance Number must be provided</string>
     <string name="errorMessageTextLabelUserNameAlreadyTaken">The username entered is already taken</string>
     <string name="errorMessageTextLabelAccountCreatedSuccessfully">Account Created Successfully. Head back to the login</string>
     <string name="errorMessageTextLabelAccountUpdatedSuccessfully">Account Updated Successfully</string>
-    <string name="errorMessageTextLabelNoClientSelected">No client selected</string>
+    <string name="errorMessageTextLabelNoViewerSelected">No Viewer selected</string>
     <string name="errorMessageTextLabelNoMessages">You do not have messages</string>
-    <string name="errorMessageTextLabelNoWorkOutID">You must enter a work out id</string>
+    <string name="errorMessageTextLabelNoContentID">You must enter a work out id</string>
     <string name="errorMessageTextLabelNegativeValues">These values need to be zero or greater</string>
-    <string name="errorMessageTextLabelWorkOutIDNotFound">The workout ID entered doesnt exist.Please go back and try again</string>
-    <string name="errorMessageTextLabelWorkOutUpdated">Workout updated successfully</string>
-    <string name="errorMessageTextLabelNoFitnessStats">This user does not have a Fitness Stats</string>
-    <string name="errorMessageTextLabelFitnessStatsUpdatedSuccessful">Fitness Stats updated successfully</string>
+    <string name="errorMessageTextLabelContentIDNotFound">The content ID entered doesn\'t exist.Please go back and try again</string>
+    <string name="errorMessageTextLabelContentUpdated">Workout updated successfully</string>
+    <string name="errorMessageTextLabelNoContentStats">This user does not have a Content Stats</string>
+    <string name="errorMessageTextLabelContentStatsUpdatedSuccessful">Content Stats updated successfully</string>
     <string-array name="reasonsForUseArray">
         <item>Please Select</item>
-        <item>Client</item>
-        <item>Trainer</item>
+        <item>Viewer</item>
+        <item>Creator</item>
     </string-array>
-    <string-array name="trainersArray">
+    <string-array name="creatorsArray">
         <item>Please Select</item>
         <item>Kevin Njeri</item>
         <item>Bob Saget</item>
@@ -67,11 +67,11 @@
     <string name="passWordTextLabelProfileFragment">Password</string>
     <string name="certificationNumberTextLabelProfileFragment">Cert #</string>
     <string name="insuranceNumberTextLabelProfileFragment">Insurance #</string>
-    <string name="yourTrainerTextLabelProfileFragment">Your Trainer</string>
-    <string name="trainerNameTextLabelProfileFragment">Name</string>
-    <string name="trainerAgeTextLabelProfileFragment">Age</string>
-    <string name="trainerCertificationNumberTextLabelProfileFragment">Cert #</string>
-    <string name="trainerInsuranceNumberTextLabelProfileFragment">Insurance #</string>
+    <string name="yourCreatorTextLabelProfileFragment">Your Creator</string>
+    <string name="creatorNameTextLabelProfileFragment">Name</string>
+    <string name="creatorAgeTextLabelProfileFragment">Age</string>
+    <string name="creatorCertificationNumberTextLabelProfileFragment">Cert #</string>
+    <string name="creatorInsuranceNumberTextLabelProfileFragment">Insurance #</string>
     <string name="editButtonTextLabel">Edit</string>
     <string name="cancelButtonTextLabel">Cancel</string>
     <string name="updateButtonTextLabel">Update</string>
@@ -84,15 +84,15 @@
     <string name="messageTextLabel">Message:</string>
     <string name="toTextLabel">To:</string>
     <string name="messageDialogTextLabel">Message:</string>
-    <string name="errorMessageLabelNoClients">You do not have any clients</string>
-    <string name="fitnessManagerTextLabel">Fitness Manager</string>
-    <string name="createAWorkOutButtonTextLabel">Create A WorkOut!</string>
-    <string name="clientsTextLabel">Clients:</string>
-    <string name="workOutNumberTextLabel">WorkOut #:</string>
-    <string name="viewWorkOutButtontextLabel">View WorkOut!</string>
-    <string name="viewFitnessStatsButtonLabel">View Fitness Stats!</string>
-    <string name="createWorkOutTextLabel">Create WorkOut!</string>
-    <string name="clientTextLabel">Client:</string>
+    <string name="errorMessageLabelNoViewers">You do not have any Viewers</string>
+    <string name="contentManagerTextLabel">Content Manager</string>
+    <string name="createAContentButtonTextLabel">Create A Content!</string>
+    <string name="viewersTextLabel">Viewers:</string>
+    <string name="contentNumberTextLabel">Content #:</string>
+    <string name="viewContentButtontextLabel">View Content!</string>
+    <string name="viewContentStatsButtonLabel">View Content Stats!</string>
+    <string name="createContentTextLabel">Create Content!</string>
+    <string name="viewerTextLabel">Viewer:</string>
     <string name="treadMillTextLabel">Tread Mill:</string>
     <string name="treadMillMilesTextLabel">Miles</string>
     <string name="treadMillMinutesTextLabel">Min.</string>
@@ -100,11 +100,11 @@
     <string name="repsTextLabel">reps</string>
     <string name="sitUpsTextLabel">SitUps:</string>
     <string name="squatsTextLabel">Squats:</string>
-    <string name="createWorkOutButtonTextLabel">Create</string>
+    <string name="createContentButtonTextLabel">Create</string>
     <string name="goBackButtonTextLabek">Cancel</string>
     <string name="goBackButtonTextLabel">Go Back</string>
-    <string name="workOutIDTextLabel">WorkOutID:</string>
-    <string name="fitnessStatsTextLabel">Fitness Stats!</string>
+    <string name="contentIDTextLabel">ContentID:</string>
+    <string name="contentStatsTextLabel">Content Stats!</string>
     <string name="weightTextLabel">Weight:</string>
     <string name="poundsTextLabel">lbs</string>
     <string name="heightTextLabel">Height:</string>
@@ -112,7 +112,7 @@
     <string name="inchesTextLabel">inches</string>
     <string name="BMITextLabel">BMI:</string>
     <string name="backButton">Go Back</string>
-    <integer-array name="trainersIDArray">
+    <integer-array name="creatorsIDArray">
         <item>0</item>
         <item>5</item>
         <item>6</item>
