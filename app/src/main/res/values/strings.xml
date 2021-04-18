@@ -87,12 +87,12 @@
     <string name="errorMessageLabelNoViewers">You do not have any Viewers</string>
     <string name="contentManagerTextLabel">Content Manager</string>
     <string name="createAContentButtonTextLabel">Create A Content!</string>
-    <string name="ViewersTextLabel">Viewers:</string>
+    <string name="viewersTextLabel">Viewers:</string>
     <string name="contentNumberTextLabel">Content #:</string>
     <string name="viewContentButtontextLabel">View Content!</string>
     <string name="viewContentStatsButtonLabel">View Content Stats!</string>
     <string name="createContentTextLabel">Create Content!</string>
-    <string name="ViewerTextLabel">Viewer:</string>
+    <string name="viewerTextLabel">Viewer:</string>
     <string name="treadMillTextLabel">Tread Mill:</string>
     <string name="treadMillMilesTextLabel">Miles</string>
     <string name="treadMillMinutesTextLabel">Min.</string>

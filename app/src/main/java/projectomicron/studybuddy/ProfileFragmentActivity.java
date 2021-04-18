@@ -148,7 +148,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         userCertificationNumberTextLabel = (TextView) view.findViewById(R.id.
                                                                     certificationNumberTextLabel);
         userInsuranceNumberTextLabel = (TextView) view.findViewById(R.id.insuranceNumberTextLabel);
-        yourTrainerTextLabel = (TextView) view.findViewById(R.id.yourTrainerTextLabel);
+        yourTrainerTextLabel = (TextView) view.findViewById(R.id.yourCreatorTextLabelProfileFragment);
         creatorNameTextLabel = (TextView) view.findViewById(R.id.creatorNameTextLabel);
         creatorCertificationNumberTextLabel = (TextView) view.findViewById(R.id.
                                                                     creatorCertificationTextLabel);

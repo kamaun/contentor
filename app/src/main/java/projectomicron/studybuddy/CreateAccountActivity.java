@@ -192,7 +192,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                                 //Set the error message label letting the user know that they need
                                 //to select a creator
                                 errorMessageLabel.setText(R.string.
-                                                            errorMessageTextLabelNoTrainerSelected);
+                                                            errorMessageTextLabelNoCreatorSelected);
                                 //Make the error message label visible
                                 errorMessageLabel.setVisibility(View.VISIBLE);
                                 break;

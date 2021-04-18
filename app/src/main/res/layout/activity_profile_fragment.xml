@@ -10,8 +10,6 @@
     android:scrollbars="vertical"
     android:fillViewport="true">
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:scrollbarStyle="outsideOverlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -181,14 +179,14 @@
             android:numeric="integer" />
 
         <TextView
+            android:id="@+id/yourCreatorTextLabelProfileFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/yourTrainerTextLabelProfileFragment"
-            android:id="@+id/yourTrainerTextLabel"
             android:layout_below="@+id/errorMessageTextLabel"
+            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:text="@string/yourCreatorTextLabelProfileFragment"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,7 +194,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/creatorNameTextLabelProfileFragment"
             android:id="@+id/creatorNameTextLabel"
-            android:layout_below="@+id/yourTrainerTextLabel"
+            android:layout_below="@+id/yourCreatorTextLabelProfileFragment"
             android:layout_toLeftOf="@+id/creatorCertificationTextBox"
             android:layout_toStartOf="@+id/creatorCertificationTextBox" />
 
@@ -232,8 +230,8 @@
             android:enabled="false"
             android:layout_alignTop="@+id/creatorNameTextLabel"
             android:layout_toRightOf="@+id/creatorCertificationTextLabel"
-            android:layout_alignRight="@+id/yourTrainerTextLabel"
-            android:layout_alignEnd="@+id/yourTrainerTextLabel" />
+            android:layout_alignRight="@+id/yourCreatorTextLabelProfileFragment"
+            android:layout_alignEnd="@+id/yourCreatorTextLabelProfileFragment" />
 
         <TextView
             android:layout_width="wrap_content"
