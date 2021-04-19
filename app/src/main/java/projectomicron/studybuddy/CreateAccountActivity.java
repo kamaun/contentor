@@ -26,7 +26,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
      */
     private EditText firstNameInputField;
     private EditText lastNameInputField;
-    private EditText ageInputField;
+//    private EditText ageInputField;
     private EditText userNameInputField;
     private EditText passWordInputField;
     private EditText certificationNumberInputField;
@@ -49,7 +49,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private String passWord;
     private String firstName;
     private String lastName;
-    private int age = 0;
+//    private int age = 0;
     private int reasonForUse = -1;
     private int creatorID = 0;
     private int certificationNumber = 0;
@@ -68,7 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         //Get references to the text boxes
         firstNameInputField = (EditText) findViewById(R.id.firstNameTextBox);
         lastNameInputField = (EditText) findViewById(R.id.lastNameTextBox);
-        ageInputField = (EditText) findViewById(R.id.ageTextBox);
+//        ageInputField = (EditText) findViewById(R.id.ageTextBox);
         userNameInputField = (EditText) findViewById(R.id.usernameTextBox);
         passWordInputField = (EditText) findViewById(R.id.passwordTextBox);
         certificationNumberInputField = (EditText) findViewById(R.id.certificationNumberTextBox);
@@ -119,19 +119,19 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onDestroy();
         firstNameInputField = null;
         lastNameInputField = null;
-        ageInputField = null;
+//        ageInputField = null;
         userNameInputField = null;
         passWordInputField = null;
-        certificationNumberInputField = null;
-        insuranceNumberInputField = null;
+//        certificationNumberInputField = null;
+//        insuranceNumberInputField = null;
         reasonForUseSpinner = null;
         creatorSpinner = null;
         submitButton = null;
         backToLoginButton = null;
         errorMessageLabel = null;
         creatorTextLabel = null;
-        certificationNumberTextLabel = null;
-        insuranceNumberTextLabel = null;
+//        certificationNumberTextLabel = null;
+//        insuranceNumberTextLabel = null;
         dialog = null;
     }
 
@@ -166,16 +166,16 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                 passWord = passWordInputField.getText().toString();
                 firstName = firstNameInputField.getText().toString();
                 lastName = lastNameInputField.getText().toString();
-                try {
-                    age = Integer.parseInt(ageInputField.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    age = 0;
-                }
+//                try {
+//                    age = Integer.parseInt(ageInputField.getText().toString());
+//                }
+//                catch (NumberFormatException e) {
+//                    age = 0;
+//                }
 
                 //Check if any of the input is blank
                 if (userName.equals("") || passWord.equals("") || firstName.equals("") ||
-                        lastName.equals("") || age == 0) {
+                        lastName.equals("") /*|| age == 0*/) {
                     //Set the error message label letting the user know that not all of the fields
                     //were entered
                     errorMessageLabel.setText(R.string.errorMessageTextLabelMissingField);
@@ -204,49 +204,51 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                                 break;
                             }
                         case 2:
-                            //Get the input that the user typed in for the certification number
-                            //and the insurance number
-                            try {
-                                certificationNumber = Integer.parseInt(certificationNumberInputField.
-                                        getText().toString());
-                                insuranceNumber = Integer.parseInt(insuranceNumberInputField.
-                                        getText().toString());
-                            }
-                            catch (NumberFormatException e) {
-                                e.printStackTrace();
-                                //Set the error message letting the user know that they need to fill
-                                //out the certification number and/or insurance number
-                                errorMessageLabel.setText(R.string.
-                                            errorMessageTextLabelNoCertificationOrInsuranceNumber);
-                                //Make the error message label visible
-                                errorMessageLabel.setVisibility(View.VISIBLE);
-                            }
-                            //Check if the user entered the certification number and insurance
-                            //number
-                            if (certificationNumber == 0) {
-                                //Set the error message label letting the user know that they need
-                                //to provide a certification number
-                                errorMessageLabel.setText(R.string.
-                                        errorMessageTextLabelNoCertificationNumber);
-                                //Make the error message label visible
-                                errorMessageLabel.setVisibility(View.VISIBLE);
-                                break;
-                            }
-                            else if (insuranceNumber == 0) {
-                                //Set the error message label letting the user know that they need
-                                //to provide a insurance number
-                                errorMessageLabel.setText(R.string.
-                                        errorMessageTextLabelNoInsuranceNumber);
-                                //Make the error message label visible
-                                errorMessageLabel.setVisibility(View.VISIBLE);
-                                break;
-                            }
-                            else {
-                                //Start the background thread of authenticating the user creating an
-                                //account
-                                new CreateAccountAuthentication().execute();
-                                break;
-                            }
+                            new CreateAccountAuthentication().execute();
+                            break;
+//                            //Get the input that the user typed in for the certification number
+//                            //and the insurance number
+//                            try {
+//                                certificationNumber = Integer.parseInt(certificationNumberInputField.
+//                                        getText().toString());
+//                                insuranceNumber = Integer.parseInt(insuranceNumberInputField.
+//                                        getText().toString());
+//                            }
+//                            catch (NumberFormatException e) {
+//                                e.printStackTrace();
+//                                //Set the error message letting the user know that they need to fill
+//                                //out the certification number and/or insurance number
+//                                errorMessageLabel.setText(R.string.
+//                                            errorMessageTextLabelNoCertificationOrInsuranceNumber);
+//                                //Make the error message label visible
+//                                errorMessageLabel.setVisibility(View.VISIBLE);
+//                            }
+//                            //Check if the user entered the certification number and insurance
+//                            //number
+//                            if (certificationNumber == 0) {
+//                                //Set the error message label letting the user know that they need
+//                                //to provide a certification number
+//                                errorMessageLabel.setText(R.string.
+//                                        errorMessageTextLabelNoCertificationNumber);
+//                                //Make the error message label visible
+//                                errorMessageLabel.setVisibility(View.VISIBLE);
+//                                break;
+//                            }
+//                            else if (insuranceNumber == 0) {
+//                                //Set the error message label letting the user know that they need
+//                                //to provide a insurance number
+//                                errorMessageLabel.setText(R.string.
+//                                        errorMessageTextLabelNoInsuranceNumber);
+//                                //Make the error message label visible
+//                                errorMessageLabel.setVisibility(View.VISIBLE);
+//                                break;
+//                            }
+//                            else {
+//                                //Start the background thread of authenticating the user creating an
+//                                //account
+//                                new CreateAccountAuthentication().execute();
+//                                break;
+//                            }
                         default:
                             //Set the error message label letting the user know that they need to
                             //select a role
@@ -288,7 +290,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             case R.id.reasonForUseSpinner:
                 //Get the input from the reason for use spinner
                 String reasonForUseFromSpinner = parent.getItemAtPosition(position).toString();
-                if (reasonForUseFromSpinner.equals("Client")) {
+                if (reasonForUseFromSpinner.equals("Viewer")) {
                     //Set the reasonForUse instance field to zero
                     reasonForUse = 1;
                     //Make the creator spinner and it's associated text label visible
@@ -296,21 +298,21 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     creatorSpinner.setVisibility(View.VISIBLE);
                     //Set the certification number input field, insurance number input field, and
                     //their associated text labels to invisible if the user changed their mind
-                    certificationNumberTextLabel.setVisibility(View.INVISIBLE);
-                    certificationNumberInputField.setVisibility(View.INVISIBLE);
-                    insuranceNumberTextLabel.setVisibility(View.INVISIBLE);
-                    insuranceNumberInputField.setVisibility(View.INVISIBLE);
+//                    certificationNumberTextLabel.setVisibility(View.INVISIBLE);
+//                    certificationNumberInputField.setVisibility(View.INVISIBLE);
+//                    insuranceNumberTextLabel.setVisibility(View.INVISIBLE);
+//                    insuranceNumberInputField.setVisibility(View.INVISIBLE);
                     break;
                 }
-                else if (reasonForUseFromSpinner.equals("Trainer")) {
+                else if (reasonForUseFromSpinner.equals("Creator")) {
                     //Set the reasonForUse instance field to one
                     reasonForUse = 2;
                     //Make the certification number input field, insurance number input field, and
                     //their associated text labels visible
-                    certificationNumberTextLabel.setVisibility(View.VISIBLE);
-                    certificationNumberInputField.setVisibility(View.VISIBLE);
-                    insuranceNumberTextLabel.setVisibility(View.VISIBLE);
-                    insuranceNumberInputField.setVisibility(View.VISIBLE);
+//                    certificationNumberTextLabel.setVisibility(View.VISIBLE);
+//                    certificationNumberInputField.setVisibility(View.VISIBLE);
+//                    insuranceNumberTextLabel.setVisibility(View.VISIBLE);
+//                    insuranceNumberInputField.setVisibility(View.VISIBLE);
                     //Set the creator spinner and it's associated text label invisible if the user
                     //changed their mind
                     creatorTextLabel.setVisibility(View.INVISIBLE);
@@ -324,10 +326,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     //field and their associated text labels to invisible
                     creatorTextLabel.setVisibility(View.INVISIBLE);
                     creatorSpinner.setVisibility(View.INVISIBLE);
-                    certificationNumberTextLabel.setVisibility(View.INVISIBLE);
-                    certificationNumberInputField.setVisibility(View.INVISIBLE);
-                    insuranceNumberTextLabel.setVisibility(View.INVISIBLE);
-                    insuranceNumberInputField.setVisibility(View.INVISIBLE);
+//                    certificationNumberTextLabel.setVisibility(View.INVISIBLE);
+//                    certificationNumberInputField.setVisibility(View.INVISIBLE);
+//                    insuranceNumberTextLabel.setVisibility(View.INVISIBLE);
+//                    insuranceNumberInputField.setVisibility(View.INVISIBLE);
                     break;
                 }
             case R.id.creatorSpinner:
@@ -389,8 +391,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         protected String doInBackground(String... params) {
             //Declare an AccountManager object passing in the information that the user typed in
             AccountManager accountManager = new AccountManager(0, userName, passWord, firstName,
-                                                lastName, age, reasonForUse, creatorID,
-                                                certificationNumber, insuranceNumber);
+                                                lastName, /*age,*/ reasonForUse, creatorID);
+//                                                certificationNumber, insuranceNumber);
 
             //Invoke the method to creating the user's account
             //Store the JSON message in a variable
