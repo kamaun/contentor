@@ -1,5 +1,6 @@
 package projectomicron.studybuddy;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -105,9 +106,10 @@ public class AccountManager {
 //        this.certificationNumber = aCertificationNumber;
 //        this.insuranceNumber = aInsuranceNumber;
         try {
-            this.sqlDatabaseConnection = new SQLDatabaseConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            this.sqlDatabaseConnection = new SQLDatabaseConnection(null);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
@@ -287,77 +289,89 @@ public class AccountManager {
 
         //Make the HTTP request to check if the username entered already exists in the database
         Log.d("request!", "starting");
-        JSONObject json1 = JSONWebservice.getInstance().makeHttpRequest(CHECKUSERNAME_URL, params);
 
-        //Check the log for the json response
-        Log.d("Checking username", json1.toString());
-
-        //Get the json success tag
-        try {
-            int success = json1.getInt(TAG_SUCCESS);
-            if (success == 0 && json1.getString(TAG_MESSAGE).equals
-                                                            ("The username is already taken!")) {
-                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
-                jsonMessage = json1.getString(TAG_MESSAGE);
-                return jsonMessage;
-            }
-            else if (success == 0 && json1.getString(TAG_MESSAGE).equals
-                                                                    ("Database query error#1!")) {
-                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
-                jsonMessage = json1.getString(TAG_MESSAGE);
-                return jsonMessage;
-            }
+        try{
+            sqlDatabaseConnection.CheckUsername(userName);
+            sqlDatabaseConnection.CreateAccount(firstName, lastName, userName, passWord, reasonForUse);
         }
-        catch (JSONException e) {
+        catch (Exception e) {
             e.printStackTrace();
-            jsonMessage = "Database query error#1!";
+            jsonMessage = e.getMessage();
             return jsonMessage;
         }
+        jsonMessage = "Account Created!";
 
-        //Add additionally POST parameters that need to be passed in the request for creating the
-        //user an account
-        params.add(new BasicNameValuePair("password", passWord));
-        params.add(new BasicNameValuePair("firstname", firstName));
-        params.add(new BasicNameValuePair("lastname", lastName));
-//        params.add(new BasicNameValuePair("age", Integer.toString(age)));
-        params.add(new BasicNameValuePair("reasonforuse", Integer.toString(reasonForUse)));
-        params.add(new BasicNameValuePair("creatorid", Integer.toString(creatorID)));
-//        params.add(new BasicNameValuePair("certificationnumber", Integer.toString(certificationNumber)));
-//        params.add(new BasicNameValuePair("insurancenumber", Integer.toString(insuranceNumber)));
-
-        //Make the HTTP request to create the account for the user
-        JSONObject json2 = JSONWebservice.getInstance().makeHttpRequest(CREATEACCOUNT_URL, params);
-
-        //Check the log for the json response
-        Log.d("Checking username", json1.toString());
-
-        //Get the json success tag
-        try {
-            int success = json2.getInt(TAG_SUCCESS);
-            if (success == 1) {
-                Log.d("Account Created!", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
-                                                            ("The username is already taken!")) {
-                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
-                                                                ("Not all fields were entered!")) {
-                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-            else {
-                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-            jsonMessage = "Database query error#1!";
-            return jsonMessage;
-        }
+//        JSONObject json1 = JSONWebservice.getInstance().makeHttpRequest(CHECKUSERNAME_URL, params);
+//
+//        //Check the log for the json response
+//        Log.d("Checking username", json1.toString());
+//
+//        //Get the json success tag
+//        try {
+//            int success = json1.getInt(TAG_SUCCESS);
+//            if (success == 0 && json1.getString(TAG_MESSAGE).equals
+//                                                            ("The username is already taken!")) {
+//                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
+//                jsonMessage = json1.getString(TAG_MESSAGE);
+//                return jsonMessage;
+//            }
+//            else if (success == 0 && json1.getString(TAG_MESSAGE).equals
+//                                                                    ("Database query error#1!")) {
+//                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
+//                jsonMessage = json1.getString(TAG_MESSAGE);
+//                return jsonMessage;
+//            }
+//        }
+//        catch (JSONException e) {
+//            e.printStackTrace();
+//            jsonMessage = "Database query error#1!";
+//            return jsonMessage;
+//        }
+//
+//        //Add additionally POST parameters that need to be passed in the request for creating the
+//        //user an account
+//        params.add(new BasicNameValuePair("password", passWord));
+//        params.add(new BasicNameValuePair("firstname", firstName));
+//        params.add(new BasicNameValuePair("lastname", lastName));
+////        params.add(new BasicNameValuePair("age", Integer.toString(age)));
+//        params.add(new BasicNameValuePair("reasonforuse", Integer.toString(reasonForUse)));
+//        params.add(new BasicNameValuePair("creatorid", Integer.toString(creatorID)));
+////        params.add(new BasicNameValuePair("certificationnumber", Integer.toString(certificationNumber)));
+////        params.add(new BasicNameValuePair("insurancenumber", Integer.toString(insuranceNumber)));
+//
+//        //Make the HTTP request to create the account for the user
+//        JSONObject json2 = JSONWebservice.getInstance().makeHttpRequest(CREATEACCOUNT_URL, params);
+//
+//        //Check the log for the json response
+//        Log.d("Checking username", json1.toString());
+//
+//        //Get the json success tag
+//        try {
+//            int success = json2.getInt(TAG_SUCCESS);
+//            if (success == 1) {
+//                Log.d("Account Created!", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
+//                                                            ("The username is already taken!")) {
+//                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
+//                                                                ("Not all fields were entered!")) {
+//                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//            else {
+//                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//        }
+//        catch (JSONException e) {
+//            e.printStackTrace();
+//            jsonMessage = "Database query error#1!";
+//            return jsonMessage;
+//        }
 
         return jsonMessage;
     }

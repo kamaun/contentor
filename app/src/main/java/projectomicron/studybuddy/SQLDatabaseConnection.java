@@ -1,110 +1,138 @@
 package projectomicron.studybuddy;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.Nullable;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+public class SQLDatabaseConnection extends SQLiteOpenHelper {
+    private static final String DBNAME = "StudyBuddy-DB";
 
-public class SQLDatabaseConnection {
+    /**
+     * Create a helper object to create, open, and/or manage a database.
+     * This method always returns very quickly.  The database is not actually
+     * created or opened until one of {@link #getWritableDatabase} or
+     * {@link #getReadableDatabase} is called.
+     *
+     * @param context to use for locating paths to the the database
+     */
+    public SQLDatabaseConnection(Context context) {
+        super(context, "StudyBuddy-DB", null, 1);
+    }
 
-    public SQLDatabaseConnection() throws SQLException {
-        this.connectionUrl =
-                "jdbc:sqlserver://teamalpha.database.windows.net:1433;"
-                        + "database=studybuddy-db;"
-                        + "user=tadmin@teamalpha;"
-                        + "password=@t3amalpha;"
-                        + "encrypt=true;"
-                        + "trustServerCertificate=false;"
-                        + "loginTimeout=30;";
+    /**
+     * Called when the database is created for the first time. This is where the
+     * creation of tables and the initial population of the tables should happen.
+     *
+     * @param db The database.
+     */
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(
+            "CREATE TABLE AccountType(" +
+                "id INTEGER primary key," +
+                "name TEXT" +
+            ")"
+        );
 
-        this.connection = DriverManager.getConnection(connectionUrl);
+        db.execSQL(
+            "CREATE TABLE Account (" +
+                "id INTEGER primary key," +
+                "first_name TEXT," +
+                "last_name TEXT," +
+                "username TEXT," +
+                "password TEXT," +
+                "usertype INTEGER," +
+                "FOREIGN KEY(usertype) REFERENCES AccountType(id) " +
+            ")"
+        );
+
+        db.execSQL(
+            "CREATE TABLE Content (" +
+                "id INTEGER primary key," +
+                "userid INTEGER, " +
+                "text_block TEXT," +
+                "FOREIGN KEY(userid) REFERENCES Account(id) " +
+            ")"
+        );
+
+        db.execSQL(
+            "CREATE TABLE AssignedContent (" +
+                "viewerId INTEGER," +
+                "contentId INTERGER," +
+                "FOREIGN KEY(viewerId) REFERENCES Account(id), " +
+                "FOREIGN KEY(contentId) REFERENCES Content(id) " +
+            ")"
+        );
+
+    }
+
+    /**
+     * Called when the database needs to be upgraded. The implementation
+     * should use this method to drop tables, add tables, or do anything else it
+     * needs to upgrade to the new schema version.
+     *
+     * <p>
+     * The SQLite ALTER TABLE documentation can be found
+     * <a href="http://sqlite.org/lang_altertable.html">here</a>. If you add new columns
+     * you can use ALTER TABLE to insert them into a live table. If you rename or remove columns
+     * you can use ALTER TABLE to rename the old table, then create the new table and then
+     * populate the new table with the contents of the old table.
+     * </p><p>
+     * This method executes within a transaction.  If an exception is thrown, all changes
+     * will automatically be rolled back.
+     * </p>
+     *
+     * @param db         The database.
+     * @param oldVersion The old database version.
+     * @param newVersion The new database version.
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS AccountType ");
+        db.execSQL("DROP TABLE IF EXISTS Account ");
+        db.execSQL("DROP TABLE IF EXISTS Content ");
+        db.execSQL("DROP TABLE IF EXISTS AssignedContent ");
     }
 
 
     public void CreateAccount(String first_name, String last_name, String username,
-                              String password, int reasonForUse) throws SQLException
+                              String password, int reasonForUse) throws Exception
     {
-        String insertSql = "INSERT INTO [dbo].[UserProfile](\n" +
-                " \taccount_id,\n" +
-                "    first_name,\n" +
-                "    last_name,\n" +
-                "    username,\n" +
-                "    [password],\n" +
-                "    usertype\n" +
-                ")\n" +
-                "VALUES(\n" +
-                    first_name + ",\n" +
-                    last_name + ",\n" +
-                    username + ",\n" +
-                    password + ",\n" +
-                    reasonForUse + "\n" +
-                ")";
+        SQLiteDatabase db = this.getWritableDatabase();
 
-        PreparedStatement insertProfile = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
-        insertProfile.execute();
-        ResultSet resultSet = insertProfile.getGeneratedKeys();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("first_name", first_name);
+        contentValues.put("last_name", last_name);
+        contentValues.put("username", username);
+        contentValues.put("password", password);
+        contentValues.put("usertype", reasonForUse);
 
-        // Print the ID of the inserted row.
-        while (resultSet.next()) {
-            System.out.println("Generated: " + resultSet.getString(1));
-        }
+        long result = db.insert("Account", null, contentValues);
+        if (result==-1) throw new Exception("Cannot create new account! please try again later");
     }
 
-    public boolean CheckUserName(String Username) throws SQLException
+    public void CheckUsername(String username) throws Exception
     {
-        String selectSql = "SELECT COUNT(*) \n" +
-                "FROM [dbo].[UserProfile]\n" +
-                "WHERE [username] = '"+ Username +"'";
+        SQLiteDatabase db = this.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(
+        "SELECT * FROM Account " +
+             "WHERE username = ?", new String[] { username } );
 
-        PreparedStatement checkUsername = connection.prepareStatement(selectSql, Statement.RETURN_GENERATED_KEYS);
-        ResultSet resultSet = checkUsername.executeQuery();
-
-        return true;
-
+        if(cursor.getCount() > 0) throw new Exception("Username is not available");
     }
 
-    // Connect to your database.
-    // Replace server name, username, and password with your credentials
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static void main(String[] args) {
-        String connectionUrl =
-                "jdbc:sqlserver://yourserver.database.windows.net:1433;"
-                        + "database=AdventureWorks;"
-                        + "user=yourusername@yourserver;"
-                        + "password=yourpassword;"
-                        + "encrypt=true;"
-                        + "trustServerCertificate=false;"
-                        + "loginTimeout=30;";
+    public void Login(String username, String password) throws Exception
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(
+        "SELECT * FROM Account " +
+             "WHERE username = ? AND password = ?", new String[] { username, password } );
 
-        String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES "
-                + "('NewBike', 'BikeNew', 'Blue', 50, 120, '2016-01-01');";
-
-        ResultSet resultSet = null;
-
-        try (Connection connection = DriverManager.getConnection(connectionUrl);
-             PreparedStatement prepsInsertProduct = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);) {
-
-            prepsInsertProduct.execute();
-            // Retrieve the generated key from the insert.
-            resultSet = prepsInsertProduct.getGeneratedKeys();
-
-            // Print the ID of the inserted row.
-            while (resultSet.next()) {
-                System.out.println("Generated: " + resultSet.getString(1));
-            }
-        }
-        // Handle any errors that may have occurred.
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        if(cursor.getCount() > 0) throw new Exception("Username/Password is incorrect!");
     }
 
-
-    private String connectionUrl;
-    private Connection connection;
 }
