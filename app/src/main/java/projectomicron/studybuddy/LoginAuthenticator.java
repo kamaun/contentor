@@ -1,5 +1,6 @@
 package projectomicron.studybuddy;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -41,6 +42,7 @@ public class LoginAuthenticator {
     private final String TAG_USERID = "userid";
     private final String TAG_USERROLE = "userrole";
     private final String TAG_TRAINERID = "creatorid";
+    private SQLDatabaseConnection sqlDatabaseConnection;
 
     /**
      * Constructs a LoginAuthenticator object.
@@ -51,6 +53,12 @@ public class LoginAuthenticator {
         this.userID = 0;
         this.userRole = -1;
         this.creatorID = 0;
+        try {
+            this.sqlDatabaseConnection = new SQLDatabaseConnection(null);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     /**

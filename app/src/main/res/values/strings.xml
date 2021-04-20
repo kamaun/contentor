@@ -5,7 +5,7 @@
     <string name="passWordLabel">Password</string>
     <string name="loginButtonText">Login</string>
     <string name="createAccountButtonText">Create Account!</string>
-    <string name="createAccountTextLabel">Create A Account!</string>
+    <string name="createAccountTextLabel">Create an Account!</string>
     <string name="firstNameTextLabel">First Name</string>
     <string name="lastNameTextLabel">Last Name</string>
     <string name="ageTextLabel">Age</string>
@@ -23,7 +23,7 @@
     <string name="errorMessageTextLabelMissingField">Not all of the fields were filled!</string>
     <string name="errorMessageTextLabelInvalidLogin">Invalid Login!</string>
     <string name="errorMessageTextLabelConnectionError">There was an unknown error with the connection</string>
-    <string name="errorMessageTextLabelNoUserRoleSelected">You must select if you are a creator or a Viewer</string>
+    <string name="errorMessageTextLabelNoUserRoleSelected">You must select if you are a Creator or a Viewer</string>
     <string name="errorMessageTextLabelNoCreatorSelected">You must select a creator</string>
     <string name="errorMessageTextLabelNoCertificationNumber">You must provide a certification number</string>
     <string name="errorMessageTextLabelNoInsuranceNumber">You must provide an insurance number</string>

@@ -8,7 +8,7 @@
     android:id="@+id/scrollView"
     tools:context=".CreateAccountActivity">
         <RelativeLayout
-            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
@@ -67,25 +67,29 @@
                 android:layout_alignStart="@+id/firstNameTextBox" />
 
             <TextView
+                android:id="@+id/ageTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/ageTextLabel"
                 android:layout_below="@+id/lastNameTextBox"
-                android:layout_alignLeft="@+id/lastNameTextLabel"
                 android:layout_alignStart="@+id/lastNameTextLabel"
-                android:text="@string/ageTextLabel" />
+                android:layout_alignLeft="@+id/lastNameTextLabel"
+                android:text="@string/ageTextLabel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
 
             <EditText
+                android:id="@+id/ageTextBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ageTextBox"
-                android:layout_alignTop="@+id/ageTextLabel"
-                android:layout_alignLeft="@+id/lastNameTextBox"
                 android:layout_alignStart="@+id/lastNameTextBox"
-                android:layout_alignParentRight="true"
+                android:layout_alignLeft="@+id/lastNameTextBox"
+                android:layout_alignTop="@+id/ageTextLabel"
                 android:layout_alignParentEnd="true"
-                android:inputType="number" />
+                android:layout_alignParentRight="true"
+                android:inputType="number"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -156,61 +160,66 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/certificationNumberTextLabel"
                 android:id="@+id/certificationNumberTextLabel"
-                android:layout_below="@+id/reasonForUseSpinner"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:visibility="invisible" />
-
-            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/reasonForUseSpinner"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:text="@string/certificationNumberTextLabel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
+
+            <EditText
                 android:id="@+id/certificationNumberTextBox"
-                android:layout_below="@+id/reasonForUseSpinner"
-                android:layout_alignLeft="@+id/reasonForUseSpinner"
-                android:layout_alignStart="@+id/reasonForUseSpinner"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:inputType="number"
-                android:visibility="invisible" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/insuranceNumberTextLabel"
+                android:layout_below="@+id/reasonForUseSpinner"
+                android:layout_alignStart="@+id/reasonForUseSpinner"
+                android:layout_alignLeft="@+id/reasonForUseSpinner"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:inputType="number"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
+
+            <TextView
                 android:id="@+id/insuranceNumberTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/certificationNumberTextBox"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:visibility="invisible" />
+                android:layout_alignParentLeft="true"
+                android:text="@string/insuranceNumberTextLabel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
 
             <EditText
+                android:id="@+id/insuranceNumberTextBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/insuranceNumberTextBox"
-                android:layout_alignTop="@+id/insuranceNumberTextLabel"
-                android:layout_alignLeft="@+id/certificationNumberTextBox"
                 android:layout_alignStart="@+id/certificationNumberTextBox"
-                android:layout_alignParentRight="true"
+                android:layout_alignLeft="@+id/certificationNumberTextBox"
+                android:layout_alignTop="@+id/insuranceNumberTextLabel"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:inputType="text"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                tools:visibility="invisible" />
 
             <TextView
+                android:id="@+id/creatorTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/creatorTextLabel"
-                android:id="@+id/creatorTextLabel"
                 android:layout_below="@+id/insuranceNumberTextBox"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:visibility="invisible" />
+                android:layout_alignParentLeft="true"
+                android:text="@string/creatorTextLabel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
 
             <Spinner
                 android:layout_width="wrap_content"

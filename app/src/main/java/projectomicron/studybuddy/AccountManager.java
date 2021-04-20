@@ -1,5 +1,6 @@
 package projectomicron.studybuddy;
 
+import android.content.Context;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -7,6 +8,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +25,8 @@ public class AccountManager {
     private String firstName;
     private String lastName;
     private int userID;
-    private int age;
     private int reasonForUse;
     private int creatorID;
-    private int certificationNumber;
-    private int insuranceNumber;
 
     /**
      * Instance variables that are only visible in the AccountManager class. Contains the specific
@@ -54,11 +53,11 @@ public class AccountManager {
     private final String TAG_PASSWORD = "password";
     private final String TAG_FIRSTNAME = "firstname";
     private final String TAG_LASTNAME = "lastname";
-    private final String TAG_AGE = "age";
+//    private final String TAG_AGE = "age";
     private final String TAG_TRAINERID = "creatorid";
-    private final String TAG_CERTIFICATIONNUMBER = "certificationnumber";
-    private final String TAG_INSURANCENUMBER = "insurancenumber";
-
+//    private final String TAG_CERTIFICATIONNUMBER = "certificationnumber";
+//    private final String TAG_INSURANCENUMBER = "insurancenumber";
+    private SQLDatabaseConnection sqlDatabaseConnection;
     /**
      * Constructs an empty AccountManager object.
      */
@@ -78,34 +77,40 @@ public class AccountManager {
      *                      for creator
      * @param aTrainerID the id of the creator that the client is associated with. This is an
      *                   optional field if the user is an creator
-     * @param aCertificationNumber the certification number of the user that has the reasonForUse
-     *                             field with an integer of one. This field is required for creators
-     * @param aInsuranceNumber the insurance number of the user that has the reasonForUSe field with
-     *                         an integer of one. This field is required for creators
+//     * @param aCertificationNumber the certification number of the user that has the reasonForUse
+//     *                             field with an integer of one. This field is required for creators
+//     * @param aInsuranceNumber the insurance number of the user that has the reasonForUSe field with
+//     *                         an integer of one. This field is required for creators
      * @precondition aUserID > 0 || aUsername == 0
      * @precondition aUserName.size() > 0
      * @precondition aPassWord.size() > 0
      * @precondition aFirstName.size() > 0
      * @precondition aLastName.size() > 0
-     * @precondition aAge > 0
+//     * @precondition aAge > 0
      * @precondition aReasonForUse >= 0
      * @precondition aTrainerID > 0 || aTrainerID == 0
-     * @precondition aCertificationNumber > 0 || aCertification == 0
-     * @precondition aInsuranceNumber > 0 || aInsuranceNumber ==0
+//     * @precondition aCertificationNumber > 0 || aCertification == 0
+//     * @precondition aInsuranceNumber > 0 || aInsuranceNumber ==0
      */
     public AccountManager(int aUserID, String aUserName, String aPassWord, String aFirstName,
-                          String aLastName,int aAge, int aReasonForUse, int aTrainerID,
-                          int aCertificationNumber, int aInsuranceNumber) {
+                          String aLastName,/*int aAge,*/ int aReasonForUse, int aTrainerID
+                          /*int aCertificationNumber, int aInsuranceNumber*/) {
         this.userID = aUserID;
         this.userName = aUserName;
         this.passWord = aPassWord;
         this.firstName = aFirstName;
         this.lastName = aLastName;
-        this.age = aAge;
+//        this.age = aAge;
         this.reasonForUse = aReasonForUse;
         this.creatorID = aTrainerID;
-        this.certificationNumber = aCertificationNumber;
-        this.insuranceNumber = aInsuranceNumber;
+//        this.certificationNumber = aCertificationNumber;
+//        this.insuranceNumber = aInsuranceNumber;
+        try {
+            this.sqlDatabaseConnection = new SQLDatabaseConnection(null);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -188,22 +193,22 @@ public class AccountManager {
         this.lastName = aLastName;
     }
 
-    /**
-     * Gets the age of the user.
-     * @precondition age > 0
-     * @return the age of the user
-     */
-    public int getAge() {
-        return age;
-    }
-
-    /**
-     * Sets the age of the user.
-     * @precondition aAge > 0
-     */
-    public void setAge(int aAge) {
-        this.age = aAge;
-    }
+//    /**
+//     * Gets the age of the user.
+//     * @precondition age > 0
+//     * @return the age of the user
+//     */
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    /**
+//     * Sets the age of the user.
+//     * @precondition aAge > 0
+//     */
+//    public void setAge(int aAge) {
+//        this.age = aAge;
+//    }
 
     /**
      * Gets the reason for use of the user.
@@ -228,9 +233,9 @@ public class AccountManager {
      * @precondition certificationNumber > 0
      * @return the certification number of the user
      */
-    public int getCertificationNumber() {
-        return certificationNumber;
-    }
+//    public int getCertificationNumber() {
+//        return certificationNumber;
+//    }
 
     /**
      * Sets the certification number of the user who is a creator.
@@ -238,27 +243,27 @@ public class AccountManager {
      *                             or change
      * @precondition aCertificationNumber > 0
      */
-    public void setCertificationNumber(int aCertificationNumber) {
-        this.certificationNumber = aCertificationNumber;
-    }
+//    public void setCertificationNumber(int aCertificationNumber) {
+//        this.certificationNumber = aCertificationNumber;
+//    }
 
     /**
      * Gets the insurance number of the user who is a creator.
      * @precondition insuranceNumber > 0
      * @return the insurance number of the user
      */
-    public int getInsuranceNumber() {
-        return insuranceNumber;
-    }
+//    public int getInsuranceNumber() {
+//        return insuranceNumber;
+//    }
 
     /**
      * Sets the insurance number of the user who is a creator.
      * @param aInsuranceNumber the insurance number of the user entered to create a account or change
      * @precondition aInsuranceNumber > 0
      */
-    public void setInsuranceNumber(int aInsuranceNumber) {
-        this.insuranceNumber = aInsuranceNumber;
-    }
+//    public void setInsuranceNumber(int aInsuranceNumber) {
+//        this.insuranceNumber = aInsuranceNumber;
+//    }
 
     /**
      * Creates a new account for the user. Note that we do not need to pass a user id because the
@@ -284,78 +289,89 @@ public class AccountManager {
 
         //Make the HTTP request to check if the username entered already exists in the database
         Log.d("request!", "starting");
-        JSONObject json1 = JSONWebservice.getInstance().makeHttpRequest(CHECKUSERNAME_URL, params);
 
-        //Check the log for the json response
-        Log.d("Checking username", json1.toString());
-
-        //Get the json success tag
-        try {
-            int success = json1.getInt(TAG_SUCCESS);
-            if (success == 0 && json1.getString(TAG_MESSAGE).equals
-                                                            ("The username is already taken!")) {
-                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
-                jsonMessage = json1.getString(TAG_MESSAGE);
-                return jsonMessage;
-            }
-            else if (success == 0 && json1.getString(TAG_MESSAGE).equals
-                                                                    ("Database query error#1!")) {
-                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
-                jsonMessage = json1.getString(TAG_MESSAGE);
-                return jsonMessage;
-            }
+        try{
+            sqlDatabaseConnection.CheckUsername(userName);
+            sqlDatabaseConnection.CreateAccount(firstName, lastName, userName, passWord, reasonForUse);
         }
-        catch (JSONException e) {
+        catch (Exception e) {
             e.printStackTrace();
-            jsonMessage = "Database query error#1!";
+            jsonMessage = e.getMessage();
             return jsonMessage;
         }
+        jsonMessage = "Account Created!";
 
-        //Add additionally POST parameters that need to be passed in the request for creating the
-        //user an account
-        params.add(new BasicNameValuePair("password", passWord));
-        params.add(new BasicNameValuePair("firstname", firstName));
-        params.add(new BasicNameValuePair("lastname", lastName));
-        params.add(new BasicNameValuePair("age", Integer.toString(age)));
-        params.add(new BasicNameValuePair("reasonforuse", Integer.toString(reasonForUse)));
-        params.add(new BasicNameValuePair("creatorid", Integer.toString(creatorID)));
-        params.add(new BasicNameValuePair("certificationnumber", Integer.
-                                            toString(certificationNumber)));
-        params.add(new BasicNameValuePair("insurancenumber", Integer.toString(insuranceNumber)));
-
-        //Make the HTTP request to create the account for the user
-        JSONObject json2 = JSONWebservice.getInstance().makeHttpRequest(CREATEACCOUNT_URL, params);
-
-        //Check the log for the json response
-        Log.d("Checking username", json1.toString());
-
-        //Get the json success tag
-        try {
-            int success = json2.getInt(TAG_SUCCESS);
-            if (success == 1) {
-                Log.d("Account Created!", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
-                                                            ("The username is already taken!")) {
-                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
-                                                                ("Not all fields were entered!")) {
-                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-            else {
-                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
-                jsonMessage = json2.getString(TAG_MESSAGE);
-            }
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-            jsonMessage = "Database query error#1!";
-            return jsonMessage;
-        }
+//        JSONObject json1 = JSONWebservice.getInstance().makeHttpRequest(CHECKUSERNAME_URL, params);
+//
+//        //Check the log for the json response
+//        Log.d("Checking username", json1.toString());
+//
+//        //Get the json success tag
+//        try {
+//            int success = json1.getInt(TAG_SUCCESS);
+//            if (success == 0 && json1.getString(TAG_MESSAGE).equals
+//                                                            ("The username is already taken!")) {
+//                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
+//                jsonMessage = json1.getString(TAG_MESSAGE);
+//                return jsonMessage;
+//            }
+//            else if (success == 0 && json1.getString(TAG_MESSAGE).equals
+//                                                                    ("Database query error#1!")) {
+//                Log.d("Creating Account failed", json1.getString(TAG_MESSAGE));
+//                jsonMessage = json1.getString(TAG_MESSAGE);
+//                return jsonMessage;
+//            }
+//        }
+//        catch (JSONException e) {
+//            e.printStackTrace();
+//            jsonMessage = "Database query error#1!";
+//            return jsonMessage;
+//        }
+//
+//        //Add additionally POST parameters that need to be passed in the request for creating the
+//        //user an account
+//        params.add(new BasicNameValuePair("password", passWord));
+//        params.add(new BasicNameValuePair("firstname", firstName));
+//        params.add(new BasicNameValuePair("lastname", lastName));
+////        params.add(new BasicNameValuePair("age", Integer.toString(age)));
+//        params.add(new BasicNameValuePair("reasonforuse", Integer.toString(reasonForUse)));
+//        params.add(new BasicNameValuePair("creatorid", Integer.toString(creatorID)));
+////        params.add(new BasicNameValuePair("certificationnumber", Integer.toString(certificationNumber)));
+////        params.add(new BasicNameValuePair("insurancenumber", Integer.toString(insuranceNumber)));
+//
+//        //Make the HTTP request to create the account for the user
+//        JSONObject json2 = JSONWebservice.getInstance().makeHttpRequest(CREATEACCOUNT_URL, params);
+//
+//        //Check the log for the json response
+//        Log.d("Checking username", json1.toString());
+//
+//        //Get the json success tag
+//        try {
+//            int success = json2.getInt(TAG_SUCCESS);
+//            if (success == 1) {
+//                Log.d("Account Created!", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
+//                                                            ("The username is already taken!")) {
+//                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//            else if (success == 0 && json2.getString(TAG_MESSAGE).equals
+//                                                                ("Not all fields were entered!")) {
+//                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//            else {
+//                Log.d("Creating Account failed", json2.getString(TAG_MESSAGE));
+//                jsonMessage = json2.getString(TAG_MESSAGE);
+//            }
+//        }
+//        catch (JSONException e) {
+//            e.printStackTrace();
+//            jsonMessage = "Database query error#1!";
+//            return jsonMessage;
+//        }
 
         return jsonMessage;
     }
@@ -392,10 +408,10 @@ public class AccountManager {
                 this.passWord = json.getString(TAG_PASSWORD);
                 this.firstName = json.getString(TAG_FIRSTNAME);
                 this.lastName = json.getString(TAG_LASTNAME);
-                this.age = json.getInt(TAG_AGE);
+//                this.age = json.getInt(TAG_AGE);
                 this.creatorID = json.getInt(TAG_TRAINERID);
-                this.certificationNumber = json.getInt(TAG_CERTIFICATIONNUMBER);
-                this.insuranceNumber = json.getInt(TAG_INSURANCENUMBER);
+//                this.certificationNumber = json.getInt(TAG_CERTIFICATIONNUMBER);
+//                this.insuranceNumber = json.getInt(TAG_INSURANCENUMBER);
             }
             else if (success == 0 && json.getString(TAG_MESSAGE).equals
                                                                     ("Account does not exist!")) {
@@ -471,11 +487,11 @@ public class AccountManager {
         params.add(new BasicNameValuePair("password", passWord));
         params.add(new BasicNameValuePair("firstname", firstName));
         params.add(new BasicNameValuePair("lastname", lastName));
-        params.add(new BasicNameValuePair("age", Integer.toString(age)));
+//        params.add(new BasicNameValuePair("age", Integer.toString(age)));
         params.add(new BasicNameValuePair("reasonforuse", Integer.toString(reasonForUse)));
         params.add(new BasicNameValuePair("creatorid", Integer.toString(creatorID)));
-        params.add(new BasicNameValuePair("certificationnumber", Integer.toString(certificationNumber)));
-        params.add(new BasicNameValuePair("insurancenumber", Integer.toString(insuranceNumber)));
+//        params.add(new BasicNameValuePair("certificationnumber", Integer.toString(certificationNumber)));
+//        params.add(new BasicNameValuePair("insurancenumber", Integer.toString(insuranceNumber)));
         params.add(new BasicNameValuePair("userid", Integer.toString(userID)));
 
         //Make the HTTP request to create the account for the user
