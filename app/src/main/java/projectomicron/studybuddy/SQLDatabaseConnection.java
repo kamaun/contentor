@@ -20,7 +20,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
      * @param context to use for locating paths to the the database
      */
     public SQLDatabaseConnection(Context context) {
-        super(context, "StudyBuddy-DB", null, 1);
+        super(context, DBNAME, null, 1);
     }
 
     /**
@@ -33,14 +33,14 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
             "CREATE TABLE AccountType(" +
-                "id INTEGER primary key," +
+                "id INTEGER PRIMARY KEY," +
                 "name TEXT" +
             ")"
         );
 
         db.execSQL(
             "CREATE TABLE Account (" +
-                "id INTEGER primary key," +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "first_name TEXT," +
                 "last_name TEXT," +
                 "username TEXT," +
@@ -52,7 +52,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
 
         db.execSQL(
             "CREATE TABLE Content (" +
-                "id INTEGER primary key," +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "userid INTEGER, " +
                 "text_block TEXT," +
                 "FOREIGN KEY(userid) REFERENCES Account(id) " +
@@ -61,6 +61,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
 
         db.execSQL(
             "CREATE TABLE AssignedContent (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "viewerId INTEGER," +
                 "contentId INTERGER," +
                 "FOREIGN KEY(viewerId) REFERENCES Account(id), " +
@@ -68,6 +69,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
             ")"
         );
 
+        this.CreateRoles();
     }
 
     /**
@@ -98,10 +100,21 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS AssignedContent ");
     }
 
+    public void CreateRoles() {
+        SQLiteDatabase db = this.getWritableDatabase();
 
-    public void CreateAccount(String first_name, String last_name, String username,
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", "Viewer");
+        contentValues.put("name", "Creator");
+
+        long result = db.insert("Account", null, contentValues);
+
+    }
+
+    public String CreateAccount(String first_name, String last_name, String username,
                               String password, int reasonForUse) throws Exception
     {
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -112,8 +125,15 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
         contentValues.put("usertype", reasonForUse);
 
         long result = db.insert("Account", null, contentValues);
-        if (result==-1) throw new Exception("Cannot create new account! please try again later");
+
+        if (result==-1){
+            return "Account not created!";
+        }
+        else{
+            return "Account has been created successfully!";
+        }
     }
+
 
     public void CheckUsername(String username) throws Exception
     {
@@ -122,10 +142,12 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
         "SELECT * FROM Account " +
              "WHERE username = ?", new String[] { username } );
 
-        if(cursor.getCount() > 0) throw new Exception("Username is not available");
+        if(cursor.getCount() > 0) throw new Exception("The username is already taken!");
+//        return (cursor.getCount() > 0) ? true:false;
     }
 
-    public void Login(String username, String password) throws Exception
+
+    public String CheckCredentials(String username, String password) throws Exception
     {
         SQLiteDatabase db = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(
@@ -133,6 +155,21 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
              "WHERE username = ? AND password = ?", new String[] { username, password } );
 
         if(cursor.getCount() > 0) throw new Exception("Username/Password is incorrect!");
+
+        if (cursor.getCount() > 0){
+            return "Login successful!";
+        }
+        else{
+            return "Username/Password is incorrect!";
+        }
     }
 
+    public void GetUserIDAndUserRole(String username){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(
+        "SELECT  FROM Account " +
+                "WHERE username = ?", new String[] { username } );
+
+    }
 }

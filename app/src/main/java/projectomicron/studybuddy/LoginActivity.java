@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * This is a subclass of the AsyncTask class that manages the login authentication of an user.
      */
     class LoginAuthentication extends AsyncTask<String, String, String> {
+
         /**
          * Overrides the onPreExecute method inherited from AsyncTask to show a dialog.
          */
@@ -121,6 +122,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             dialog.setIndeterminate(false);
             dialog.setCancelable(true);
             dialog.show();
+
         }
 
         /**
@@ -132,6 +134,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         protected String doInBackground(String... params) {
             //Declare a LoginAuthenticator object
             final LoginAuthenticator loginAuthenticator = new LoginAuthenticator();
+            final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(LoginActivity.this);
+
 
             //Change the state of the LoginAuthenticator object with the input from the user
             loginAuthenticator.setUserName(userName);
@@ -139,7 +143,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             //Do a check of the user's entered credentials to see if they exist in the database
             //Store the JSON message in a variable
-            String loginStatus = loginAuthenticator.checkCredentials();
+            String loginStatus = "";
+
+            try{
+                loginStatus = sqlDatabaseConnection.CheckCredentials(userName, passWord);
+            }
+            catch(Exception err){
+                loginStatus = err.getMessage();
+            }
+
+
+
             if (loginStatus.equals("Login successful!")) {
                 //Get the userId of the user
                 loginAuthenticator.queryUserIDAndUserRole();
@@ -164,12 +178,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     //Store the userId and user role of the user to be used throughout the application
                     intent.putExtra("userID", loginAuthenticator.getUserID());
                     intent.putExtra("userRole", loginAuthenticator.getUserRole());
-                    intent.putExtra("creatorID", loginAuthenticator.getTrainerID());
+                    intent.putExtra("creatorID", loginAuthenticator.getCreatorID());
                     //Start the next activity
                     onSwitch(intent);
                 }
             }
-            else if (loginStatus.equals("Invalid Credentials!")) {
+            else if (loginStatus.equals("Username/Password is incorrect!")) {
                 //Let the user know that their login credentials are invalid
                 LoginActivity.this.runOnUiThread(new Runnable() {
                     @Override
