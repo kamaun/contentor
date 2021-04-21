@@ -168,8 +168,20 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery(
-        "SELECT  FROM Account " +
-                "WHERE username = ?", new String[] { username } );
+        "SELECT id,  FROM Account " +
+             "WHERE username = ?", new String[] { username } );
+
 
     }
+
+
+    public void LoadAccount(){
+
+    }
+
+    public void UpdateAccount(){
+
+    }
+
+
 }

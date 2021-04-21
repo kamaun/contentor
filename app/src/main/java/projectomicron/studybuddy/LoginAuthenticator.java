@@ -129,7 +129,7 @@ public class LoginAuthenticator {
      * @param aTrainerID the creator of the user's creator
      * @precondition aTrainerID > 0
      */
-    public void setTrainerID(int aTrainerID) {
+    public void setCreatorId(int aTrainerID) {
         this.creatorID = aTrainerID;
     }
 
@@ -194,6 +194,7 @@ public class LoginAuthenticator {
         JSONObject json = JSONWebservice.getInstance().makeHttpRequest(GETUSERID_URL, params);
 
         //Check the log for the json response
+
         Log.d("Login attempt", json.toString());
 
         //Get the json success tag
@@ -203,7 +204,7 @@ public class LoginAuthenticator {
                 Log.d("UserID Obtained!", json.getString(TAG_MESSAGE).toString());
                 setUserID(json.getInt(TAG_USERID));
                 setUserRole(json.getInt(TAG_USERROLE));
-                setTrainerID(json.getInt(TAG_CREATORID));
+                setCreatorId(json.getInt(TAG_CREATORID));
 
             }
             else {

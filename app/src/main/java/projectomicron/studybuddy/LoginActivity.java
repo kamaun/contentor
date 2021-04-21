@@ -156,8 +156,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             if (loginStatus.equals("Login successful!")) {
                 //Get the userId of the user
-                loginAuthenticator.queryUserIDAndUserRole();
-
+//                loginAuthenticator.queryUserIDAndUserRole();
+                sqlDatabaseConnection.GetUserIDAndUserRole(userName);
                //Check if the userId is zero
                 if (loginAuthenticator.getUserID() == 0) {
                     //Let the user know that there was a connection error

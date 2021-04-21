@@ -26,20 +26,11 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
      */
     private EditText userFirstNameInputField;
     private EditText userLastNameInputField;
-//    private EditText userAgeInputField;
     private EditText userUserNameInputField;
     private EditText userPassWordInputField;
-//    private EditText userCertificationNumberInputField;
-//    private EditText userInsuranceNumberInputField;
     private EditText creatorNameInputField;
-//    private EditText creatorCertificationNumberInputField;
-//    private EditText creatorInsuranceNumberInputField;
-//    private TextView userCertificationNumberTextLabel;
-//    private TextView userInsuranceNumberTextLabel;
     private TextView yourTrainerTextLabel;
     private TextView creatorNameTextLabel;
-//    private TextView creatorCertificationNumberTextLabel;
-//    private TextView creatorInsuranceNumberTextLabel;
     private TextView errorMessageLabel;
     private Button editButton;
     private Button cancelButton;
@@ -56,11 +47,8 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
     private String firstName;
     private String lastName;
     private int userID;
-//    private int age = 0;
     private int reasonForUse;
     private int creatorID;
-//    private int certificationNumber = 0;
-//    private int insuranceNumber = 0;
 
     /**
      * Instance variables only visible in the ProfileFragmentActivity class. These are placeholder
@@ -71,9 +59,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
     private String tempPassWord;
     private String tempFirstName;
     private String tempLastName;
-//    private int tempAge = 0;
-//    private int tempCertificationNumber = 0;
-//    private int tempInsuranceNumber = 0;
+
 
     /**
      * Instance variables only visible in the ProfileFragmentActivity class. These are
@@ -132,22 +118,13 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         //Get references to the text boxes
         userFirstNameInputField = (EditText) view.findViewById(R.id.firstNameTextBox);
         userLastNameInputField = (EditText) view.findViewById(R.id.lastNameTextBox);
-//        userAgeInputField = (EditText) view.findViewById(R.id.ageTextBox);
         userUserNameInputField = (EditText) view.findViewById(R.id.userNameTextBox);
         userPassWordInputField = (EditText) view.findViewById(R.id.passWordTextBox);
-//        userCertificationNumberInputField = (EditText) view.findViewById(R.id.certificationNumberTextBox);
-//        userInsuranceNumberInputField = (EditText) view.findViewById(R.id.insuranceNumberTextBox);
         creatorNameInputField = (EditText) view.findViewById(R.id.creatorFirstNameTextBox);
-//        creatorCertificationNumberInputField = (EditText) view.findViewById(R.id.creatorCertificationTextBox);
-//        creatorInsuranceNumberInputField = (EditText) view.findViewById(R.id.creatorInsuranceNumberTextBox);
 
         //Get references to the text labels
-//        userCertificationNumberTextLabel = (TextView) view.findViewById(R.id.certificationNumberTextLabel);
-//        userInsuranceNumberTextLabel = (TextView) view.findViewById(R.id.insuranceNumberTextLabel);
         yourTrainerTextLabel = (TextView) view.findViewById(R.id.yourCreatorTextLabelProfileFragment);
         creatorNameTextLabel = (TextView) view.findViewById(R.id.creatorNameTextLabel);
-//        creatorCertificationNumberTextLabel = (TextView) view.findViewById(R.id.creatorCertificationTextLabel);
-//        creatorInsuranceNumberTextLabel = (TextView) view.findViewById(R.id.creatorInsuranceNumberTextLabel);
         errorMessageLabel = (TextView) view.findViewById(R.id.errorMessageTextLabel);
 
         //Get references to the buttons
@@ -168,13 +145,8 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
 
         //Configure the layout the user sees based on the reason for use
         if (reasonForUse == 1) {
-            //Set the user certification number and insurance number fields invisible
-//            userCertificationNumberTextLabel.setVisibility(View.INVISIBLE);
-//            userCertificationNumberInputField.setVisibility(View.INVISIBLE);
-//            userInsuranceNumberTextLabel.setVisibility(View.INVISIBLE);
-//            userInsuranceNumberInputField.setVisibility(View.INVISIBLE);
-            //Initialize the user account manager object with the user id of the user that is the
-            //client
+
+            //Initialize the user account manager object with the user id of the user that is the viewer
             userAccountManager = new AccountManager(userID, "", "", "", "", reasonForUse, 0);
             //Start the background thread of loading the user's account information
             new LoadAccount().execute();
@@ -184,10 +156,6 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
             yourTrainerTextLabel.setVisibility(View.INVISIBLE);
             creatorNameTextLabel.setVisibility(View.INVISIBLE);
             creatorNameInputField.setVisibility(View.INVISIBLE);
-//            creatorCertificationNumberTextLabel.setVisibility(View.INVISIBLE);
-//            creatorCertificationNumberInputField.setVisibility(View.INVISIBLE);
-//            creatorInsuranceNumberTextLabel.setVisibility(View.INVISIBLE);
-//            creatorInsuranceNumberInputField.setVisibility(View.INVISIBLE);
             //Initialize the user account manager object with the user id of the user that is the
             //creator
             userAccountManager = new AccountManager(userID, "", "", "", "",  reasonForUse, 0);
@@ -208,20 +176,11 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         super.onDestroyView();
         userFirstNameInputField = null;
         userLastNameInputField = null;
-//        userAgeInputField = null;
         userUserNameInputField = null;
         userPassWordInputField = null;
-//        userCertificationNumberInputField = null;
-//        userInsuranceNumberInputField = null;
         creatorNameInputField = null;
-//        creatorCertificationNumberInputField = null;
-//        creatorInsuranceNumberInputField = null;
-//        userCertificationNumberTextLabel = null;
-//        userInsuranceNumberTextLabel = null;
         yourTrainerTextLabel = null;
         creatorNameTextLabel = null;
-//        creatorCertificationNumberTextLabel = null;
-//        creatorInsuranceNumberTextLabel = null;
         errorMessageLabel = null;
         editButton = null;
         cancelButton = null;
@@ -242,11 +201,9 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                 //Make the text boxes for the user editable
                 userFirstNameInputField.setEnabled(true);
                 userLastNameInputField.setEnabled(true);
-//                userAgeInputField.setEnabled(true);
                 userUserNameInputField.setEnabled(true);
                 userPassWordInputField.setEnabled(true);
-//                userCertificationNumberInputField.setEnabled(true);
-//                userInsuranceNumberInputField.setEnabled(true);
+
                 //Make the edit and delete account buttons invisible and set the cancel and update
                 //buttons visible
                 editButton.setVisibility(View.INVISIBLE);
@@ -254,51 +211,43 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                 cancelButton.setVisibility(View.VISIBLE);
                 updateButton.setVisibility(View.VISIBLE);
                 break;
+
             case R.id.cancelButton:
                 //Make the text boxes for the user not editable
                 userFirstNameInputField.setEnabled(false);
                 userLastNameInputField.setEnabled(false);
-//                userAgeInputField.setEnabled(false);
                 userUserNameInputField.setEnabled(false);
                 userPassWordInputField.setEnabled(false);
-//                userCertificationNumberInputField.setEnabled(false);
-//                userInsuranceNumberInputField.setEnabled(false);
+
                 //Make the cancel and update buttons invisible and set the edit and delete account
                 //buttons visible
                 cancelButton.setVisibility(View.INVISIBLE);
                 updateButton.setVisibility(View.INVISIBLE);
                 editButton.setVisibility(View.VISIBLE);
                 deleteAccountButton.setVisibility(View.VISIBLE);
+
                 //Update the input fields with the original data from when the account was load in
                 //the beginning of the activity
                 userFirstNameInputField.setText(tempFirstName);
                 userLastNameInputField.setText(tempLastName);
-//                userAgeInputField.setText(String.valueOf(tempAge));
                 userUserNameInputField.setText(tempUserName);
                 userPassWordInputField.setText(tempPassWord);
-//                userCertificationNumberInputField.setText(String.valueOf(tempCertificationNumber));
-//                userInsuranceNumberInputField.setText(String.valueOf(tempInsuranceNumber));
                 break;
+
             case R.id.deleteAccountButton:
                 //Start the background thread to deleting the user's account
                 new DeleteAccount().execute();
                 break;
+
             case R.id.updateButton:
                 //Get the input that the user typed in the text boxes
                 userName = userUserNameInputField.getText().toString();
                 passWord = userPassWordInputField.getText().toString();
                 firstName = userFirstNameInputField.getText().toString();
                 lastName = userLastNameInputField.getText().toString();
-//                try {
-//                    age = Integer.parseInt(userAgeInputField.getText().toString());
-//                }
-//                catch (NumberFormatException e) {
-//                    age = 0;
-//                }
 
                 //Check if any of the input is blank
-                if (userName.equals("") || passWord.equals("") || firstName.equals("") ||
-                        lastName.equals("") /*|| age == 0*/) {
+                if (userName.equals("") || passWord.equals("") || firstName.equals("") || lastName.equals("")) {
                     //Set the error message label letting the user know that not all of the fields
                     //were entered
                     errorMessageLabel.setText(R.string.errorMessageTextLabelMissingField);
@@ -309,39 +258,10 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                 else {
                     //Check what reason for use they are
                     if (reasonForUse == 1) {
-                        //Make the certification number and insurance number zero since the user is
-                        //a client
-//                        certificationNumber = 0;
-//                        insuranceNumber = 0;
                         //Start the background thread for updating the user's account
                         new UpdateAccount().execute();
                     }
                     else {
-                        //Get the input that the user typed in for the certification number
-                        //and the insurance number since the user is a creator
-                        try {
-//                            certificationNumber = Integer.parseInt(userCertificationNumberInputField.getText().toString());
-//                            insuranceNumber = Integer.parseInt(userInsuranceNumberInputField.getText().toString());
-                        }
-                        catch (NumberFormatException e) {
-                            e.printStackTrace();
-//                            certificationNumber = 0;
-//                            insuranceNumber = 0;
-                        }
-
-                        //Check if the certification number and/or insurance number is blank
-//                        if (certificationNumber == 0 || insuranceNumber == 0) {
-//                            //Set the error message letting the user know that they need to fill
-//                            //out the certification number and/or insurance number
-//                            errorMessageLabel.setText(R.string.
-//                                    errorMessageTextLabelNoCertificationOrInsuranceNumber);
-//                            //Make the error message label visible
-//                            errorMessageLabel.setVisibility(View.VISIBLE);
-//                        }
-//                        else {
-//                            //Start the background thread for updating the user's account
-//                            new UpdateAccount().execute();
-//                        }
                         //Start the background thread for updating the user's account
                         new UpdateAccount().execute();
                     }
@@ -398,16 +318,10 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                             public void run() {
                                 userFirstNameInputField.setText(userAccountManager.getFirstName());
                                 userLastNameInputField.setText(userAccountManager.getLastName());
-//                                userAgeInputField.setText(String.valueOf(userAccountManager.getAge()));
                                 userUserNameInputField.setText(userAccountManager.getUserName());
                                 userPassWordInputField.setText(userAccountManager.getPassWord());
-                                creatorNameInputField.setText(
-                                        creatorAccountManager.getFirstName() +
+                                creatorNameInputField.setText(creatorAccountManager.getFirstName() +
                                                         " " + creatorAccountManager.getLastName());
-//                                creatorCertificationNumberInputField.setText(String.valueOf(
-//                                        creatorAccountManager.getCertificationNumber()));
-//                                creatorInsuranceNumberInputField.setText(String.valueOf(
-//                                        creatorAccountManager.getInsuranceNumber()));
                                 //Populate the temporary instance fields
                                 tempUserName = userAccountManager.getUserName();
                                 tempPassWord = userAccountManager.getPassWord();
@@ -496,23 +410,16 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            userFirstNameInputField.setText(userAccountManager.getFirstName());
-                            userLastNameInputField.setText(userAccountManager.getLastName());
-//                            userAgeInputField.setText(String.valueOf(userAccountManager.getAge()));
-                            userUserNameInputField.setText(userAccountManager.getUserName());
-                            userPassWordInputField.setText(userAccountManager.getPassWord());
-//                            userCertificationNumberInputField.setText(String.valueOf(
-//                                    userAccountManager.getCertificationNumber()));
-//                            userInsuranceNumberInputField.setText(String.valueOf(
-//                                    userAccountManager.getInsuranceNumber()));
-                            //Populate the temporary instance fields
-                            tempUserName = userAccountManager.getUserName();
-                            tempPassWord = userAccountManager.getPassWord();
-                            tempFirstName = userAccountManager.getFirstName();
-                            tempLastName = userAccountManager.getLastName();
-//                            tempAge = userAccountManager.getAge();
-//                            tempCertificationNumber = userAccountManager.getCertificationNumber();
-//                            tempInsuranceNumber = userAccountManager.getInsuranceNumber();
+                        userFirstNameInputField.setText(userAccountManager.getFirstName());
+                        userLastNameInputField.setText(userAccountManager.getLastName());
+                        userUserNameInputField.setText(userAccountManager.getUserName());
+                        userPassWordInputField.setText(userAccountManager.getPassWord());
+
+                        //Populate the temporary instance fields
+                        tempUserName = userAccountManager.getUserName();
+                        tempPassWord = userAccountManager.getPassWord();
+                        tempFirstName = userAccountManager.getFirstName();
+                        tempLastName = userAccountManager.getLastName();
                         }
                     });
                 }
@@ -528,6 +435,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                     //Remove the Intent's extras variables before redirecting
                     activity.getIntent().removeExtra("userID");
                     activity.getIntent().removeExtra("userRole");
+
                     //Set an intent to redirect the user to the LoginActivity activity
                     Intent intent = new Intent(activity, LoginActivity.class);
                     //Start the next activity
@@ -545,6 +453,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                     //Remove the Intent's extras variables before redirecting
                     activity.getIntent().removeExtra("userID");
                     activity.getIntent().removeExtra("userRole");
+
                     //Set an intent to redirect the user to the LoginActivity activity
                     Intent intent = new Intent(activity, LoginActivity.class);
                     //Start the next activity
