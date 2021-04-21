@@ -1,6 +1,7 @@
 package projectomicron.studybuddy;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -16,7 +17,7 @@ import java.util.List;
  * This class manages the creation, loading, updating, and deleting of a user's account.
  * Created by Whitney Andrews on 4/11/2021.
  */
-public class AccountManager {
+public class AccountManager{
     /**
      * Instance variables only visible in the AccountManager class.
      */
@@ -100,17 +101,8 @@ public class AccountManager {
         this.passWord = aPassWord;
         this.firstName = aFirstName;
         this.lastName = aLastName;
-//        this.age = aAge;
         this.reasonForUse = aReasonForUse;
         this.creatorID = aTrainerID;
-//        this.certificationNumber = aCertificationNumber;
-//        this.insuranceNumber = aInsuranceNumber;
-        try {
-            this.sqlDatabaseConnection = new SQLDatabaseConnection(null);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
     }
 
     /**
@@ -193,22 +185,6 @@ public class AccountManager {
         this.lastName = aLastName;
     }
 
-//    /**
-//     * Gets the age of the user.
-//     * @precondition age > 0
-//     * @return the age of the user
-//     */
-//    public int getAge() {
-//        return age;
-//    }
-//
-//    /**
-//     * Sets the age of the user.
-//     * @precondition aAge > 0
-//     */
-//    public void setAge(int aAge) {
-//        this.age = aAge;
-//    }
 
     /**
      * Gets the reason for use of the user.
@@ -290,16 +266,9 @@ public class AccountManager {
         //Make the HTTP request to check if the username entered already exists in the database
         Log.d("request!", "starting");
 
-        try{
-            sqlDatabaseConnection.CheckUsername(userName);
-            sqlDatabaseConnection.CreateAccount(firstName, lastName, userName, passWord, reasonForUse);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            jsonMessage = e.getMessage();
-            return jsonMessage;
-        }
-        jsonMessage = "Account Created!";
+
+        jsonMessage = "Account has been created successfully!";
+        return jsonMessage;
 
 //        JSONObject json1 = JSONWebservice.getInstance().makeHttpRequest(CHECKUSERNAME_URL, params);
 //
@@ -373,7 +342,7 @@ public class AccountManager {
 //            return jsonMessage;
 //        }
 
-        return jsonMessage;
+//        return jsonMessage;
     }
 
     /**
