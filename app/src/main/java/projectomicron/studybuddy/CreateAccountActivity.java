@@ -325,7 +325,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
             try{
                 sqlDatabaseConnection.CheckUsername(userName);
-                createAccountStatus = sqlDatabaseConnection.CreateAccount(firstName, lastName, userName, passWord, reasonForUse);
+                createAccountStatus = sqlDatabaseConnection.CreateAccount(accountManager);
             }
             catch (Exception e) {
                 e.printStackTrace();

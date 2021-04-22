@@ -1,5 +1,6 @@
 package projectomicron.studybuddy;
 
+import android.accounts.Account;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,8 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SQLDatabaseConnection extends SQLiteOpenHelper {
-    private static final String DBNAME = "StudyBuddy-DB";
+    private static final String DBNAME = "StudyBuddyDb";
 
     /**
      * Create a helper object to create, open, and/or manage a database.
@@ -33,9 +37,14 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
             "CREATE TABLE AccountType(" +
-                "id INTEGER PRIMARY KEY," +
+                "id INTEGER," +
                 "name TEXT" +
             ")"
+        );
+
+        db.execSQL(
+                "INSERT INTO AccountType (id, name) " +
+                "VALUES (1, 'Viewer'), (2, 'Creator')"
         );
 
         db.execSQL(
@@ -46,6 +55,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
                 "username TEXT," +
                 "password TEXT," +
                 "usertype INTEGER," +
+                "assignedUser INTEGER," +
                 "FOREIGN KEY(usertype) REFERENCES AccountType(id) " +
             ")"
         );
@@ -69,7 +79,6 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
             ")"
         );
 
-        this.CreateRoles();
     }
 
     /**
@@ -100,29 +109,17 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS AssignedContent ");
     }
 
-    public void CreateRoles() {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", "Viewer");
-        contentValues.put("name", "Creator");
-
-        long result = db.insert("Account", null, contentValues);
-
-    }
-
-    public String CreateAccount(String first_name, String last_name, String username,
-                              String password, int reasonForUse) throws Exception
+    public String CreateAccount(AccountManager newAccount)
     {
-
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("first_name", first_name);
-        contentValues.put("last_name", last_name);
-        contentValues.put("username", username);
-        contentValues.put("password", password);
-        contentValues.put("usertype", reasonForUse);
+        contentValues.put("first_name", newAccount.getFirstName());
+        contentValues.put("last_name", newAccount.getLastName());
+        contentValues.put("username", newAccount.getUserName());
+        contentValues.put("password", newAccount.getPassWord());
+        contentValues.put("usertype", newAccount.getReasonForUse());
+        contentValues.put("assignedUser", newAccount.getCreatorID());
 
         long result = db.insert("Account", null, contentValues);
 
@@ -154,9 +151,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
         "SELECT * FROM Account " +
              "WHERE username = ? AND password = ?", new String[] { username, password } );
 
-        if(cursor.getCount() > 0) throw new Exception("Username/Password is incorrect!");
-
-        if (cursor.getCount() > 0){
+       if (cursor.getCount() > 0){
             return "Login successful!";
         }
         else{
@@ -164,22 +159,85 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
         }
     }
 
-    public void GetUserIDAndUserRole(String username){
-
+    public LoginAuthenticator loadAuth(String username){
         SQLiteDatabase db = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(
-        "SELECT id,  FROM Account " +
-             "WHERE username = ?", new String[] { username } );
 
+        Cursor cursor = db.rawQuery(
+        "SELECT * FROM Account WHERE username = ?", new String[] { username }
+        );
 
+        LoginAuthenticator userlogin = new LoginAuthenticator();
+
+        if(cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                userlogin.setUserID(cursor.getInt(0));
+                userlogin.setUserName(cursor.getString(3));
+                userlogin.setPassWord(cursor.getString(4));
+                userlogin.setUserRole(cursor.getInt(5));
+                userlogin.setCreatorId(cursor.getInt(6));
+            }
+        }
+        cursor.close();
+
+        return userlogin;
     }
 
 
-    public void LoadAccount(){
+    public Long createContent(int aUserID, String aContentText){
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("userid", aUserID);
+        contentValues.put("text_block", aContentText);
+
+        return db.insert("Content", null, contentValues);
     }
 
-    public void UpdateAccount(){
+
+    public Content loadContent(int aUserID, int aContentID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Content content = null;
+
+        Cursor cursor = db.rawQuery(
+         "SELECT * FROM Content WHERE userid = ? AND id = ? ", new String[] {
+                 Integer.toString(aUserID), Integer.toString(aContentID)
+         }
+        );
+
+        if (cursor.getCount() > 0){
+            if(cursor.moveToFirst()){
+                content = new Content(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getString(2)
+                );
+            }
+        }
+        return content;
+    }
+
+
+
+    public String updateContent(int aUserID, int aContentID, String aContent){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("text_block", aContent);
+        long result = db.update(
+                "Content",
+                contentValues,
+                "_id = " + aContentID,
+                null );
+
+        if(result == -1){
+            return "Content not updated";
+        }
+        else{
+            return "Content updated successfully!";
+        }
+    }
+
+    public void loadViewersByCreatorId(){
 
     }
 

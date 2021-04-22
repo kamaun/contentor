@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
     private EditText userUserNameInputField;
     private EditText userPassWordInputField;
     private EditText creatorNameInputField;
-    private TextView yourTrainerTextLabel;
+    private TextView yourCreatorTextLabel;
     private TextView creatorNameTextLabel;
     private TextView errorMessageLabel;
     private Button editButton;
@@ -122,8 +123,9 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         userPassWordInputField = (EditText) view.findViewById(R.id.passWordTextBox);
         creatorNameInputField = (EditText) view.findViewById(R.id.creatorFirstNameTextBox);
 
+
         //Get references to the text labels
-        yourTrainerTextLabel = (TextView) view.findViewById(R.id.yourCreatorTextLabelProfileFragment);
+        yourCreatorTextLabel = (TextView) view.findViewById(R.id.yourCreatorTextLabelProfileFragment);
         creatorNameTextLabel = (TextView) view.findViewById(R.id.creatorNameTextLabel);
         errorMessageLabel = (TextView) view.findViewById(R.id.errorMessageTextLabel);
 
@@ -153,7 +155,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         }
         else {
             //Set the your creator fields invisible because the user is a creator
-            yourTrainerTextLabel.setVisibility(View.INVISIBLE);
+            yourCreatorTextLabel.setVisibility(View.INVISIBLE);
             creatorNameTextLabel.setVisibility(View.INVISIBLE);
             creatorNameInputField.setVisibility(View.INVISIBLE);
             //Initialize the user account manager object with the user id of the user that is the
@@ -179,7 +181,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         userUserNameInputField = null;
         userPassWordInputField = null;
         creatorNameInputField = null;
-        yourTrainerTextLabel = null;
+        yourCreatorTextLabel = null;
         creatorNameTextLabel = null;
         errorMessageLabel = null;
         editButton = null;
@@ -257,14 +259,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                 }
                 else {
                     //Check what reason for use they are
-                    if (reasonForUse == 1) {
-                        //Start the background thread for updating the user's account
-                        new UpdateAccount().execute();
-                    }
-                    else {
-                        //Start the background thread for updating the user's account
-                        new UpdateAccount().execute();
-                    }
+                    new UpdateAccount().execute();
                     break;
                 }
             default:
@@ -306,7 +301,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                 if (loadAccountStatus.equals("Account loaded!")) {
                     //Initialize the creator account manager object with the creator id of the client
                     //as the user id
-                    creatorAccountManager = new AccountManager(userAccountManager.getTrainerID(), "", "", "", "",  0, 0);
+                    creatorAccountManager = new AccountManager(userAccountManager.getCreatorID(), "", "", "", "",  0, 0);
                     //Invoke the method to the loading the user's account but we are technically loading
                     //the creator's account
                     //Store the JSON message in a variable

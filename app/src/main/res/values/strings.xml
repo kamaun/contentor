@@ -21,7 +21,7 @@
     <string name="backToLoginButtonText">Back to Login</string>
     <string name="submitButtonText">Submit</string>
     <string name="errorMessageTextLabelMissingField">Not all of the fields were filled!</string>
-    <string name="errorMessageTextLabelInvalidLogin">Invalid Login!</string>
+    <string name="errorMessageTextLabelInvalidLogin">Username/Password is incorrect!</string>
     <string name="errorMessageTextLabelConnectionError">There was an unknown error with the connection</string>
     <string name="errorMessageTextLabelNoUserRoleSelected">You must select if you are a Creator or a Viewer</string>
     <string name="errorMessageTextLabelNoCreatorSelected">You must select a creator</string>
@@ -36,7 +36,7 @@
     <string name="errorMessageTextLabelNoContentID">You must enter a work out id</string>
     <string name="errorMessageTextLabelNegativeValues">These values need to be zero or greater</string>
     <string name="errorMessageTextLabelContentIDNotFound">The content ID entered doesn\'t exist.Please go back and try again</string>
-    <string name="errorMessageTextLabelContentUpdated">Workout updated successfully</string>
+    <string name="errorMessageTextLabelContentUpdated">Content updated successfully</string>
     <string name="errorMessageTextLabelNoContentStats">This user does not have a Content Stats</string>
     <string name="errorMessageTextLabelContentStatsUpdatedSuccessful">Content Stats updated successfully</string>
     <string-array name="reasonsForUseArray">
@@ -47,10 +47,10 @@
     <string-array name="creatorsArray">
         <item>Please Select</item>
         <item>Kevin Njeri</item>
-        <item>Bob Saget</item>
-        <item>Chuck Norris</item>
-        <item>Jet LI</item>
+        <item>Jamie Andrews</item>
+        <item>Angelica Andrews</item>
     </string-array>
+    <string name="contentTextLabel">Content:</string>
     <string name="title_activity_menu">Menu</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -65,13 +65,8 @@
     <string name="ageTextLabelProfileFragment">Age</string>
     <string name="userNameTextLabelProfileFragment">User Name</string>
     <string name="passWordTextLabelProfileFragment">Password</string>
-    <string name="certificationNumberTextLabelProfileFragment">Cert #</string>
-    <string name="insuranceNumberTextLabelProfileFragment">Insurance #</string>
     <string name="yourCreatorTextLabelProfileFragment">Your Creator</string>
     <string name="creatorNameTextLabelProfileFragment">Name</string>
-    <string name="creatorAgeTextLabelProfileFragment">Age</string>
-    <string name="creatorCertificationNumberTextLabelProfileFragment">Cert #</string>
-    <string name="creatorInsuranceNumberTextLabelProfileFragment">Insurance #</string>
     <string name="editButtonTextLabel">Edit</string>
     <string name="cancelButtonTextLabel">Cancel</string>
     <string name="updateButtonTextLabel">Update</string>
@@ -93,13 +88,6 @@
     <string name="viewContentStatsButtonLabel">View Content Stats!</string>
     <string name="createContentTextLabel">Create Content!</string>
     <string name="viewerTextLabel">Viewer:</string>
-    <string name="treadMillTextLabel">Tread Mill:</string>
-    <string name="treadMillMilesTextLabel">Miles</string>
-    <string name="treadMillMinutesTextLabel">Min.</string>
-    <string name="pushUpsTextLabel">PushUps:</string>
-    <string name="repsTextLabel">reps</string>
-    <string name="sitUpsTextLabel">SitUps:</string>
-    <string name="squatsTextLabel">Squats:</string>
     <string name="createContentButtonTextLabel">Create</string>
     <string name="goBackButtonTextLabek">Cancel</string>
     <string name="goBackButtonTextLabel">Go Back</string>

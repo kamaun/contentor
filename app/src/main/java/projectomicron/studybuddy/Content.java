@@ -11,11 +11,8 @@ public class Content {
      */
     private int userID;
     private int contentID;
-    private int treadMillMiles;
-    private int treadMillMinutes;
-    private int pushUps;
-    private int sitUps;
-    private int squats;
+    private String contentText;
+
 
     /**
      * Constructs a Content object.
@@ -27,21 +24,11 @@ public class Content {
      * @precondition aSquats >= 0
      * @param aUserID the user id of the user ho is associated with the content
      * @param aContentID the content id of the content
-     * @param aTreadMillMiles the amount of miles ran on a treadmill
-     * @param aTreadMillMinutes the amount of minutes the user ran on a treadmill
-     * @param aPushUps the amount of push ups the user completed
-     * @param aSitUps the amount of sit ups the user completed
-     * @param aSquats the amount of squats the user completed
      */
-    public Content(int aUserID, int aContentID, int aTreadMillMiles, int aTreadMillMinutes, int aPushUps,
-                   int aSitUps, int aSquats) {
+    public Content(int aUserID, int aContentID, String aContentText) {
         this.userID = aUserID;
         this.contentID = aContentID;
-        this.treadMillMiles = aTreadMillMiles;
-        this.treadMillMinutes = aTreadMillMinutes;
-        this.pushUps = aPushUps;
-        this.sitUps = aSitUps;
-        this.squats = aSquats;
+        this.contentText = aContentText;
     }
 
     /**
@@ -63,47 +50,10 @@ public class Content {
     }
 
     /**
-     * Gets the tread mill miles run in a content.
-     * @precondition treadMillMiles >= 0
-     * @return the amount the miles ran on the treadmill
+     * Gets created content
+     * @return the content in string format
      */
-    public int getTreadMillMiles() {
-        return treadMillMiles;
-    }
-
-    /**
-     * Gets the tread mill minutes in a content.
-     * @precondition treadMillMinutes >= 0
-     * @return the amount of minutes ran on the treadmill
-     */
-    public int getTreadMillMinutes() {
-        return treadMillMinutes;
-    }
-
-    /**
-     * Gets the push ups done in a content.
-     * @precondition pushUps >= 0
-     * @return the amount of push ups the user completed in the content
-     */
-    public int getPushUps() {
-        return pushUps;
-    }
-
-    /**
-     * Gets the sit ups done in a content.
-     * @precondition sitUps >= 0
-     * @return the amount of sit ups the user completed in the content
-     */
-    public int getSitUps() {
-        return sitUps;
-    }
-
-    /**
-     * Gets the squats done in a content.
-     * @precondition squats >= 0
-     * @return the amount of squats the user completed in the content
-     */
-    public int getSquats() {
-        return squats;
+    public String getContentText() {
+        return contentText;
     }
 }

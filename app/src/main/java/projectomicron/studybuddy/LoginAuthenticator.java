@@ -27,24 +27,6 @@ public class LoginAuthenticator {
     private int creatorID;
 
     /**
-     * Instance variables that are only visible in the LoginAuthenticator class. Contains the
-     * specific URL that contains the PHP script of the webservice.
-     */
-    private final String LOGIN_URL = "http://lamp.cse.fau.edu/~eguerre4/webservice/login.php";
-    private final String GETUSERID_URL = "http://lamp.cse.fau.edu/~eguerre4/webservice/getuserid.php";
-
-    /**
-     * Instance variables that are only visible in the LoginAuthenticator class. Contains the JSON
-     * element ids from the response of the PHP script.
-     */
-    private final String TAG_SUCCESS = "success";
-    private final String TAG_MESSAGE = "message";
-    private final String TAG_USERID = "userid";
-    private final String TAG_USERROLE = "userrole";
-    private final String TAG_CREATORID = "creatorid";
-    private SQLDatabaseConnection sqlDatabaseConnection;
-
-    /**
      * Constructs a LoginAuthenticator object.
      */
     public LoginAuthenticator() {
@@ -53,12 +35,6 @@ public class LoginAuthenticator {
         this.userID = 0;
         this.userRole = -1;
         this.creatorID = 0;
-        try {
-            this.sqlDatabaseConnection = new SQLDatabaseConnection(null);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
     }
 
     /**
@@ -131,90 +107,5 @@ public class LoginAuthenticator {
      */
     public void setCreatorId(int aTrainerID) {
         this.creatorID = aTrainerID;
-    }
-
-    /**
-     * Checks the login credentials of the user against the database.
-     * @precondition userName.size() > 0
-     * @precondition passWord.size() > 0
-     * @return a String value that determines if the user's credentials are correct are not
-     */
-    public String checkCredentials() {
-        //Declare a variable to store a JSON message
-        String jsonMessage;
-
-        //Build the POST parameters that need to be passed in the request
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("username", userName));
-        params.add(new BasicNameValuePair("password", passWord));
-
-        //Make the HTTP request to check the credentials of the user
-        Log.d("request!", "starting");
-        JSONObject json = JSONWebservice.getInstance().makeHttpRequest(LOGIN_URL, params);
-
-        //Check the log for the json response
-        //Log.d("Login attempt", json.toString());
-
-        //Get the json success tag
-        try {
-            int success = json.getInt(TAG_SUCCESS);
-            if (success == 1) {
-                Log.d("Login Successful!", json.toString());
-                jsonMessage = json.getString(TAG_MESSAGE);
-            }
-            else if (success == 0 && json.getString(TAG_MESSAGE).equals("Invalid Credentials")) {
-                Log.d("Login Failure!", json.getString(TAG_MESSAGE));
-                jsonMessage = json.getString(TAG_MESSAGE);
-            }
-            else {
-                Log.d("Connection Error!", json.getString(TAG_MESSAGE));
-                jsonMessage = json.getString(TAG_MESSAGE);
-            }
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-            jsonMessage = "Connection Error!";
-            return jsonMessage;
-        }
-
-        return  jsonMessage;
-    }
-
-    /**
-     * Queries the database for the userID of the user.
-     * @precondition userName.size() > 0
-     */
-    public void queryUserIDAndUserRole() {
-        //Build the POST parameters that need to be passed in the request
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("username", userName));
-
-        //Make the HTTP request to get the user id and user role from the database
-        Log.d("request!", "starting");
-        JSONObject json = JSONWebservice.getInstance().makeHttpRequest(GETUSERID_URL, params);
-
-        //Check the log for the json response
-
-        Log.d("Login attempt", json.toString());
-
-        //Get the json success tag
-        try {
-            int success = json.getInt(TAG_SUCCESS);
-            if (success == 1) {
-                Log.d("UserID Obtained!", json.getString(TAG_MESSAGE).toString());
-                setUserID(json.getInt(TAG_USERID));
-                setUserRole(json.getInt(TAG_USERROLE));
-                setCreatorId(json.getInt(TAG_CREATORID));
-
-            }
-            else {
-                Log.d("Can not obtain UserID!", json.getString(TAG_MESSAGE));
-                setUserID(0);
-            }
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-            setUserID(0);
-        }
     }
 }

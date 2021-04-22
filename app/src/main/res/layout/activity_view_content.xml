@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,191 +15,37 @@
         android:layout_marginTop="35dp"
         android:visibility="invisible" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+    <EditText
         android:id="@+id/viewerTextBox"
+        android:layout_width="369dp"
+        android:layout_height="348dp"
         android:layout_alignBottom="@+id/viewerTextLabel"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textAlignment="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="-433dp"
         android:layout_toEndOf="@+id/viewerTextLabel"
         android:layout_toRightOf="@+id/viewerTextLabel"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:visibility="invisible" />
 
     <TextView
+        android:id="@+id/contentTextLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/treadMillTextLabel"
-        android:id="@+id/treadMillTextLabel"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/viewerTextLabel"
+        android:layout_alignStart="@+id/viewerTextLabel"
         android:layout_alignLeft="@+id/viewerTextLabel"
-        android:layout_alignStart="@+id/viewerTextLabel" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/treadMillMilesTextBox"
-        android:layout_alignBottom="@+id/treadMillTextLabel"
-        android:layout_toRightOf="@+id/treadMillTextLabel"
-        android:inputType="number"
-        android:enabled="false" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/treadMillMinutesTextBox"
-        android:layout_alignBottom="@+id/treadMillTextLabel"
-        android:layout_toRightOf="@+id/treadMillMilesTextBox"
-        android:layout_toEndOf="@+id/treadMillMilesTextBox"
-        android:enabled="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/treadMillMinutesTextLabel"
-        android:id="@+id/treadMillMinutesTextLabel"
-        android:layout_below="@+id/treadMillMilesTextBox"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/treadMillMilesTextBox"
-        android:layout_toEndOf="@+id/treadMillMilesTextBox"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/treadMillMilesTextLabel"
-        android:id="@+id/treadMillMilesTextLabel"
-        android:layout_below="@+id/treadMillMilesTextBox"
-        android:layout_toLeftOf="@+id/treadMillMinutesTextBox"
-        android:layout_toStartOf="@+id/treadMillMinutesTextBox"
-        android:layout_marginRight="89dp"
-        android:layout_marginEnd="89dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/pushUpsTextLabel"
-        android:id="@+id/pushUpsTextLabel"
-        android:layout_below="@+id/treadMillMilesTextLabel"
-        android:layout_alignLeft="@+id/treadMillTextLabel"
-        android:layout_alignStart="@+id/treadMillTextLabel"
-        android:layout_marginTop="25dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/pushUpsTextBox"
-        android:layout_alignBottom="@+id/pushUpsTextLabel"
-        android:layout_toLeftOf="@+id/treadMillMilesTextLabel"
-        android:layout_alignLeft="@+id/treadMillMilesTextBox"
-        android:layout_alignStart="@+id/treadMillMilesTextBox"
-        android:enabled="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/repsTextLabel"
-        android:id="@+id/repsTextLabel1"
-        android:layout_alignBottom="@+id/pushUpsTextLabel"
-        android:layout_toRightOf="@+id/pushUpsTextBox"
-        android:layout_toEndOf="@+id/pushUpsTextBox" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/sitUpsTextLabel"
-        android:id="@+id/sitUpsTextLabel"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/pushUpsTextLabel"
-        android:layout_alignRight="@+id/pushUpsTextLabel"
-        android:layout_alignEnd="@+id/pushUpsTextLabel" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/sitUpsTextBox"
-        android:layout_alignBottom="@+id/sitUpsTextLabel"
-        android:layout_alignLeft="@+id/pushUpsTextBox"
-        android:layout_alignStart="@+id/pushUpsTextBox"
-        android:layout_alignRight="@+id/pushUpsTextBox"
-        android:layout_alignEnd="@+id/pushUpsTextBox"
-        android:numeric="integer"
-        android:enabled="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/repsTextLabel"
-        android:id="@+id/repsTextLabel2"
-        android:layout_alignBottom="@+id/sitUpsTextBox"
-        android:layout_toRightOf="@+id/sitUpsTextBox"
-        android:layout_alignRight="@+id/repsTextLabel1"
-        android:layout_alignEnd="@+id/repsTextLabel1"
-        android:layout_alignTop="@+id/sitUpsTextLabel" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/squatsTextLabel"
-        android:id="@+id/squatsTextLabel"
-        android:layout_below="@+id/sitUpsTextLabel"
-        android:layout_alignRight="@+id/sitUpsTextLabel"
-        android:layout_alignEnd="@+id/sitUpsTextLabel"
-        android:layout_marginTop="22dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/squatsTextBox"
-        android:layout_alignBottom="@+id/squatsTextLabel"
-        android:layout_toLeftOf="@+id/repsTextLabel2"
-        android:layout_alignLeft="@+id/sitUpsTextBox"
-        android:layout_alignStart="@+id/sitUpsTextBox"
-        android:numeric="integer"
-        android:enabled="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/repsTextLabel"
-        android:id="@+id/repsTextBox3"
-        android:layout_alignBottom="@+id/squatsTextLabel"
-        android:layout_toRightOf="@+id/squatsTextBox"
-        android:layout_alignRight="@+id/repsTextLabel2"
-        android:layout_alignEnd="@+id/repsTextLabel2"
-        android:layout_alignTop="@+id/squatsTextLabel" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editButtonTextLabel"
-        android:id="@+id/editButton"
-        android:layout_above="@+id/goBackButton"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible" />
-
+        android:layout_marginStart="-10dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="46dp"
+        android:text="@string/contentTextLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -209,7 +54,6 @@
         android:layout_above="@+id/errorMessageLabel"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="39dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -219,7 +63,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:visibility="invisible" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -230,28 +73,18 @@
         android:layout_alignStart="@+id/pushUpsTextLabel"
         android:visibility="invisible" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/updateButtonTextLabel"
-        android:id="@+id/updateButton"
-        android:layout_above="@+id/goBackButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
-        android:visibility="invisible" />
-
     <TextView
+        android:id="@+id/contentIDTextLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/contentIDTextLabel"
-        android:id="@+id/contentIDTextLabel"
         android:layout_above="@+id/viewerTextBox"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="61dp"
+        android:layout_toStartOf="@+id/editButton"
         android:layout_toLeftOf="@+id/editButton"
-        android:layout_toStartOf="@+id/editButton" />
-
+        android:text="@string/contentIDTextLabel"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -260,5 +93,4 @@
         android:layout_above="@+id/viewerTextBox"
         android:layout_toLeftOf="@+id/updateButton"
         android:layout_toStartOf="@+id/updateButton" />
-
 </RelativeLayout>
