@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import java.util.ArrayList;
+
 
 /**
  * This class is an AppCompatActivity class that facilitates the login functionality for a user.
@@ -132,14 +134,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
          */
         @Override
         protected String doInBackground(String... params) {
-            //Declare a LoginAuthenticator object
-            final LoginAuthenticator loginAuthenticator = new LoginAuthenticator();
+
             final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(LoginActivity.this);
-
-
-            //Change the state of the LoginAuthenticator object with the input from the user
-            loginAuthenticator.setUserName(userName);
-            loginAuthenticator.setPassWord(passWord);
 
             //Do a check of the user's entered credentials to see if they exist in the database
             //Store the JSON message in a variable
@@ -152,13 +148,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginStatus = err.getMessage();
             }
 
-
-
             if (loginStatus.equals("Login successful!")) {
                 //Get the userId of the user
 //                loginAuthenticator.queryUserIDAndUserRole();
-                sqlDatabaseConnection.GetUserIDAndUserRole(userName);
-               //Check if the userId is zero
+
+                LoginAuthenticator loginAuthenticator = sqlDatabaseConnection.loadAuth(userName);
+
+                //Check if the userId is zero
                 if (loginAuthenticator.getUserID() == 0) {
                     //Let the user know that there was a connection error
                     LoginActivity.this.runOnUiThread(new Runnable() {
@@ -178,7 +174,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     //Store the userId and user role of the user to be used throughout the application
                     intent.putExtra("userID", loginAuthenticator.getUserID());
                     intent.putExtra("userRole", loginAuthenticator.getUserRole());
-                    intent.putExtra("creatorID", loginAuthenticator.getCreatorID());
+                    intent.putExtra("trainerID", loginAuthenticator.getCreatorID());
                     //Start the next activity
                     onSwitch(intent);
                 }

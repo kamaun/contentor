@@ -331,52 +331,52 @@ public class ContentManagerMenuFragmentActivity extends Fragment implements View
                     }
                 }
                 break;
-            case R.id.viewContentStatusButton:
-                //Check the reason for use
-                if (reasonForUse == 2) {
-                    //Check if the user selected a viewer from the spinner
-                    if (viewerIDFromSpinner != 0 && !viewerName.equals("")) {
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //Set an intent to redirect the user to the TabMenuManagerActivity activity
-                                Intent intent = new Intent(activity.getApplicationContext(), ViewContentStatsActivity.class);
-                                //Store the userId and user role of the user to be used throughout the application
-                                intent.putExtra("userID", userID);
-                                intent.putExtra("userRole", reasonForUse);
-                                intent.putExtra("creatorID", creatorID);
-                                intent.putExtra("viewerID", viewerIDFromSpinner);
-                                intent.putExtra("viewerName", viewerName);
-                                //Start the next activity
-                                onSwitch(intent);
-                            }
-                        }).start();
-                    }
-                    else {
-                        //Let the user know that because they are a creator that they must select a
-                        //viewer from the spinner.
-                        errorMessageLabel.setVisibility(View.VISIBLE);
-                        errorMessageLabel.setText(R.string.errorMessageTextLabelNoViewerSelected);
-                    }
-                }
-                else {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Set an intent to redirect the user to the TabMenuManagerActivity activity
-                            Intent intent = new Intent(activity.getApplicationContext(), ViewContentStatsActivity.class);
-                            //Store the userId and user role of the user to be used throughout the application
-                            intent.putExtra("userID", userID);
-                            intent.putExtra("userRole", reasonForUse);
-                            intent.putExtra("creatorID", creatorID);
-                            intent.putExtra("viewerID", viewerIDFromSpinner);
-                            intent.putExtra("viewerName", viewerName);
-                            //Start the next activity
-                            onSwitch(intent);
-                        }
-                    }).start();
-                }
-                break;
+//            case R.id.viewContentStatusButton:
+//                //Check the reason for use
+//                if (reasonForUse == 2) {
+//                    //Check if the user selected a viewer from the spinner
+//                    if (viewerIDFromSpinner != 0 && !viewerName.equals("")) {
+//                        new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                //Set an intent to redirect the user to the TabMenuManagerActivity activity
+//                                Intent intent = new Intent(activity.getApplicationContext(), ViewContentStatsActivity.class);
+//                                //Store the userId and user role of the user to be used throughout the application
+//                                intent.putExtra("userID", userID);
+//                                intent.putExtra("userRole", reasonForUse);
+//                                intent.putExtra("creatorID", creatorID);
+//                                intent.putExtra("viewerID", viewerIDFromSpinner);
+//                                intent.putExtra("viewerName", viewerName);
+//                                //Start the next activity
+//                                onSwitch(intent);
+//                            }
+//                        }).start();
+//                    }
+//                    else {
+//                        //Let the user know that because they are a creator that they must select a
+//                        //viewer from the spinner.
+//                        errorMessageLabel.setVisibility(View.VISIBLE);
+//                        errorMessageLabel.setText(R.string.errorMessageTextLabelNoViewerSelected);
+//                    }
+//                }
+//                else {
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            //Set an intent to redirect the user to the TabMenuManagerActivity activity
+//                            Intent intent = new Intent(activity.getApplicationContext(), ViewContentStatsActivity.class);
+//                            //Store the userId and user role of the user to be used throughout the application
+//                            intent.putExtra("userID", userID);
+//                            intent.putExtra("userRole", reasonForUse);
+//                            intent.putExtra("creatorID", creatorID);
+//                            intent.putExtra("viewerID", viewerIDFromSpinner);
+//                            intent.putExtra("viewerName", viewerName);
+//                            //Start the next activity
+//                            onSwitch(intent);
+//                        }
+//                    }).start();
+//                }
+//                break;
             default:
                 break;
         }

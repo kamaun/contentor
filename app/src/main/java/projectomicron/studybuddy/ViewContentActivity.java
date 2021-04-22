@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,16 +24,13 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
     private TextView contentIDTextBox;
     private TextView viewerTextBox;
     private TextView errorMessageLabel;
-    private EditText treadMillMilesTextBox;
-    private EditText treadMillMinutesTextBox;
-    private EditText pushUpsTextBox;
-    private EditText sitUpsTextBox;
-    private EditText squatsTextBox;
+    private EditText contentEditText;
     private Button cancelButton;
     private Button editButton;
     private Button updateButton;
     private Button goBackButton;
     private ProgressDialog dialog;
+    private  final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(this);
 
     /**
      * Instance variables only visible in the ViewContentActivity class. These are the extra
@@ -43,28 +41,9 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
     private int creatorID;
     private int clientID;
     private int contentID;
-    private String clientName;
+    private String viewerName;
+    private String textContent;
 
-    /**
-     * Instance variables only visisble in the ViewContentActivity class. These are the values
-     * that the user will input.
-     */
-    private int treadMillMiles;
-    private int treadMillMinutes;
-    private int pushUps;
-    private int sitUps;
-    private int squats;
-
-    /**
-     * Instance variables only visible in the ViewContentActivity class. These are placeholder
-     * fields that hold the latest data that will be use to revert back to the original state when
-     * the user hits the cancel button when updating their account.
-     */
-    private int tempTreadMillMiles;
-    private int tempTreadMillMinutes;
-    private int tempPushUps;
-    private int tempSitUps;
-    private int tempSquats;
 
     /**
      * Instance variables only visible in the ViewContentActivity class. This is the
@@ -88,7 +67,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
         reasonForUse = extras.getInt("userRole");
         creatorID = extras.getInt("creatorID");
         clientID = extras.getInt("clientID");
-        clientName = extras.getString("clientName");
+        viewerName = extras.getString("clientName");
         contentID = extras.getInt("contentID");
 
         //Initialize the ContentManager
@@ -99,18 +78,14 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
 
         //Get references to the text views
         viewerTextLabel = (TextView) findViewById(R.id.viewerTextLabel);
-        viewerTextBox = (TextView) findViewById(R.id.viewerTextBox);
+        contentEditText = (EditText) findViewById(R.id.viewerTextBox);
         contentIDTextBox = (TextView) findViewById(R.id.contentIDTextBox);
 
         //Get a reference to the error message label
         errorMessageLabel = (TextView) findViewById(R.id.errorMessageLabel);
 
         //Get references to the text boxes
-        treadMillMilesTextBox = (EditText) findViewById(R.id.treadMillMilesTextBox);
-        treadMillMinutesTextBox = (EditText) findViewById(R.id.treadMillMinutesTextBox);
-        pushUpsTextBox = (EditText) findViewById(R.id.pushUpsTextBox);
-        sitUpsTextBox = (EditText) findViewById(R.id.sitUpsTextBox);
-        squatsTextBox = (EditText) findViewById(R.id.squatsTextBox);
+
 
         //Get references to the buttons
         cancelButton = (Button) findViewById(R.id.cancelButton);
@@ -136,7 +111,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                 public void run() {
                     //Invoke the method to load the clients content information based on their
                     //userID and contentID
-                    final Content content = contentManager.loadWorkout(clientID, contentID);
+                    final Content content = sqlDatabaseConnection.loadContent(clientID, contentID);
                     //Check the contentID that was returned
                     if (content.getContentID() == -1) {
                         //Let the user know that the content does not exist
@@ -165,18 +140,9 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                         ViewContentActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                viewerTextBox.setText(clientName);
+                                viewerTextBox.setText(viewerName);
                                 contentIDTextBox.setText(String.valueOf(content.getContentID()));
-                                treadMillMilesTextBox.setText(String.valueOf(content.getTreadMillMiles()));
-                                tempTreadMillMiles = content.getTreadMillMiles();
-                                treadMillMinutesTextBox.setText(String.valueOf(content.getTreadMillMinutes()));
-                                tempTreadMillMinutes = content.getTreadMillMinutes();
-                                pushUpsTextBox.setText(String.valueOf(content.getPushUps()));
-                                tempPushUps = content.getPushUps();
-                                sitUpsTextBox.setText(String.valueOf(content.getSitUps()));
-                                tempSitUps = content.getSitUps();
-                                squatsTextBox.setText(String.valueOf(content.getSquats()));
-                                tempSquats = content.getSquats();
+                                contentEditText.setText(content.getContentText());
                                 contentID = content.getContentID();
                             }
                         });
@@ -191,7 +157,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                 public void run() {
                     //Invoke the method to load the clients content information based on their
                     //userID and contentID
-                    final Content content = contentManager.loadWorkout(userID, contentID);
+                    final Content content = sqlDatabaseConnection.loadContent(userID, contentID);
                     //Check the contentID that was returned
                     if (content.getContentID() == -1) {
                         //Let the user know that the content does not exist
@@ -219,16 +185,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                             @Override
                             public void run() {
                                 contentIDTextBox.setText(String.valueOf(content.getContentID()));
-                                treadMillMilesTextBox.setText(String.valueOf(content.getTreadMillMiles()));
-                                tempTreadMillMiles = content.getTreadMillMiles();
-                                treadMillMinutesTextBox.setText(String.valueOf(content.getTreadMillMinutes()));
-                                tempTreadMillMinutes = content.getTreadMillMinutes();
-                                pushUpsTextBox.setText(String.valueOf(content.getPushUps()));
-                                tempPushUps = content.getPushUps();
-                                sitUpsTextBox.setText(String.valueOf(content.getSitUps()));
-                                tempSitUps = content.getSitUps();
-                                squatsTextBox.setText(String.valueOf(content.getSquats()));
-                                tempSquats = content.getSquats();
+                                contentEditText.setText(content.getContentText());
                                 contentID = content.getContentID();
                             }
                         });
@@ -248,11 +205,8 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.editButton:
                 //Make the text boxes for the user editable
-                treadMillMilesTextBox.setEnabled(true);
-                treadMillMinutesTextBox.setEnabled(true);
-                pushUpsTextBox.setEnabled(true);
-                sitUpsTextBox.setEnabled(true);
-                squatsTextBox.setEnabled(true);
+
+                contentEditText.setEnabled(true);
                 editButton.setVisibility(View.INVISIBLE);
                 goBackButton.setVisibility(View.INVISIBLE);
                 cancelButton.setVisibility(View.VISIBLE);
@@ -260,68 +214,23 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.cancelButton:
                 //Make the text boxes not editable
-                treadMillMilesTextBox.setEnabled(false);
-                treadMillMinutesTextBox.setEnabled(false);
-                pushUpsTextBox.setEnabled(false);
-                sitUpsTextBox.setEnabled(false);
-                squatsTextBox.setEnabled(false);
+                contentEditText.setEnabled(false);
+
                 //Make the cancel and update buttons invisible and set the edit and delete account
                 //buttons visible
                 cancelButton.setVisibility(View.INVISIBLE);
                 updateButton.setVisibility(View.INVISIBLE);
                 editButton.setVisibility(View.VISIBLE);
                 goBackButton.setVisibility(View.VISIBLE);
-                //Update the input fields with the original data from when the account was load in
-                //the beginning of the activity
-                treadMillMilesTextBox.setText(String.valueOf(tempTreadMillMiles));
-                treadMillMinutesTextBox.setText(String.valueOf(tempTreadMillMinutes));
-                pushUpsTextBox.setText(String.valueOf(tempPushUps));
-                sitUpsTextBox.setText(String.valueOf(tempSitUps));
-                squatsTextBox.setText(String.valueOf(tempSquats));
+
                 break;
             case R.id.updateButton:
                 //Get the input from the text boxes
-                try {
-                    treadMillMiles = Integer.parseInt(treadMillMilesTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    treadMillMiles = 0;
-                }
-                try {
-                    treadMillMinutes = Integer.parseInt(treadMillMinutesTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    treadMillMinutes = 0;
-                }
-                try {
-                    pushUps = Integer.parseInt(pushUpsTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    pushUps = 0;
-                }
-                try {
-                    sitUps = Integer.parseInt(sitUpsTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    sitUps = 0;
-                }
-                try {
-                    squats = Integer.parseInt(squatsTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    squats = 0;
-                }
-                //Check if any of the input was zero
-                if (treadMillMiles < 0 || treadMillMinutes < 0 || pushUps < 0 || sitUps < 0 ||
-                        squats < 0) {
-                    //Let the user know that some of the fields are missing
-                    errorMessageLabel.setText(R.string.errorMessageTextLabelNegativeValues);
-                    errorMessageLabel.setVisibility(View.VISIBLE);
-                }
-                else {
-                    //Start the background thread to updating the content for the client
-                    new UpdateContent().execute();
-                }
+                textContent = contentEditText.getText().toString();
+
+                //Start the background thread to updating the content for the client
+                new UpdateContent().execute();
+
                 break;
             case R.id.goBackButton:
                 new Thread(new Runnable() {
@@ -334,7 +243,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                         intent.putExtra("userRole", reasonForUse);
                         intent.putExtra("creatorID", creatorID);
                         intent.putExtra("clientID", clientID);
-                        intent.putExtra("clientName", clientName);
+                        intent.putExtra("clientName", viewerName);
                         //Start the next activity
                         onSwitch(intent);
                     }
@@ -371,9 +280,8 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
         protected String doInBackground(String... params) {
             //Invoke the method to updating a user's content
             //Store the JSON message in a variable
-            String contentUpdatedStauts = contentManager.updateContent(clientID, contentID, treadMillMiles,
-                                                                        treadMillMinutes, pushUps, sitUps, squats);
-            if (contentUpdatedStauts.equals("Workout updated successfully!")) {
+            String contentUpdatedStauts = sqlDatabaseConnection.updateContent(clientID, contentID, textContent);
+            if (contentUpdatedStauts.equals("Content updated successfully!")) {
                 //Let the user know that the content has been updated successfully
                 ViewContentActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -386,17 +294,9 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                         editButton.setVisibility(View.VISIBLE);
                         goBackButton.setVisibility(View.VISIBLE);
                         //Update the temporary variables with the new data
-                        tempTreadMillMiles = treadMillMiles;
-                        tempTreadMillMinutes = treadMillMinutes;
-                        tempPushUps = pushUps;
-                        tempSitUps = sitUps;
-                        tempSquats = squats;
+//                        *********
                         //Make the text boxes not editable
-                        treadMillMilesTextBox.setEnabled(false);
-                        treadMillMinutesTextBox.setEnabled(false);
-                        pushUpsTextBox.setEnabled(false);
-                        sitUpsTextBox.setEnabled(false);
-                        squatsTextBox.setEnabled(false);
+                        contentEditText.setEnabled(false);
 
                     }
                 });

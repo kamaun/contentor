@@ -21,6 +21,7 @@ public class CreateContentActivity extends AppCompatActivity implements View.OnC
      */
     private TextView viewerTextBox;
     private TextView errorMessageLabel;
+    private EditText contentEditText;
     private EditText treadMillMilesTextBox;
     private EditText treadMillMinutesTextBox;
     private EditText pushUpsTextBox;
@@ -39,11 +40,14 @@ public class CreateContentActivity extends AppCompatActivity implements View.OnC
     private int creatorID;
     private int viewerID;
     private String viewerName;
+    private  final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(this);
+
 
     /**
      * Instance variables only visisble in the CreateContentActivity class. These are the values
      * that the user will input.
      */
+    private String textContent;
     private int treadMillMiles;
     private int treadMillMinutes;
     private int pushUps;
@@ -72,18 +76,13 @@ public class CreateContentActivity extends AppCompatActivity implements View.OnC
 
         //Get a reference to the viewer text box
         viewerTextBox = (TextView) findViewById(R.id.viewerTextBox);
+
+        contentEditText = (EditText) findViewById(R.id.contentEditText);
         //Set the name of the viewer text box
         viewerTextBox.setText(viewerName);
 
         //Get a reference to the error message label
         errorMessageLabel = (TextView) findViewById(R.id.errorMessageLabel);
-
-        //Get references for the text boxes
-        treadMillMilesTextBox = (EditText) findViewById(R.id.treadMillMilesTextBox);
-        treadMillMinutesTextBox = (EditText) findViewById(R.id.treadMillMinutesTextBox);
-        pushUpsTextBox = (EditText) findViewById(R.id.pushUpsTextBox);
-        sitUpsTextBox = (EditText) findViewById(R.id.sitUpsTextBox);
-        squatsTextBox = (EditText) findViewById(R.id.squatsTextBox);
 
         //Get references for the buttons
         createContentButton = (Button) findViewById(R.id.editButton);
@@ -102,48 +101,10 @@ public class CreateContentActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.editButton:
-                //Get the input from the text boxes
-                try {
-                    treadMillMiles = Integer.parseInt(treadMillMilesTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    treadMillMiles = 0;
-                }
-                try {
-                    treadMillMinutes = Integer.parseInt(treadMillMinutesTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    treadMillMinutes = 0;
-                }
-                try {
-                    pushUps = Integer.parseInt(pushUpsTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    pushUps = 0;
-                }
-                try {
-                    sitUps = Integer.parseInt(sitUpsTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    sitUps = 0;
-                }
-                try {
-                    squats = Integer.parseInt(squatsTextBox.getText().toString());
-                }
-                catch (NumberFormatException e) {
-                    squats = 0;
-                }
-                //Check if any of the input was zero
-                if (treadMillMiles < 0 || treadMillMinutes < 0 || pushUps < 0 || sitUps < 0 ||
-                        squats < 0) {
-                    //Let the user know that some of the fields are missing
-                    errorMessageLabel.setText(R.string.errorMessageTextLabelNegativeValues);
-                    errorMessageLabel.setVisibility(View.VISIBLE);
-                }
-                else {
-                    //Start the background thread to creating the content for the viewer
-                    new CreateContent().execute();
-                }
+                textContent = contentEditText.getText().toString();
+                //Start the background thread to creating the content for the viewer
+                new CreateContent().execute();
+
                 break;
             case R.id.goBackButton:
                 new Thread(new Runnable() {
@@ -202,8 +163,7 @@ public class CreateContentActivity extends AppCompatActivity implements View.OnC
             ContentManager contentManager = new ContentManager();
 
             //Create the content for the viewer and check if it was successfully
-            final int contentID = contentManager.createContent(viewerID, treadMillMiles,
-                                            treadMillMinutes, pushUps, sitUps, squats);
+            final long contentID = sqlDatabaseConnection.createContent(viewerID, textContent);
             if (contentID == -1) {
                 //Let the user know that not all of the fields were filled
                 CreateContentActivity.this.runOnUiThread(new Runnable() {
