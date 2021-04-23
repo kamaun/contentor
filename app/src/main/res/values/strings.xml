@@ -33,7 +33,7 @@
     <string name="errorMessageTextLabelAccountUpdatedSuccessfully">Account Updated Successfully</string>
     <string name="errorMessageTextLabelNoViewerSelected">No Viewer selected</string>
     <string name="errorMessageTextLabelNoMessages">You do not have messages</string>
-    <string name="errorMessageTextLabelNoContentID">You must enter a work out id</string>
+    <string name="errorMessageTextLabelNoContentID">You must enter a content id</string>
     <string name="errorMessageTextLabelNegativeValues">These values need to be zero or greater</string>
     <string name="errorMessageTextLabelContentIDNotFound">The content ID entered doesn\'t exist.Please go back and try again</string>
     <string name="errorMessageTextLabelContentUpdated">Content updated successfully</string>

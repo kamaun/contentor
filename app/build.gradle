@@ -4,7 +4,7 @@ android {
     compileSdkVersion 30
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "projectomicron.studybuddy"
+        applicationId "group13.studybuddy"
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 1

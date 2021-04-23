@@ -48,11 +48,7 @@ public class CreateContentActivity extends AppCompatActivity implements View.OnC
      * that the user will input.
      */
     private String textContent;
-    private int treadMillMiles;
-    private int treadMillMinutes;
-    private int pushUps;
-    private int sitUps;
-    private int squats;
+
 
     /**
      * Overrides the onCreate method inherited from AppCompatActivity to get the references for the

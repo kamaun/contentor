@@ -21,9 +21,8 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
      */
     private TextView viewerTextLabel;
     private TextView contentIDTextBox;
-    private TextView viewerTextBox;
+    private EditText viewerTextBox;
     private TextView errorMessageLabel;
-    private EditText contentEditText;
     private Button cancelButton;
     private Button editButton;
     private Button updateButton;
@@ -65,8 +64,8 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
         userID = extras.getInt("userID");
         reasonForUse = extras.getInt("userRole");
         creatorID = extras.getInt("creatorID");
-        clientID = extras.getInt("clientID");
-        viewerName = extras.getString("clientName");
+        clientID = extras.getInt("viewerID");
+        viewerName = extras.getString("viewerName");
         contentID = extras.getInt("contentID");
 
         //Initialize the ContentManager
@@ -77,7 +76,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
 
         //Get references to the text views
         viewerTextLabel = (TextView) findViewById(R.id.viewerTextLabel);
-        contentEditText = (EditText) findViewById(R.id.viewerTextBox);
+        viewerTextBox = (EditText) findViewById(R.id.viewerTextBox);
         contentIDTextBox = (TextView) findViewById(R.id.contentIDTextBox);
 
         //Get a reference to the error message label
@@ -139,9 +138,9 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                         ViewContentActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                viewerTextBox.setText(viewerName);
+                                viewerTextLabel.setText(viewerName);
                                 contentIDTextBox.setText(String.valueOf(content.getContentID()));
-                                contentEditText.setText(content.getContentText());
+                                viewerTextBox.setText(content.getContentText());
                                 contentID = content.getContentID();
                             }
                         });
@@ -184,7 +183,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                             @Override
                             public void run() {
                                 contentIDTextBox.setText(String.valueOf(content.getContentID()));
-                                contentEditText.setText(content.getContentText());
+                                viewerTextBox.setText(content.getContentText());
                                 contentID = content.getContentID();
                             }
                         });
@@ -205,7 +204,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
             case R.id.editButton:
                 //Make the text boxes for the user editable
 
-                contentEditText.setEnabled(true);
+                viewerTextBox.setEnabled(true);
                 editButton.setVisibility(View.INVISIBLE);
                 goBackButton.setVisibility(View.INVISIBLE);
                 cancelButton.setVisibility(View.VISIBLE);
@@ -213,7 +212,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.cancelButton:
                 //Make the text boxes not editable
-                contentEditText.setEnabled(false);
+                viewerTextBox.setEnabled(false);
 
                 //Make the cancel and update buttons invisible and set the edit and delete account
                 //buttons visible
@@ -225,7 +224,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.updateButton:
                 //Get the input from the text boxes
-                textContent = contentEditText.getText().toString();
+                textContent = viewerTextBox.getText().toString();
 
                 //Start the background thread to updating the content for the client
                 new UpdateContent().execute();
@@ -295,7 +294,7 @@ public class ViewContentActivity extends AppCompatActivity implements View.OnCli
                         //Update the temporary variables with the new data
 //                        *********
                         //Make the text boxes not editable
-                        contentEditText.setEnabled(false);
+                        viewerTextBox.setEnabled(false);
 
                     }
                 });

@@ -128,50 +128,45 @@ public class ContentManagerMenuFragmentActivity extends Fragment implements View
                 @Override
                 public void run() {
 
-                    //Make the HTTP request to load the user's account
                     Log.d("request!", "starting");
 
-                    try {
+                    DropDownList dropDownList = sqlDatabaseConnection.loadViewersByCreatorId(userID);
+                    final List<String> viewerList  = dropDownList.getViewerList();
+                    final ArrayList<Integer> viewerID = dropDownList.getViewerID();
 
-                        DropDownList dropDownList = sqlDatabaseConnection.loadViewersByCreatorId(userID);
-                        final List<String> viewerList  = dropDownList.getViewerList();
-                        final ArrayList<Integer> viewerID = dropDownList.getViewerID();
+                    if (!viewerList.isEmpty()) {
+                        //Create ArrayAdapter using the viewerList ArrayList
+                        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                                android.R.layout.simple_spinner_item, viewerList);
+                        //Specify the layout to use when the choices appear
+                        adapter.setDropDownViewResource(android.
+                                R.layout.simple_spinner_dropdown_item);
+                        //Apply the adapter to the spinner
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                viewerSpinner.setAdapter(adapter);
+                            }
+                        });
 
-                        if (!viewerList.isEmpty()) {
-                            //Create ArrayAdapter using the viewerList ArrayList
-                            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                                    android.R.layout.simple_spinner_item, viewerList);
-                            //Specify the layout to use when the choices appear
-                            adapter.setDropDownViewResource(android.
-                                    R.layout.simple_spinner_dropdown_item);
-                            //Apply the adapter to the spinner
-                            activity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    viewerSpinner.setAdapter(adapter);
-                                }
-                            });
+                        //Set the listener for when the user selects a choice from the spinner
+                        viewerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                //Get the position of the item selected
+                                int selectedItemPosition = viewerSpinner.getSelectedItemPosition();
+                                //Set the receiver id based on the selectedItemPosition
+                                viewerIDFromSpinner = viewerID.get(selectedItemPosition);
+                                viewerName = viewerList.get(selectedItemPosition);
+                            }
 
-                            //Set the listener for when the user selects a choice from the spinner
-                            viewerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                @Override
-                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    //Get the position of the item selected
-                                    int selectedItemPosition = viewerSpinner.getSelectedItemPosition();
-                                    //Set the receiver id based on the selectedItemPosition
-                                    viewerIDFromSpinner = viewerID.get(selectedItemPosition);
-                                    viewerName = viewerList.get(selectedItemPosition);
-                                }
-
-                                @Override
-                                public void onNothingSelected(AdapterView<?> parent) {
-                                    //Auto-generated method stub
-                                }
-                            });
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                                //Auto-generated method stub
+                            }
+                        });
+                    }
+                    else{
                         //Set the viewer label and spinner invisible
                         viewerTextLabel.setVisibility(View.INVISIBLE);
                         viewerSpinner.setVisibility(View.INVISIBLE);

@@ -46,14 +46,15 @@
         android:layout_marginTop="46dp"
         android:text="@string/contentTextLabel"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <Button
+        android:id="@+id/goBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/goBackButtonTextLabel"
-        android:id="@+id/goBackButton"
         android:layout_above="@+id/errorMessageLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="39dp" />
+        android:layout_marginBottom="73dp"
+        android:text="@string/goBackButtonTextLabel" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,12 +64,34 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:visibility="invisible" />
+
     <Button
+        android:id="@+id/updateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cancelButtonTextLabel"
-        android:id="@+id/cancelButton"
         android:layout_above="@+id/goBackButton"
+        android:layout_marginBottom="8dp"
+        android:text="@string/updateButtonTextLabel"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="189dp"
+        android:layout_toRightOf="@+id/goBackButton"
+        android:layout_alignBottom="@+id/goBackButton"
+        android:text="@string/editButtonTextLabel"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="189dp"
+        android:layout_toRightOf="@+id/goBackButton"
+        android:layout_above="@+id/goBackButton"
+        android:text="@string/cancelButtonTextLabel"
         android:visibility="invisible" />
 
     <TextView

@@ -315,7 +315,7 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
     }
 
 
-    public DropDownList loadViewersByCreatorId(int aCreatorID) throws Exception {
+    public DropDownList loadViewersByCreatorId(int aCreatorID){
         final List<String> viewerList  = new ArrayList<String>();
         final ArrayList<Integer> viewerID = new ArrayList<Integer>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -338,7 +338,6 @@ public class SQLDatabaseConnection extends SQLiteOpenHelper {
                 }while(cursor.moveToNext());
             }
         }
-        else throw new Exception("You don't have any viewers");
 
         return new DropDownList(viewerList, viewerID);
     }
