@@ -1,10 +1,13 @@
 package group13.studybuddy;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -14,11 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 /**
  * This class is a Fragment class that facilitates the user viewing their profile and updating their
  * profile information.
  * Created by Kevin Anderson on 4/3/2021.
  */
+@SuppressLint("ValidFragment")
 public class ProfileFragmentActivity extends Fragment implements View.OnClickListener {
     /**
      * Instance variables only visible in the ProfileFragmentActivity class. These are the components
@@ -68,14 +74,16 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
      */
     private AccountManager userAccountManager;
     private AccountManager creatorAccountManager;
+    private SQLDatabaseConnection sqlDatabaseConnection;
 
     private FragmentActivity activity;
 
     /**
      * Constructs a ProfileFragmentActivity object
      */
-    public ProfileFragmentActivity() {
-
+    @SuppressLint("ValidFragment")
+    public ProfileFragmentActivity(SQLDatabaseConnection passedSql) {
+        this.sqlDatabaseConnection = passedSql;
     }
 
     @Override
@@ -133,6 +141,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         deleteAccountButton = (Button) view.findViewById(R.id.deleteAccountButton);
         cancelButton = (Button) view.findViewById(R.id.cancelButton);
         updateButton = (Button) view.findViewById(R.id.updateButton);
+
         //Set onClickListeners for the buttons
         editButton.setOnClickListener(this);
         deleteAccountButton.setOnClickListener(this);
@@ -147,8 +156,6 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
         //Configure the layout the user sees based on the reason for use
         if (reasonForUse == 1) {
 
-            //Initialize the user account manager object with the user id of the user that is the viewer
-            userAccountManager = new AccountManager(userID, "", "", "", "", reasonForUse, 0);
             //Start the background thread of loading the user's account information
             new LoadAccount().execute();
         }
@@ -157,9 +164,7 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
             yourCreatorTextLabel.setVisibility(View.INVISIBLE);
             creatorNameTextLabel.setVisibility(View.INVISIBLE);
             creatorNameInputField.setVisibility(View.INVISIBLE);
-            //Initialize the user account manager object with the user id of the user that is the
-            //creator
-            userAccountManager = new AccountManager(userID, "", "", "", "",  reasonForUse, 0);
+
             //Start the background thread of loading the user's account information
             new LoadAccount().execute();
         }
@@ -290,42 +295,45 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
          * @param params auto-generated from the compiler
          * @return a String that indicates if the process is complete
          */
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         protected String doInBackground(String... params) {
             //Check the reason for use of the user
             if (reasonForUse == 1) {
                 //Invoke the method to loading the user's account
-                //Store the JSON message in a variable
-                String loadAccountStatus = userAccountManager.loadAccount();
-                if (loadAccountStatus.equals("Account loaded!")) {
-                    //Initialize the creator account manager object with the creator id of the client
-                    //as the user id
-                    creatorAccountManager = new AccountManager(userAccountManager.getCreatorID(), "", "", "", "",  0, 0);
+
+                try{
+                    //Initialize the user account manager object with the user id of the user that is the
+                    //creator
+                    userAccountManager = sqlDatabaseConnection.LoadAccount(userID);
+
                     //Invoke the method to the loading the user's account but we are technically loading
                     //the creator's account
-                    //Store the JSON message in a variable
-                    String loadTrainerAccountStatus = creatorAccountManager.loadAccount();
-                    if (loadTrainerAccountStatus.equals("Account loaded!")) {
-                        //Populate the text boxes with the data of the user
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                userFirstNameInputField.setText(userAccountManager.getFirstName());
-                                userLastNameInputField.setText(userAccountManager.getLastName());
-                                userUserNameInputField.setText(userAccountManager.getUserName());
-                                userPassWordInputField.setText(userAccountManager.getPassWord());
-                                creatorNameInputField.setText(creatorAccountManager.getFirstName() +
-                                                        " " + creatorAccountManager.getLastName());
-                                //Populate the temporary instance fields
-                                tempUserName = userAccountManager.getUserName();
-                                tempPassWord = userAccountManager.getPassWord();
-                                tempFirstName = userAccountManager.getFirstName();
-                                tempLastName = userAccountManager.getLastName();
-//                                tempAge = userAccountManager.getAge();
-                            }
-                        });
-                    }
-                    else if (loadTrainerAccountStatus.equals("Account does not exist!")) {
+                    creatorAccountManager = sqlDatabaseConnection.LoadAccount(userAccountManager.getCreatorID());
+
+                    //Populate the text boxes with the data of the user
+                    activity.runOnUiThread(new Runnable() {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void run() {
+                            userFirstNameInputField.setText(userAccountManager.getFirstName());
+                            userLastNameInputField.setText(userAccountManager.getLastName());
+                            userUserNameInputField.setText(userAccountManager.getUserName());
+                            userPassWordInputField.setText(userAccountManager.getPassWord());
+                            creatorNameInputField.setText(
+                                    creatorAccountManager.getFirstName() + " "
+                                            + creatorAccountManager.getLastName());
+
+                            //Populate the temporary instance fields
+                            tempUserName = userAccountManager.getUserName();
+                            tempPassWord = userAccountManager.getPassWord();
+                            tempFirstName = userAccountManager.getFirstName();
+                            tempLastName = userAccountManager.getLastName();
+                        }
+                    });
+                }
+                catch (Exception err){
+                    if (Objects.equals(err.getMessage(), "Account does not exist!")) {
                         //Let the user know that there was an error with loading the user account and
                         //will redirect to the LoginActivity activity
                         dialog.setMessage("Error loading profile. Returning to login");
@@ -360,98 +368,66 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                         onSwitch(intent);
                     }
                 }
-                else if (loadAccountStatus.equals("Account does not exist!")) {
-                    //Let the user know that there was an error with loading the user account and
-                    //will redirect to the LoginActivity activity
-                    dialog.setMessage("Error loading profile. Returning to login");
-                    try {
-                        Thread.sleep(15000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    //Remove the Intent's extras variables before redirecting
-                    activity.getIntent().removeExtra("userID");
-                    activity.getIntent().removeExtra("userRole");
-                    //Set an intent to redirect the user to the LoginActivity activity
-                    Intent intent = new Intent(activity, LoginActivity.class);
-                    //Start the next activity
-                    onSwitch(intent);
-                }
-                else {
-                    //Let the user know that there was an connection error when connecting to the
-                    //database and will redirect the user to the LoginActivity activity
-                    dialog.setMessage("Connection error! Returning to login");
-                    try {
-                        Thread.sleep(15000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    //Remove the Intent's extras variables before redirecting
-                    activity.getIntent().removeExtra("userID");
-                    activity.getIntent().removeExtra("userRole");
-                    //Set an intent to redirect the user to the LoginActivity activity
-                    Intent intent = new Intent(activity, LoginActivity.class);
-                    //Start the next activity
-                    onSwitch(intent);
-                }
             }
             else {
                 //Invoke the method to loading the user's account
-                //Store the JSON message in a variable
-                String loadAccountStatus = userAccountManager.loadAccount();
-                if (loadAccountStatus.equals("Account loaded!")) {
+                try{
+                    //Initialize the user account manager object with the user
+                    // id of the user that is the creator
+                    userAccountManager = sqlDatabaseConnection.LoadAccount(userID);
+
                     //Populate the text boxes with the data of the user
                     activity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                        userFirstNameInputField.setText(userAccountManager.getFirstName());
-                        userLastNameInputField.setText(userAccountManager.getLastName());
-                        userUserNameInputField.setText(userAccountManager.getUserName());
-                        userPassWordInputField.setText(userAccountManager.getPassWord());
+                            userFirstNameInputField.setText(userAccountManager.getFirstName());
+                            userLastNameInputField.setText(userAccountManager.getLastName());
+                            userUserNameInputField.setText(userAccountManager.getUserName());
+                            userPassWordInputField.setText(userAccountManager.getPassWord());
 
-                        //Populate the temporary instance fields
-                        tempUserName = userAccountManager.getUserName();
-                        tempPassWord = userAccountManager.getPassWord();
-                        tempFirstName = userAccountManager.getFirstName();
-                        tempLastName = userAccountManager.getLastName();
+                            //Populate the temporary instance fields
+                            tempUserName = userAccountManager.getUserName();
+                            tempPassWord = userAccountManager.getPassWord();
+                            tempFirstName = userAccountManager.getFirstName();
+                            tempLastName = userAccountManager.getLastName();
                         }
                     });
                 }
-                else if (loadAccountStatus.equals("Account does not exist!")) {
-                    //Let the user know that there was an error with loading the user account and
-                    //will redirect to the LoginActivity activity
-                    dialog.setMessage("Error loading profile. Returning to login");
-                    try {
-                        Thread.sleep(15000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                catch (Exception err){
+                    if (Objects.equals(err.getMessage(), "Account does not exist!")) {
+                        //Let the user know that there was an error with loading the user account and
+                        //will redirect to the LoginActivity activity
+                        dialog.setMessage("Error loading profile. Returning to login");
+                        try {
+                            Thread.sleep(15000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //Remove the Intent's extras variables before redirecting
+                        activity.getIntent().removeExtra("userID");
+                        activity.getIntent().removeExtra("userRole");
+                        //Set an intent to redirect the user to the LoginActivity activity
+                        Intent intent = new Intent(activity, LoginActivity.class);
+                        //Start the next activity
+                        onSwitch(intent);
                     }
-                    //Remove the Intent's extras variables before redirecting
-                    activity.getIntent().removeExtra("userID");
-                    activity.getIntent().removeExtra("userRole");
-
-                    //Set an intent to redirect the user to the LoginActivity activity
-                    Intent intent = new Intent(activity, LoginActivity.class);
-                    //Start the next activity
-                    onSwitch(intent);
-                }
-                else {
-                    //Let the user know that there was an connection error when connecting to the
-                    //database and will redirect the user to the LoginActivity activity
-                    dialog.setMessage("Connection error! Returning to login");
-                    try {
-                        Thread.sleep(15000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    else {
+                        //Let the user know that there was an connection error when connecting to the
+                        //database and will redirect the user to the LoginActivity activity
+                        dialog.setMessage("Connection error! Returning to login");
+                        try {
+                            Thread.sleep(15000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //Remove the Intent's extras variables before redirecting
+                        activity.getIntent().removeExtra("userID");
+                        activity.getIntent().removeExtra("userRole");
+                        //Set an intent to redirect the user to the LoginActivity activity
+                        Intent intent = new Intent(activity, LoginActivity.class);
+                        //Start the next activity
+                        onSwitch(intent);
                     }
-                    //Remove the Intent's extras variables before redirecting
-                    activity.getIntent().removeExtra("userID");
-                    activity.getIntent().removeExtra("userRole");
-
-                    //Set an intent to redirect the user to the LoginActivity activity
-                    Intent intent = new Intent(activity, LoginActivity.class);
-                    //Start the next activity
-                    onSwitch(intent);
                 }
             }
 
@@ -495,16 +471,12 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
             //Update the user account manager object with the input that the user type in
             userAccountManager.setFirstName(firstName);
             userAccountManager.setLastName(lastName);
-//            userAccountManager.setAge(age);
             userAccountManager.setUserName(userName);
             userAccountManager.setPassWord(passWord);
-//            userAccountManager.setCertificationNumber(certificationNumber);
-//            userAccountManager.setInsuranceNumber(insuranceNumber);
 
             //Invoke the method to updating the user's account
-            //Store the JSON message in a variable
-            String updateAccountStatus = userAccountManager.updateAccount();
-            if (updateAccountStatus.equals("Account updated successfully!")) {
+            try{
+                sqlDatabaseConnection.UpdateAccount(userAccountManager);
                 //Let the user know that their account has been successfully updated
                 activity.runOnUiThread(new Runnable() {
                     @Override
@@ -515,74 +487,72 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                                 errorMessageTextLabelAccountUpdatedSuccessfully);
                         //Make the error message label visible
                         errorMessageLabel.setVisibility(View.VISIBLE);
+
                         //Set the cancel and update buttons invisible and the edit and delete
                         //account buttons visible
                         cancelButton.setVisibility(View.INVISIBLE);
                         updateButton.setVisibility(View.INVISIBLE);
                         editButton.setVisibility(View.VISIBLE);
                         deleteAccountButton.setVisibility(View.VISIBLE);
+
                         //Update the temporary variables with the new data
                         tempUserName = userName;
                         tempPassWord = passWord;
                         tempFirstName = firstName;
                         tempLastName = lastName;
-//                        tempAge = age;
-//                        tempCertificationNumber = certificationNumber;
-//                        tempInsuranceNumber = insuranceNumber;
+
                         //Make the text boxes not editable
                         userFirstNameInputField.setEnabled(false);
                         userLastNameInputField.setEnabled(false);
-//                        userAgeInputField.setEnabled(false);
                         userUserNameInputField.setEnabled(false);
                         userPassWordInputField.setEnabled(false);
-//                        userCertificationNumberInputField.setEnabled(false);
-//                        userInsuranceNumberInputField.setEnabled(false);
                     }
                 });
             }
-            else if (updateAccountStatus.equals("The username is already taken!")) {
-                //Let the user know that the username entered is already taken
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Set the error message label letting the user know that the username entered
-                        //is already taken
-                        errorMessageLabel.setText(R.string.
-                                errorMessageTextLabelUserNameAlreadyTaken);
-                        //Make the error message label visible
-                        errorMessageLabel.setVisibility(View.VISIBLE);
-                    }
-                });
+            catch (Exception err){
+                if (err.getMessage().equals("The username is already taken!")) {
+                    //Let the user know that the username entered is already taken
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Set the error message label letting the user know that the username entered
+                            //is already taken
+                            errorMessageLabel.setText(R.string.
+                                    errorMessageTextLabelUserNameAlreadyTaken);
+                            //Make the error message label visible
+                            errorMessageLabel.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+                else if (err.getMessage().equals("Not all fields were entered!")) {
+                    //Let the user know that not all of the fields were entered when sending the data
+                    //the database
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Set the error message label letting the user know that not all of the
+                            //fields were entered
+                            errorMessageLabel.setText(R.string.errorMessageTextLabelMissingField);
+                            //Make the error message label visible
+                            errorMessageLabel.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+                else {
+                    //Let the user know that there was a connection error when connecting to
+                    //the database
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Set the error message letting the user know that there was a connection
+                            //error
+                            errorMessageLabel.setText(R.string.errorMessageTextLabelConnectionError);
+                            //Make the error message label visible
+                            errorMessageLabel.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
             }
-            else if (updateAccountStatus.equals("Not all fields were entered!")) {
-                //Let the user know that not all of the fields were entered when sending the data
-                //the database
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Set the error message label letting the user know that not all of the
-                        //fields were entered
-                        errorMessageLabel.setText(R.string.errorMessageTextLabelMissingField);
-                        //Make the error message label visible
-                        errorMessageLabel.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-            else {
-                //Let the user know that there was a connection error when connecting to
-                //the database
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Set the error message letting the user know that there was a connection
-                        //error
-                        errorMessageLabel.setText(R.string.errorMessageTextLabelConnectionError);
-                        //Make the error message label visible
-                        errorMessageLabel.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-
             return null;
         }
 
@@ -620,23 +590,11 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
          */
         @Override
         protected String doInBackground(String... params) {
+
             //Invoke the method to delete the user's account
-            //Store the JSON message in a variable
-            String deleteAccountStatus = userAccountManager.deleteAccount();
-            if (deleteAccountStatus.equals("Account deleted successfully!")) {
-                //Let the user know that there was an error with loading the user account and
-                //will redirect to the LoginActivity activity
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        dialog.setMessage("Profile has been deleted. Returning to login");
-//                        try {
-//                            Thread.sleep(15000);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
+            try{
+                sqlDatabaseConnection.DeleteAccount(userAccountManager);
+
                 //Remove the Intent's extras variables before redirecting
                 activity.getIntent().removeExtra("userID");
                 activity.getIntent().removeExtra("userRole");
@@ -645,9 +603,10 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
                 //Start the next activity
                 onSwitch(intent);
             }
-            else if (deleteAccountStatus.equals("User's account does not exist!")) {
-                //Let the user know that there was an error with deleting the user account and
-                //will redirect to the LoginActivity activity
+            catch(Exception err){
+                if (err.getMessage().equals("User's account does not exist!")) {
+                    //Let the user know that there was an error with deleting the user account and
+                    //will redirect to the LoginActivity activity
 //                activity.runOnUiThread(new Runnable() {
 //                    @Override
 //                    public void run() {
@@ -659,27 +618,28 @@ public class ProfileFragmentActivity extends Fragment implements View.OnClickLis
 //                        }
 //                    }
 //                });
-                //Remove the Intent's extras variables before redirecting
-                activity.getIntent().removeExtra("userID");
-                activity.getIntent().removeExtra("userRole");
-                //Set an intent to redirect the user to the LoginActivity activity
-                Intent intent = new Intent(activity, LoginActivity.class);
-                //Start the next activity
-                onSwitch(intent);
-            }
-            else {
-                //Let the user know that there was a connection error when connecting to
-                //the database
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Set the error message letting the user know that there was a connection
-                        //error
-                        errorMessageLabel.setText(R.string.errorMessageTextLabelConnectionError);
-                        //Make the error message label visible
-                        errorMessageLabel.setVisibility(View.VISIBLE);
-                    }
-                });
+                    //Remove the Intent's extras variables before redirecting
+                    activity.getIntent().removeExtra("userID");
+                    activity.getIntent().removeExtra("userRole");
+                    //Set an intent to redirect the user to the LoginActivity activity
+                    Intent intent = new Intent(activity, LoginActivity.class);
+                    //Start the next activity
+                    onSwitch(intent);
+                }
+                else {
+                    //Let the user know that there was a connection error when connecting to
+                    //the database
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Set the error message letting the user know that there was a connection
+                            //error
+                            errorMessageLabel.setText(R.string.errorMessageTextLabelConnectionError);
+                            //Make the error message label visible
+                            errorMessageLabel.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
             }
 
             return null;

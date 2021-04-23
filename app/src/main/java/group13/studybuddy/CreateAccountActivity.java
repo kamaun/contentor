@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class is an AppCompatActivity class that facilitates the creating account functionality for
  * a user.
@@ -48,6 +51,10 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private int creatorID = 0;
 
 
+    private final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(this);
+    private List<String> creatorNameList;
+    private ArrayList<Integer> creatorIdList;
+
     /**
      * Overrides the onCreate method inherited from AppCompatActivity to get the references for the
      * components in the view.
@@ -72,20 +79,42 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         reasonForUseSpinner = (Spinner) findViewById(R.id.reasonForUseSpinner);
         creatorSpinner = (Spinner) findViewById(R.id.creatorSpinner);
 
+        DropDownList dropDownList = null;
+        try {
+            dropDownList = sqlDatabaseConnection.loadCreators();
+            creatorNameList = dropDownList.getViewerList();
+            creatorIdList = dropDownList.getViewerID();
+            creatorNameList.add(0, "Please Select a Creator");
+            creatorIdList.add(0,0);
+
+            //Create ArrayAdapter using the viewerList ArrayList
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, creatorNameList);
+            //Specify the layout to use when the choices appear
+            adapter.setDropDownViewResource(android.
+                    R.layout.simple_spinner_dropdown_item);
+            //Apply the adapter to the spinner
+            creatorSpinner.setAdapter(adapter);
+            creatorSpinner.setSelection(0, false);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         //Create ArrayAdapters using the string resource arrays and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
                 R.array.reasonsForUseArray, android.R.layout.simple_spinner_item);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.creatorsArray, android.R.layout.simple_spinner_item);
+//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+//                R.array.creatorsArray, android.R.layout.simple_spinner_item);
         //Specify the layouts to use when the list of choices appear
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         //Apply the adapters to the spinners
         reasonForUseSpinner.setAdapter(adapter1);
         reasonForUseSpinner.setSelection(0, false);
-        creatorSpinner.setAdapter(adapter2);
-        creatorSpinner.setSelection(0, false);
+
 
         //Set setOnItemSelectedListeners for the spinners
         reasonForUseSpinner.setOnItemSelectedListener(this);
@@ -252,21 +281,27 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     break;
                 }
             case R.id.creatorSpinner:
-                //Get the input from the creator spinner
-                String creatorIDSpinner = parent.getItemAtPosition(position).toString();
-                if (creatorIDSpinner.equals("Please Select")) {
-                    //Set the creatorID instance field to zero
-                    creatorID = getResources().getIntArray(R.array.creatorsIDArray)
-                            [parent.getSelectedItemPosition()];
-                    break;
-                }
-                else {
-                    //Set the creatorID instance field to the creator id of the creator that is
-                    //selected from the spinner
-                    creatorID = getResources().getIntArray(R.array.creatorsIDArray)
-                            [parent.getSelectedItemPosition()];
-                    break;
-                }
+                //Get the position of the item selected
+                int selectedItemPosition = creatorSpinner.getSelectedItemPosition();
+
+                //Set the receiver id based on the selectedItemPosition
+                creatorID = creatorIdList.get(selectedItemPosition);
+
+//                //Get the input from the creator spinner
+//                String creatorIDSpinner = parent.getItemAtPosition(position).toString();
+//                if (creatorIDSpinner.equals("Please Select")) {
+//                    //Set the creatorID instance field to zero
+//                    creatorID = getResources().getIntArray(R.array.creatorsIDArray)
+//                            [parent.getSelectedItemPosition()];
+//                    break;
+//                }
+//                else {
+//                    //Set the creatorID instance field to the creator id of the creator that is
+//                    //selected from the spinner
+//                    creatorID = getResources().getIntArray(R.array.creatorsIDArray)
+//                            [parent.getSelectedItemPosition()];
+//                    break;
+//                }
             default:
                 break;
         }
@@ -288,7 +323,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
      * of an user.
      */
     class CreateAccountAuthentication extends AsyncTask<String, String, String> {
-        private SQLDatabaseConnection sqlDatabaseConnection;
+
 
         /**
          * Overrides the onPreExecute method inherited from AsyncTask to show a dialog.
@@ -301,12 +336,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             dialog.setIndeterminate(false);
             dialog.setCancelable(true);
             dialog.show();
-            try {
-                this.sqlDatabaseConnection = new SQLDatabaseConnection(CreateAccountActivity.this);
-            }
-            catch (Exception e){
-                System.out.println(e.getMessage());
-            }
+
         }
 
         /**

@@ -26,7 +26,7 @@ public class TabMenuManagerActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private  final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(this);
+    private final SQLDatabaseConnection sqlDatabaseConnection = new SQLDatabaseConnection(this);
 
 
 
@@ -57,9 +57,9 @@ public class TabMenuManagerActivity extends AppCompatActivity {
      */
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new ProfileFragmentActivity(), "PROFILE");
+        adapter.addFrag(new ProfileFragmentActivity(sqlDatabaseConnection), "PROFILE");
 //        adapter.addFrag(new TextMessagesFragmentActivity(), "TEXTS");
-        adapter.addFrag(new ContentManagerMenuFragmentActivity(), "CONTENT");
+        adapter.addFrag(new ContentManagerMenuFragmentActivity(sqlDatabaseConnection), "CONTENT");
         viewPager.setAdapter(adapter);
     }
 

@@ -1,5 +1,6 @@
 package group13.studybuddy;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,12 +18,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +26,7 @@ import java.util.List;
  * looking for a previous content, and creating a new content.
  * Created by Whitney Andrews on 4/2/2021.
  */
+@SuppressLint("ValidFragment")
 public class ContentManagerMenuFragmentActivity extends Fragment implements View.OnClickListener {
     /**
      * Instance variables only visible in the ContentManagerMenuFragmentActivity class. These are the
@@ -55,24 +51,7 @@ public class ContentManagerMenuFragmentActivity extends Fragment implements View
     private int viewerIDFromSpinner = 0;
     private int contentID;
     private String viewerName = "";
-
-    /**
-     * Instance variables only visible in the ContentManagerFragmentActivity class. Contains the URL
-     * to the specific URL to the PHP of the webservice to populate the viewer spinner.
-     */
-    private final String LOADALLVIEWERS_URL = "http://lamp.cse.fau.edu/~eguerre4/webservice/" +
-            "loadallclientss.php";
-
-    /**
-     * Instance variables that are only visible in the ContentManagerMenuFragmentActivity class.
-     * Contains the JSON element ids from the response of the PHP script.
-     */
-    private final String TAG_SUCCESS = "success";
-    private final String TAG_MESSAGE = "message";
-    private final String TAG_VIEWERS = "viewers";
-    private final String TAG_FIRSTNAME = "firstname";
-    private final String TAG_LASTNAME = "lastname";
-    private final String TAG_USERID = "userid";
+    private SQLDatabaseConnection sqlDatabaseConnection;
 
     /**
      * Instance variables that are only visible in the ContentManagerMenuFragmentActivity class.
@@ -83,8 +62,9 @@ public class ContentManagerMenuFragmentActivity extends Fragment implements View
     /**
      * Constructs a ContentManagerMenuFragmentActivity object
      */
-    public ContentManagerMenuFragmentActivity() {
-
+    @SuppressLint("ValidFragment")
+    public ContentManagerMenuFragmentActivity(SQLDatabaseConnection passedSQL) {
+        this.sqlDatabaseConnection = passedSQL;
     }
 
     /**
@@ -147,72 +127,51 @@ public class ContentManagerMenuFragmentActivity extends Fragment implements View
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    //Build the POST parameters that need to be passed in the request for loading the user's
-                    //account
-                    List<NameValuePair> postParams = new ArrayList<NameValuePair>();
-                    postParams.add(new BasicNameValuePair("creatorid", Integer.toString(userID)));
 
                     //Make the HTTP request to load the user's account
                     Log.d("request!", "starting");
-                    final JSONObject json = JSONWebservice.getInstance().makeHttpRequest(LOADALLVIEWERS_URL, postParams);
-
-                    //Check the log for the json response
-                    Log.d("Loading viewers", json.toString());
-
-                    final List<String> viewerList  = new ArrayList<String>();
-                    final ArrayList<Integer> viewerID = new ArrayList<Integer>();
 
                     try {
-                        int success = json.getInt(TAG_SUCCESS);
-                        if (success == 1 && json.getString(TAG_MESSAGE).equals("Viewers loaded!")) {
-                            Log.d("Viewers loaded", json.getString(TAG_MESSAGE));
-                            //Get the array of viewers from the JSON object
-                            JSONArray viewers = json.getJSONArray(TAG_VIEWERS);
-                            //Traverse through the JSON array and copy each element to the viewerList and viewer
-                            //ID ArrayList
-                            for (int i = 0; i < viewers.length(); i++) {
-                                JSONObject viewer = viewers.getJSONObject(i);
-                                viewerList.add(viewer.getString(TAG_FIRSTNAME) + " "
-                                        + viewer.getString(TAG_LASTNAME));
-                                viewerID.add(viewer.getInt(TAG_USERID));
-                            }
+
+                        DropDownList dropDownList = sqlDatabaseConnection.loadViewersByCreatorId(userID);
+                        final List<String> viewerList  = dropDownList.getViewerList();
+                        final ArrayList<Integer> viewerID = dropDownList.getViewerID();
+
+                        if (!viewerList.isEmpty()) {
+                            //Create ArrayAdapter using the viewerList ArrayList
+                            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                                    android.R.layout.simple_spinner_item, viewerList);
+                            //Specify the layout to use when the choices appear
+                            adapter.setDropDownViewResource(android.
+                                    R.layout.simple_spinner_dropdown_item);
+                            //Apply the adapter to the spinner
+                            activity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    viewerSpinner.setAdapter(adapter);
+                                }
+                            });
+
+                            //Set the listener for when the user selects a choice from the spinner
+                            viewerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    //Get the position of the item selected
+                                    int selectedItemPosition = viewerSpinner.getSelectedItemPosition();
+                                    //Set the receiver id based on the selectedItemPosition
+                                    viewerIDFromSpinner = viewerID.get(selectedItemPosition);
+                                    viewerName = viewerList.get(selectedItemPosition);
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+                                    //Auto-generated method stub
+                                }
+                            });
                         }
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
-                    }
-                    if (!viewerList.isEmpty()) {
-                        //Create ArrayAdapter using the viewerList ArrayList
-                        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_item, viewerList);
-                        //Specify the layout to use when the choices appear
-                        adapter.setDropDownViewResource(android.
-                                R.layout.simple_spinner_dropdown_item);
-                        //Apply the adapter to the spinner
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                viewerSpinner.setAdapter(adapter);
-                            }
-                        });
 
-                        //Set the listener for when the user selects a choice from the spinner
-                        viewerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                //Get the position of the item selected
-                                int selectedItemPosition = viewerSpinner.getSelectedItemPosition();
-                                //Set the receiver id based on the selectedItemPosition
-                                viewerIDFromSpinner = viewerID.get(selectedItemPosition);
-                                viewerName = viewerList.get(selectedItemPosition);
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-                                //Auto-generated method stub
-                            }
-                        });
-                    }
-                    else {
                         //Set the viewer label and spinner invisible
                         viewerTextLabel.setVisibility(View.INVISIBLE);
                         viewerSpinner.setVisibility(View.INVISIBLE);
@@ -221,6 +180,7 @@ public class ContentManagerMenuFragmentActivity extends Fragment implements View
                         errorMessageLabel.setVisibility(View.VISIBLE);
                         errorMessageLabel.setText(R.string.errorMessageLabelNoViewers);
                     }
+
                 }
             }).start();
         }

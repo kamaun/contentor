@@ -69,8 +69,6 @@
         android:text="@string/cancelButtonTextLabel"
         android:id="@+id/cancelButton"
         android:layout_above="@+id/goBackButton"
-        android:layout_alignLeft="@+id/pushUpsTextLabel"
-        android:layout_alignStart="@+id/pushUpsTextLabel"
         android:visibility="invisible" />
 
     <TextView

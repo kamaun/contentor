@@ -66,30 +66,6 @@
                 android:layout_alignLeft="@+id/firstNameTextBox"
                 android:layout_alignStart="@+id/firstNameTextBox" />
 
-            <TextView
-                android:id="@+id/ageTextLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lastNameTextBox"
-                android:layout_alignStart="@+id/lastNameTextLabel"
-                android:layout_alignLeft="@+id/lastNameTextLabel"
-                android:text="@string/ageTextLabel"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
-
-            <EditText
-                android:id="@+id/ageTextBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/lastNameTextBox"
-                android:layout_alignLeft="@+id/lastNameTextBox"
-                android:layout_alignTop="@+id/ageTextLabel"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:inputType="number"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,7 +75,7 @@
                 android:id="@+id/userNameTextLabel"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/ageTextBox" />
+                android:layout_below="@+id/lastNameTextBox" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -112,8 +88,8 @@
                 android:hint="@string/lengthOfUserNameHint"
                 android:textSize="10sp"
                 android:fontFamily="veradana"
-                android:layout_alignLeft="@+id/ageTextBox"
-                android:layout_alignStart="@+id/ageTextBox" />
+                android:layout_alignLeft="@+id/lastNameTextBox"
+                android:layout_alignStart="@+id/lastNameTextBox" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,60 +136,13 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
-                android:id="@+id/certificationNumberTextLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/reasonForUseSpinner"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:text="@string/certificationNumberTextLabel"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
-
-            <EditText
-                android:id="@+id/certificationNumberTextBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/reasonForUseSpinner"
-                android:layout_alignStart="@+id/reasonForUseSpinner"
-                android:layout_alignLeft="@+id/reasonForUseSpinner"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:inputType="number"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
-
-            <TextView
-                android:id="@+id/insuranceNumberTextLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/certificationNumberTextBox"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:text="@string/insuranceNumberTextLabel"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
-
-            <EditText
-                android:id="@+id/insuranceNumberTextBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/certificationNumberTextBox"
-                android:layout_alignLeft="@+id/certificationNumberTextBox"
-                android:layout_alignTop="@+id/insuranceNumberTextLabel"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:inputType="text"
-                android:visibility="invisible"
-                tools:visibility="invisible" />
-
-            <TextView
                 android:id="@+id/creatorTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/insuranceNumberTextBox"
+                android:layout_below="@+id/reasonForUseTextLabel"
+                android:layout_above="@id/backToLoginButton"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:text="@string/creatorTextLabel"
@@ -225,9 +154,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/creatorSpinner"
-                android:layout_below="@+id/insuranceNumberTextBox"
-                android:layout_alignLeft="@+id/insuranceNumberTextBox"
-                android:layout_alignStart="@+id/insuranceNumberTextBox"
+                android:layout_below="@+id/reasonForUseTextLabel"
+                android:layout_alignLeft="@+id/creatorTextLabel"
+                android:layout_alignStart="@+id/creatorTextLabel"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:visibility="invisible" />
 
             <Button
