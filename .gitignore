@@ -134,3 +134,4 @@ local.settings.json
 .idea/
 .gradle/
 .build/
+gradle/
